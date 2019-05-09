@@ -22,6 +22,8 @@ class Stepper {
    public:
     Stepper(int pin1, int pin2, int pin3, int pin4, int stepsPerRevolution, int backlashSteps, int limit);
     void rotate(float degrees);
+    void moveTo(float degrees);
+    float getDist(float degrees);
     void doStep();
     bool finished();
     float getPos();

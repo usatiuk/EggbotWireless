@@ -3,9 +3,17 @@
 
 #ifndef STEPPER_TIMER_H
 #define STEPPER_TIMER_H
-
-void stepperTimerInit(int rpm, int stepsPerRevolution);
-void stepperTimerSetStepper(int num, Stepper *stepper);
-void stepperTimerTick();
+class StepperTimer {
+   private:
+    int speedDelay;
+    int stepsPerRevolution;
+    Ticker stepperTicker;
+    Stepper *stepper;
+   public:
+    StepperTimer(float rpm, int stepsPerRevolution);
+    void setStepper(Stepper *stepper);
+    void setRPM(float rpm);
+    void tick();
+};
 
 #endif

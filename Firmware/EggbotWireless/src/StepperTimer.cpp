@@ -1,22 +1,19 @@
 #include "StepperTimer.h"
 #include "Stepper.h"
 
-int speedDelay;
-Ticker stepperTicker;
-Stepper *steppers[2];
-
-void stepperTimerInit(int rpm, int stepsPerRevolution)
-{
+StepperTimer::StepperTimer(float rpm, int stepsPerRevolution)
+    : stepsPerRevolution(stepsPerRevolution) {
+    stepperTicker.detach();
     speedDelay = 60 * 1000 / (rpm * stepsPerRevolution);
-    stepperTicker.attach_ms(speedDelay, stepperTimerTick);
+    stepperTicker.attach_ms(speedDelay, std::bind(&StepperTimer::tick, this));
 }
 
-void stepperTimerSetStepper(int num, Stepper *stepper) {
-    steppers[num] = stepper;
-}
+void StepperTimer::setStepper(Stepper *_stepper) { stepper = _stepper; }
 
-void stepperTimerTick() {
-    for (int i = 0; i < 2; i++) {
-        steppers[i]->doStep();
-    } 
+void StepperTimer::tick() { stepper->doStep(); }
+
+void StepperTimer::setRPM(float rpm) {
+    stepperTicker.detach();
+    speedDelay = 60 * 1000 / (rpm * stepsPerRevolution);
+    stepperTicker.attach_ms(speedDelay, std::bind(&StepperTimer::tick, this));
 }

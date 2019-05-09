@@ -186,5 +186,15 @@ void Stepper::rotate(float degrees) {
     }
 }
 
+float Stepper::getDist(float degrees) {
+    float mod = fmod(degrees, 360);
+    return abs(mod - pos);
+}
+
+void Stepper::moveTo(float degrees) {
+    float mod = fmod(degrees, 360);
+    rotate(mod - pos);
+}
+
 bool Stepper::finished() { return remainingSteps == 0; }
 float Stepper::getPos() { return pos; }
