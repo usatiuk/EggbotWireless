@@ -4,10 +4,10 @@
 int bytecode[4] = {-1, -1, -1, -1};
 
 int* parseGCode(String gcode) {
-    char commandStringIn[30];
-    char commandString[26];
+    char commandStringIn[50];
+    char commandString[50];
 
-    gcode.toCharArray(commandStringIn, 30);
+    gcode.toCharArray(commandStringIn, 50);
 
     // Convert command to uppercase
     for (int i = 0; commandStringIn[i] != '\0'; i++) {
@@ -19,13 +19,13 @@ int* parseGCode(String gcode) {
     strncpy(command, commandString, 3);
     command[3] = '\0';
 
-    char args[22];
-    strncpy(args, &commandString[4], 22);
+    char args[45];
+    strncpy(args, &commandString[4], 45);
 
     if (strcmp(command, "G01") == 0) {
         bytecode[0] = G01;
 
-        char split_args[3][22];
+        char split_args[3][40];
         memset(split_args, 0, sizeof(split_args));
         char* arg;
         int argc = 0;
@@ -42,12 +42,12 @@ int* parseGCode(String gcode) {
         for (int i = 0; i < argc; i++) {
             arg = split_args[i];
             char axis[2];
-            char value[7];
+            char value[10];
 
             strncpy(axis, arg, 1);
             axis[1] = '\0';
 
-            strncpy(value, &arg[1], 7);
+            strncpy(value, &arg[1], 10);
 
             float floatValue;
             floatValue = atof(value);
