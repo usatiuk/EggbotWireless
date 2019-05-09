@@ -5,7 +5,7 @@
 #define STEPPER_TIMER_H
 class StepperTimer {
    private:
-    int speedDelay;
+    float speedDelay;
     int stepsPerRevolution;
     Ticker stepperTicker;
     Stepper *stepper;

@@ -197,11 +197,19 @@ void Stepper::rotateTo(float degrees) {
     rotate(mod - pos);
 }
 
-void Stepper::moveTo(float dist) {
-    rotateTo(dist * degreesPerMM);
+void Stepper::moveTo(float dist) { rotateTo(dist * degreesPerMM); }
+
+int Stepper::mmToSteps(float dist) {
+    return abs(degreesToSteps(dist * degreesPerMM));
 }
 
+float Stepper::getPosMm() { return pos / degreesPerMM; }
+
+float Stepper::getDistMm(float pos) { return abs(getPosMm() - pos); }
+
 void Stepper::setPos(float degrees) { pos = degrees; }
+
+int Stepper::getRemainingSteps() { return remainingSteps; }
 
 bool Stepper::finished() { return remainingSteps == 0; }
 float Stepper::getPos() { return pos; }
