@@ -115,12 +115,14 @@ void Stepper::counterClockwise() {
     }
 }
 
-Stepper::Stepper(int pin1, int pin2, int pin3, int pin4, int stepsPerRevolution)
+Stepper::Stepper(int pin1, int pin2, int pin3, int pin4, int stepsPerRevolution,
+                 int backlashSteps)
     : pin1(pin1),
       pin2(pin2),
       pin3(pin3),
       pin4(pin4),
-      stepsPerRevolution(stepsPerRevolution) {
+      stepsPerRevolution(stepsPerRevolution),
+      backlashSteps(backlashSteps) {
     pinMode(pin1, OUTPUT);
     pinMode(pin2, OUTPUT);
     pinMode(pin3, OUTPUT);
@@ -128,8 +130,8 @@ Stepper::Stepper(int pin1, int pin2, int pin3, int pin4, int stepsPerRevolution)
 }
 
 void Stepper::doStep() {
-    if(remainingSteps > 0) {
-        if(direction){
+    if (remainingSteps > 0) {
+        if (direction) {
             clockwise();
         } else {
             counterClockwise();
@@ -140,15 +142,25 @@ void Stepper::doStep() {
 
 void Stepper::step(int steps) {
     if (steps > 0) {
+        if (!direction) {
+            remainingSteps += backlashSteps;
+        }
         direction = true;
-        remainingSteps = steps;
+        remainingSteps += steps;
     } else {
+        if (direction) {
+            remainingSteps += backlashSteps;
+        }
         direction = false;
-        remainingSteps = abs(steps);
+        remainingSteps += abs(steps);
     }
 }
 
 void Stepper::rotate(float degrees) {
     int steps = (degrees * stepsPerRevolution) / 360;
     step(steps);
+}
+
+bool Stepper::finished() {
+    return remainingSteps == 0;
 }
