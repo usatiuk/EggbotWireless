@@ -116,13 +116,14 @@ void Stepper::counterClockwise() {
 }
 
 Stepper::Stepper(int pin1, int pin2, int pin3, int pin4, int stepsPerRevolution,
-                 int backlashSteps)
+                 int backlashSteps, int limit)
     : pin1(pin1),
       pin2(pin2),
       pin3(pin3),
       pin4(pin4),
       stepsPerRevolution(stepsPerRevolution),
-      backlashSteps(backlashSteps) {
+      backlashSteps(backlashSteps),
+      limit(limit) {
     pinMode(pin1, OUTPUT);
     pinMode(pin2, OUTPUT);
     pinMode(pin3, OUTPUT);
@@ -141,6 +142,9 @@ void Stepper::doStep() {
 }
 
 void Stepper::step(int steps) {
+    if (steps == 0) {
+        return;
+    }
     if (steps > 0) {
         if (!direction) {
             remainingSteps += backlashSteps;
@@ -156,11 +160,31 @@ void Stepper::step(int steps) {
     }
 }
 
-void Stepper::rotate(float degrees) {
-    int steps = (degrees * stepsPerRevolution) / 360;
-    step(steps);
+int Stepper::degreesToSteps(float degrees) {
+    return (degrees * stepsPerRevolution) / 360;
 }
 
-bool Stepper::finished() {
-    return remainingSteps == 0;
+void Stepper::rotate(float degrees) {
+    int steps = degreesToSteps(degrees);
+    if (!limit) {
+        pos = fmod((pos + degrees), 360);
+        if (pos < 0) {
+            pos = 360 + pos;
+        }
+        step(steps);
+    } else {
+        if (degrees + pos > limit) {
+            step(degreesToSteps(limit - pos));
+            pos = limit;
+        } else if (degrees + pos < 0) {
+            step(degreesToSteps(-pos));
+            pos = 0;
+        } else {
+            step(steps);
+            pos += degrees;
+        }
+    }
 }
+
+bool Stepper::finished() { return remainingSteps == 0; }
+float Stepper::getPos() { return pos; }
