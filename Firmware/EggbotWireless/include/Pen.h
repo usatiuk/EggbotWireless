@@ -3,13 +3,13 @@
 #ifndef PEN_H
 #define PEN_H
 
-#define DELAY 300
+#define DELAY 15
 
 class Pen {
    private:
     int posEngaged;
     int posDisengaged;
-    bool engaged;
+    bool engaged = true;
     Servo servo;
 
    public:
