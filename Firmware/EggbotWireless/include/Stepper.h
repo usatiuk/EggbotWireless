@@ -14,13 +14,17 @@ class Stepper {
     bool direction;
     void clockwise();
     void counterClockwise();
+    void step(int steps);
+    int degreesToSteps(float degrees);
+    float pos = 0;
+    int limit;
 
    public:
-    Stepper(int pin1, int pin2, int pin3, int pin4, int stepsPerRevolution, int backlashSteps);
-    void step(int steps);
+    Stepper(int pin1, int pin2, int pin3, int pin4, int stepsPerRevolution, int backlashSteps, int limit);
     void rotate(float degrees);
     void doStep();
     bool finished();
+    float getPos();
 };
 
 #endif
