@@ -8,13 +8,13 @@
 
 #define STEPS_PER_REVOLUTION 4076
 
-int RPM = 4;
+int RPM = 2;
 
-Stepper eggStepper(D1, D2, D3, D4, STEPS_PER_REVOLUTION, 0, 0,
+Stepper eggStepper(D1, D2, D3, D4, STEPS_PER_REVOLUTION, 40, 0,
                    Y_DEGREES_PER_MM);
-Stepper servoStepper(D5, D6, D7, D8, -STEPS_PER_REVOLUTION, 0, X_LIMIT,
+Stepper servoStepper(D5, D6, D7, D8, -STEPS_PER_REVOLUTION, 40, X_LIMIT,
                      X_DEGREES_PER_MM);
-Pen pen(D0, 100, 170);
+Pen pen(D0, 100, 150);
 
 StepperTimer eggStepperTimer(RPM, STEPS_PER_REVOLUTION);
 StepperTimer servoStepperTimer(RPM, STEPS_PER_REVOLUTION);
@@ -87,7 +87,7 @@ void loop() {
             inString.trim();
             execCommand(parseGCode(inString));
             while (!eggStepper.finished() || !servoStepper.finished()) {
-                delay(100);
+                delay(50);
                 cli();
                 int stepsX = servoStepper.getRemainingSteps();
                 int stepsY = eggStepper.getRemainingSteps();
