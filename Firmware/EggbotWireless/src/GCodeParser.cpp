@@ -1,9 +1,9 @@
 #include "GCodeParser.h"
 #include <Arduino.h>
 
-int bytecode[4] = {-1, -1, -1, -1};
+float bytecode[4] = {-1, -1, -1, -1};
 
-int* parseGCode(String gcode) {
+float* parseGCode(String gcode) {
     char commandStringIn[50];
     char commandString[50];
 
@@ -22,7 +22,7 @@ int* parseGCode(String gcode) {
     char args[45];
     strncpy(args, &commandString[4], 45);
 
-    if (strcmp(command, "G01") == 0) {
+    if (strcmp(command, "G01") == 0 || strcmp(command, "G00") == 0) {
         bytecode[0] = G01;
 
         char split_args[3][40];
