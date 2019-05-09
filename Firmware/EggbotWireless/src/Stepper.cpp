@@ -196,5 +196,9 @@ void Stepper::moveTo(float degrees) {
     rotate(mod - pos);
 }
 
+void Stepper::setPos(float degrees) {
+    pos = degrees;
+}
+
 bool Stepper::finished() { return remainingSteps == 0; }
 float Stepper::getPos() { return pos; }

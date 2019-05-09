@@ -6,12 +6,12 @@
 #include "StepperTimer.h"
 
 #define STEPS_PER_REVOLUTION 4076
-#define BACKLASH_STEPS 20
-int RPM = 10;
+#define BACKLASH_STEPS 40
+int RPM = 4;
 
 Stepper eggStepper(D1, D2, D3, D4, STEPS_PER_REVOLUTION, BACKLASH_STEPS, 0);
-Stepper servoStepper(D5, D6, D7, D8, STEPS_PER_REVOLUTION, BACKLASH_STEPS, 80);
-Pen pen(D0, 80, 170);
+Stepper servoStepper(D5, D6, D7, D8, -STEPS_PER_REVOLUTION, BACKLASH_STEPS, 70);
+Pen pen(D0, 100, 170);
 
 StepperTimer eggStepperTimer(RPM, STEPS_PER_REVOLUTION);
 StepperTimer servoStepperTimer(RPM, STEPS_PER_REVOLUTION);
@@ -41,10 +41,10 @@ void execCommand(int *command) {
             eggStepper.moveTo(command[Y]);
         }
 
-        if (command[Z] == 1) {
+        if (command[Z] < 0) {
             pen.engage();
         }
-        if (command[Z] == 0) {
+        if (command[Z] >= 0) {
             pen.disengage();
         }
 
@@ -66,13 +66,13 @@ void setup() {
     eggStepperTimer.setStepper(&eggStepper);
     servoStepperTimer.setStepper(&servoStepper);
     pen.disengage();
+    servoStepper.setPos(70);
     WiFi.mode(WIFI_OFF);
 }
 
 void loop() {
     while (Serial.available() > 0) {
         char inChar = Serial.read();
-        Serial.write(inChar);
         inString += inChar;
 
         if (inChar == '\n') {
