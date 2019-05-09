@@ -91,8 +91,6 @@ void loop() {
                 cli();
                 int stepsX = servoStepper.getRemainingSteps();
                 int stepsY = eggStepper.getRemainingSteps();
-                Serial.println(stepsX);
-                Serial.println(stepsY);
                 if (stepsX > stepsY) {
                     float rpm = (float)RPM * (float)stepsY / (float)stepsX;
                     eggStepperTimer.setRPM(rpm);
