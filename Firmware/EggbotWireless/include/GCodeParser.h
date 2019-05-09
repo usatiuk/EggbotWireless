@@ -15,6 +15,6 @@ enum bcAxis {
     Z = 3,
 };
 
-int *parseGCode(String gcode);
+float *parseGCode(String gcode);
 
 #endif

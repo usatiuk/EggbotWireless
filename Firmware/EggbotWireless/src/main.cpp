@@ -4,13 +4,14 @@
 #include "Pen.h"
 #include "Stepper.h"
 #include "StepperTimer.h"
+#include "EggConstants.h"
 
 #define STEPS_PER_REVOLUTION 4076
-#define BACKLASH_STEPS 40
+
 int RPM = 4;
 
-Stepper eggStepper(D1, D2, D3, D4, STEPS_PER_REVOLUTION, BACKLASH_STEPS, 0);
-Stepper servoStepper(D5, D6, D7, D8, -STEPS_PER_REVOLUTION, BACKLASH_STEPS, 70);
+Stepper eggStepper(D1, D2, D3, D4, STEPS_PER_REVOLUTION, 10, 0, Y_DEGREES_PER_MM);
+Stepper servoStepper(D5, D6, D7, D8, -STEPS_PER_REVOLUTION, 10, X_LIMIT, X_DEGREES_PER_MM);
 Pen pen(D0, 100, 170);
 
 StepperTimer eggStepperTimer(RPM, STEPS_PER_REVOLUTION);
@@ -19,7 +20,7 @@ StepperTimer servoStepperTimer(RPM, STEPS_PER_REVOLUTION);
 String inString;
 
 
-void execCommand(int *command) {
+void execCommand(float *command) {
     if (command[0] == G01) {
         if (command[X] != -1 && command[Y] != -1) {
             float distX = servoStepper.getDist(command[X]);
