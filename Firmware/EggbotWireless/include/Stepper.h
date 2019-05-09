@@ -16,20 +16,24 @@ class Stepper {
     void clockwise();
     void counterClockwise();
     void step(int steps);
-    int degreesToSteps(float degrees);
     float pos = 0;
     int limit;
 
    public:
     Stepper(int pin1, int pin2, int pin3, int pin4, int stepsPerRevolution, int backlashSteps, int limit, float degreesPerMM);
+    int getRemainingSteps();
     void rotate(float degrees);
     void rotateTo(float degrees);
     void moveTo(float dist);
     void setPos(float degrees);
     float getDist(float degrees);
+    int degreesToSteps(float degrees);
+    int mmToSteps(float dist);
     void doStep();
     bool finished();
     float getPos();
+    float getPosMm();
+    float getDistMm(float pos);
 };
 
 #endif
