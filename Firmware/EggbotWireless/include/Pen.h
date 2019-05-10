@@ -16,6 +16,7 @@ class Pen {
     Pen(int pin, int posEngaged, int posDisengaged);
     void engage();
     void disengage();
+    void init();
     bool getEngaged();
     ~Pen();
 };

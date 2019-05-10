@@ -26,6 +26,11 @@ void Pen::disengage() {
     engaged = false;
 }
 
+void Pen::init() {
+    servo.write(posDisengaged);
+    engaged = false;
+}
+
 bool Pen::getEngaged() { return engaged; }
 
 Pen::~Pen() {}
