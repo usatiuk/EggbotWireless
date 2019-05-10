@@ -163,8 +163,6 @@ void Stepper::step(int steps) {
                 backlashComp == typeBoth) {
                 remainingSteps += backlashSteps;
             }
-
-            remainingSteps += backlashSteps;
         }
         direction = false;
         remainingSteps += abs(steps);
