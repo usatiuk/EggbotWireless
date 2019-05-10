@@ -5,6 +5,7 @@
 
 enum command {
     unk,
+    G00,
     G01,
     M99,
 };
