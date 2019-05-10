@@ -2,24 +2,12 @@
 #include <ESP8266WiFi.h>
 #include "EggConstants.h"
 #include "GCodeParser.h"
+#include "Globals.h"
 #include "Pen.h"
 #include "Stepper.h"
 #include "StepperTimer.h"
 
-#define STEPS_PER_REVOLUTION 4076
-
-int RPM = 2;
-
-Stepper eggStepper(D1, D2, D3, D4, STEPS_PER_REVOLUTION, 40, 0,
-                   Y_DEGREES_PER_MM);
-Stepper servoStepper(D5, D6, D7, D8, -STEPS_PER_REVOLUTION, 40, X_LIMIT,
-                     X_DEGREES_PER_MM);
-Pen pen(D0, 100, 150);
-
-StepperTimer eggStepperTimer(RPM, STEPS_PER_REVOLUTION);
-StepperTimer servoStepperTimer(RPM, STEPS_PER_REVOLUTION);
-
-String inString;
+int RPM = DEF_RPM;
 
 void execCommand(float *command) {
     if (command[0] == G01) {
@@ -73,7 +61,7 @@ void setup() {
     Serial.begin(115200);
     eggStepperTimer.setStepper(&eggStepper);
     servoStepperTimer.setStepper(&servoStepper);
-    pen.disengage();
+    pen.init();
     servoStepper.setPos(70);
     WiFi.mode(WIFI_OFF);
 }
@@ -97,6 +85,9 @@ void loop() {
                 } else if (stepsY > stepsX) {
                     float rpm = (float)RPM * (float)stepsX / (float)stepsY;
                     servoStepperTimer.setRPM(rpm);
+                } else {
+                    eggStepperTimer.setRPM(RPM);
+                    servoStepperTimer.setRPM(RPM);
                 }
                 sei();
             }
