@@ -10,9 +10,9 @@
 #define STEPS_PER_REVOLUTION 4076
 #define DEF_RPM 2
 
-Stepper eggStepper(D1, D2, D3, D4, STEPS_PER_REVOLUTION, 20, 0,
+Stepper eggStepper(D1, D2, D3, D4, STEPS_PER_REVOLUTION, 10, 0,
                    Y_DEGREES_PER_MM, typeBoth, false);
-Stepper servoStepper(D5, D6, D7, D8, -STEPS_PER_REVOLUTION, 20, X_LIMIT,
+Stepper servoStepper(D5, D6, D7, D8, -STEPS_PER_REVOLUTION, 0, X_LIMIT,
                      X_DEGREES_PER_MM, typeClockwise, false);
 
 StepperTimer eggStepperTimer(DEF_RPM, STEPS_PER_REVOLUTION);
