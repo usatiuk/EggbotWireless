@@ -23,8 +23,6 @@ float* parseGCode(String gcode) {
     strncpy(args, &commandString[4], 45);
 
     if (strcmp(command, "G01") == 0 || strcmp(command, "G00") == 0) {
-        bytecode[0] = G01;
-
         char split_args[3][40];
         memset(split_args, 0, sizeof(split_args));
         char* arg;
@@ -60,8 +58,14 @@ float* parseGCode(String gcode) {
                 bytecode[Z] = floatValue;
             }
         }
-
-        return bytecode;
+        if (strcmp(command, "G00") == 0) {
+            bytecode[0] = G00;
+            return bytecode;
+        }
+        if (strcmp(command, "G01") == 0) {
+            bytecode[0] = G01;
+            return bytecode;
+        }
     }
 
     if (strcmp(command, "M99") == 0) {

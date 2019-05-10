@@ -1,5 +1,7 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
+#include <Ticker.h>
+
 #include "EggConstants.h"
 #include "GCodeParser.h"
 #include "Globals.h"
@@ -9,22 +11,31 @@
 
 int RPM = DEF_RPM;
 
+bool needAdjust = false;
+
+Ticker adjustTicker;
+
 void execCommand(float *command) {
-    if (command[0] == G01) {
-        if (command[X] != -1 && command[Y] != -1) {
-            float distX = servoStepper.getDistMm(command[X]);
-            float distY = eggStepper.getDistMm(command[Y]);
-            int stepsX = servoStepper.mmToSteps(distX);
-            int stepsY = eggStepper.mmToSteps(distY);
-            if (stepsX != 0 && stepsY != 0) {
-                if (stepsX > stepsY) {
-                    float rpm = (float)RPM * (float)stepsY / (float)stepsX;
-                    eggStepperTimer.setRPM(rpm);
-                } else if (stepsY > stepsX) {
-                    float rpm = (float)RPM * (float)stepsX / (float)stepsY;
-                    servoStepperTimer.setRPM(rpm);
+    if (command[0] == G01 || command[0] == G00) {
+        if (command[0] == G01) {
+            needAdjust = true;
+            if (command[X] != -1 && command[Y] != -1) {
+                float distX = servoStepper.getDistMm(command[X]);
+                float distY = eggStepper.getDistMm(command[Y]);
+                int stepsX = servoStepper.mmToSteps(distX);
+                int stepsY = eggStepper.mmToSteps(distY);
+                if (stepsX != 0 && stepsY != 0) {
+                    if (stepsX > stepsY) {
+                        float rpm = (float)RPM * (float)stepsY / (float)stepsX;
+                        eggStepperTimer.setRPM(rpm);
+                    } else if (stepsY > stepsX) {
+                        float rpm = (float)RPM * (float)stepsX / (float)stepsY;
+                        servoStepperTimer.setRPM(rpm);
+                    }
                 }
             }
+        } else {
+            needAdjust = false;
         }
 
         if (command[X] != -1) {
@@ -57,13 +68,33 @@ void execCommand(float *command) {
     }
 }
 
+void adjustRPM() {
+    if (needAdjust) {
+        cli();
+        int stepsX = servoStepper.getRemainingSteps();
+        int stepsY = eggStepper.getRemainingSteps();
+        if (stepsX > stepsY) {
+            float rpm = (float)RPM * (float)stepsY / (float)stepsX;
+            eggStepperTimer.setRPM(rpm);
+        } else if (stepsY > stepsX) {
+            float rpm = (float)RPM * (float)stepsX / (float)stepsY;
+            servoStepperTimer.setRPM(rpm);
+        } else {
+            eggStepperTimer.setRPM(RPM);
+            servoStepperTimer.setRPM(RPM);
+        }
+        sei();
+    }
+}
+
 void setup() {
+    WiFi.mode(WIFI_OFF);
     Serial.begin(115200);
     eggStepperTimer.setStepper(&eggStepper);
     servoStepperTimer.setStepper(&servoStepper);
     pen.init();
     servoStepper.setPos(70);
-    WiFi.mode(WIFI_OFF);
+    adjustTicker.attach_ms(50, adjustRPM);
 }
 
 void loop() {
@@ -76,20 +107,6 @@ void loop() {
             execCommand(parseGCode(inString));
             while (!eggStepper.finished() || !servoStepper.finished()) {
                 delay(50);
-                cli();
-                int stepsX = servoStepper.getRemainingSteps();
-                int stepsY = eggStepper.getRemainingSteps();
-                if (stepsX > stepsY) {
-                    float rpm = (float)RPM * (float)stepsY / (float)stepsX;
-                    eggStepperTimer.setRPM(rpm);
-                } else if (stepsY > stepsX) {
-                    float rpm = (float)RPM * (float)stepsX / (float)stepsY;
-                    servoStepperTimer.setRPM(rpm);
-                } else {
-                    eggStepperTimer.setRPM(RPM);
-                    servoStepperTimer.setRPM(RPM);
-                }
-                sei();
             }
             eggStepperTimer.setRPM(RPM);
             servoStepperTimer.setRPM(RPM);
