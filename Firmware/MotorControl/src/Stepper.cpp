@@ -116,18 +116,14 @@ void Stepper::counterClockwise() {
 }
 
 Stepper::Stepper(int pin1, int pin2, int pin3, int pin4, int stepsPerRevolution,
-                 int backlashSteps, int limit, float degreesPerMM,
-                 backlashCompType backlashComp, bool compAlways)
+                 int limit, float degreesPerMM)
     : pin1(pin1),
       pin2(pin2),
       pin3(pin3),
       pin4(pin4),
       stepsPerRevolution(stepsPerRevolution),
-      backlashSteps(backlashSteps),
       limit(limit),
-      degreesPerMM(degreesPerMM),
-      backlashComp(backlashComp),
-      compAlways(compAlways) {
+      degreesPerMM(degreesPerMM) {
     pinMode(pin1, OUTPUT);
     pinMode(pin2, OUTPUT);
     pinMode(pin3, OUTPUT);
@@ -150,20 +146,9 @@ void Stepper::step(int steps) {
         return;
     }
     if (steps > 0) {
-        if (!direction || compAlways) {
-            if (backlashComp == typeClockwise || backlashComp == typeBoth) {
-                remainingSteps += backlashSteps;
-            }
-        }
         direction = true;
         remainingSteps += steps;
     } else {
-        if (direction || compAlways) {
-            if (backlashComp == typeCounterClockwise ||
-                backlashComp == typeBoth) {
-                remainingSteps += backlashSteps;
-            }
-        }
         direction = false;
         remainingSteps += abs(steps);
     }

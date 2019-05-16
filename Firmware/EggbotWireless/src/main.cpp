@@ -1,116 +1,87 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <Ticker.h>
-
-#include "EggConstants.h"
+#include <Wire.h>
 #include "GCodeParser.h"
-#include "Globals.h"
-#include "Pen.h"
-#include "Stepper.h"
-#include "StepperTimer.h"
+#include "common/Commands.h"
 
-int RPM = DEF_RPM;
+String inString;
+bool waitingForNext;
 
-bool needAdjust = false;
+void sendCommand(float *command) {
+    if (command[0] != unk) {
+        Wire.beginTransmission(8);
+        byte txBuffer[4];
+        for (int i = 0; i < 4; i++) {
+            floatToBytes(txBuffer, command[i]);
+            Wire.write(txBuffer, 4);
+        }
+        Wire.endTransmission();
+    } else {
+        Serial.println("UNK");
+    }
 
-Ticker adjustTicker;
-
-void execCommand(float *command) {
     if (command[0] == G01 || command[0] == G00) {
-        if (command[0] == G01) {
-            needAdjust = true;
-            if (command[X] != -1 && command[Y] != -1) {
-                float distX = servoStepper.getDistMm(command[X]);
-                float distY = eggStepper.getDistMm(command[Y]);
-                int stepsX = servoStepper.mmToSteps(distX);
-                int stepsY = eggStepper.mmToSteps(distY);
-                if (stepsX != 0 && stepsY != 0) {
-                    if (stepsX > stepsY) {
-                        float rpm = (float)RPM * (float)stepsY / (float)stepsX;
-                        eggStepperTimer.setRPM(rpm);
-                    } else if (stepsY > stepsX) {
-                        float rpm = (float)RPM * (float)stepsX / (float)stepsY;
-                        servoStepperTimer.setRPM(rpm);
-                    }
-                }
-            }
-        } else {
-            needAdjust = false;
-        }
-
-        if (command[X] != -1) {
-            servoStepper.moveTo(command[X]);
-        }
-
-        if (command[Y] != -1) {
-            eggStepper.moveTo(command[Y]);
-        }
-
-        if (command[Z] < 0) {
-            pen.engage();
-        }
-        if (command[Z] >= 0) {
-            pen.disengage();
-        }
-
+        Wire.requestFrom(8, 1);
+        waitingForNext = true;
         return;
     }
 
     if (command[0] == M99) {
+        Wire.requestFrom(8, 5 * sizeof(float));
+        float resp[5];
+
+        byte buffer[4];
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 4; j++) {
+                while (!Wire.available()) {
+                }
+                char read = Wire.read();
+                buffer[j] = read;
+            }
+            bytesToFloat(&resp[i], buffer);
+        }
+
         Serial.println("Status:");
-        Serial.println("X: " + String(servoStepper.getPos()));
-        Serial.println("Y: " + String(eggStepper.getPos()));
-        Serial.println("Xmm: " + String(servoStepper.getPosMm()));
-        Serial.println("Ymm: " + String(eggStepper.getPosMm()));
-        Serial.println("PEN: " + String(pen.getEngaged()));
+        Serial.println("X: " + String(resp[servoRot]));
+        Serial.println("Y: " + String(resp[eggRot]));
+        Serial.println("Xmm: " + String(resp[servoPos]));
+        Serial.println("Ymm: " + String(resp[eggPos]));
+        Serial.println("PEN: " + String(resp[penPos]));
 
         return;
     }
 }
 
-void adjustRPM() {
-    if (needAdjust) {
-        cli();
-        int stepsX = servoStepper.getRemainingSteps();
-        int stepsY = eggStepper.getRemainingSteps();
-        if (stepsX > stepsY) {
-            float rpm = (float)RPM * (float)stepsY / (float)stepsX;
-            eggStepperTimer.setRPM(rpm);
-        } else if (stepsY > stepsX) {
-            float rpm = (float)RPM * (float)stepsX / (float)stepsY;
-            servoStepperTimer.setRPM(rpm);
-        } else {
-            eggStepperTimer.setRPM(RPM);
-            servoStepperTimer.setRPM(RPM);
-        }
-        sei();
-    }
-}
-
 void setup() {
-    WiFi.mode(WIFI_OFF);
     Serial.begin(115200);
-    eggStepperTimer.setStepper(&eggStepper);
-    servoStepperTimer.setStepper(&servoStepper);
-    pen.init();
-    servoStepper.setPos(70);
-    adjustTicker.attach_ms(50, adjustRPM);
+    Wire.begin(D1, D2);
 }
 
 void loop() {
     while (Serial.available() > 0) {
         char inChar = Serial.read();
         inString += inChar;
+        Serial.write(inChar);
 
         if (inChar == '\n') {
             inString.trim();
-            execCommand(parseGCode(inString));
-            while (!eggStepper.finished() || !servoStepper.finished()) {
-                delay(50);
+            sendCommand(parseGCode(inString));
+            while (waitingForNext) {
+                while (!Wire.available()) {
+                }
+                int response = Wire.read();
+                if (response == WAIT) {
+                    delay(1);
+                    Wire.requestFrom(8, 1);
+                } else if (response == NEXT) {
+                    Serial.println("OK");
+                    waitingForNext = false;
+                } else {
+                    Serial.println("Error");
+                }
             }
-            eggStepperTimer.setRPM(RPM);
-            servoStepperTimer.setRPM(RPM);
-            Serial.println("OK");
             inString = "";
         }
     }

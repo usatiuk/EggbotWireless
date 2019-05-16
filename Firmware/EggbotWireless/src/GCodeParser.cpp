@@ -4,6 +4,10 @@
 float bytecode[4] = {-1, -1, -1, -1};
 
 float* parseGCode(String gcode) {
+    for (int i = 0; i < 4; i++) {
+        bytecode[i] = -1.0F;
+    }
+
     char commandStringIn[50];
     char commandString[50];
 

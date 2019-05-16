@@ -1,5 +1,9 @@
-#include "Pen.h"
+#include <Arduino.h>
 #include <Servo.h>
+
+#include "Pen.h"
+
+#define DELAY 15
 
 Pen::Pen(int pin, int posEngaged, int posDisengaged)
     : posEngaged(posEngaged), posDisengaged(posDisengaged) {
