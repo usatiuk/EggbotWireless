@@ -3,8 +3,6 @@
 #ifndef PEN_H
 #define PEN_H
 
-#define DELAY 15
-
 class Pen {
    private:
     int posEngaged;

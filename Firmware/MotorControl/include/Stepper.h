@@ -1,33 +1,26 @@
 #ifndef STEPPER_H
 #define STEPPER_H
 
-enum backlashCompType { typeClockwise, typeCounterClockwise, typeBoth };
-
 class Stepper {
    private:
     int stepsPerRevolution;
-    int pin1;
-    int pin2;
-    int pin3;
-    int pin4;
-    int curStep = 1;
-    int remainingSteps;
-    int backlashSteps;
+    unsigned int pin1;
+    unsigned int pin2;
+    unsigned int pin3;
+    unsigned int pin4;
+    unsigned int curStep = 1;
+    unsigned int remainingSteps;
     float degreesPerMM;
     bool direction;
     void clockwise();
     void counterClockwise();
-    void step(int steps);
     float pos = 0;
     int limit;
-    bool compAlways;
-
-    backlashCompType backlashComp;
 
    public:
     Stepper(int pin1, int pin2, int pin3, int pin4, int stepsPerRevolution,
-            int backlashSteps, int limit, float degreesPerMM,
-            backlashCompType backlashComp, bool compAlways);
+            int limit, float degreesPerMM);
+    void step(int steps);
     int getRemainingSteps();
     void rotate(float degrees);
     void rotateTo(float degrees);
