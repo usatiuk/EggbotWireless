@@ -19,6 +19,7 @@ void sendCommand(float *command) {
         Wire.endTransmission();
     } else {
         Serial.println("UNK");
+        return;
     }
 
     if (command[0] == G01 || command[0] == G00) {
@@ -29,8 +30,8 @@ void sendCommand(float *command) {
 
     if (command[0] == M99) {
         Wire.requestFrom(8, 5 * sizeof(float));
-        float resp[5];
 
+        float resp[5];
         byte buffer[4];
 
         for (int i = 0; i < 5; i++) {
@@ -63,7 +64,6 @@ void loop() {
     while (Serial.available() > 0) {
         char inChar = Serial.read();
         inString += inChar;
-        Serial.write(inChar);
 
         if (inChar == '\n') {
             inString.trim();

@@ -7,6 +7,7 @@ class Pen {
    private:
     int posEngaged;
     int posDisengaged;
+    int pin;
     bool engaged = true;
     Servo servo;
 

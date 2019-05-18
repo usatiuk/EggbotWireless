@@ -27,7 +27,6 @@ float servoStepperDelay;
 float eggStepperRPM;
 float servoStepperRPM;
 
-bool recalculateDelays;
 bool needAdjust;
 
 #endif
