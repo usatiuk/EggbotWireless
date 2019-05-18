@@ -5,7 +5,7 @@ float bytecode[4] = {-1, -1, -1, -1};
 
 float* parseGCode(String gcode) {
     for (int i = 0; i < 4; i++) {
-        bytecode[i] = -1.0F;
+        bytecode[i] = nanf("");
     }
 
     char commandStringIn[50];

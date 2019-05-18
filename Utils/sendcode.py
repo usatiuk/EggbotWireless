@@ -6,14 +6,14 @@ if len(sys.argv) != 3:
     print("Not 2 arguments")
     exit()
 
-gcode = sys.argv[1]
+gcode = sys.argv[2]
 if not os.path.isfile(gcode):
     print("File doesn't exist!")
     exit()
 
 ser = serial.Serial()
 ser.baudrate = 115200
-ser.port = sys.argv[2]
+ser.port = sys.argv[1]
 ser.open()
 
 if not ser.is_open:
