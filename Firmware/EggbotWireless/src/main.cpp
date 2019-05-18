@@ -6,7 +6,7 @@
 #include "common/Commands.h"
 
 String inString;
-bool waitingForNext;
+bool waitingForNext = false;
 
 void sendCommand(float *command) {
     if (command[0] != unk) {
@@ -18,7 +18,7 @@ void sendCommand(float *command) {
         }
         Wire.endTransmission();
     } else {
-        Serial.println("UNK");
+        Serial.println("OK");
         return;
     }
 

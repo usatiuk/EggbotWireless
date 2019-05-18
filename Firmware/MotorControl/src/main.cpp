@@ -84,21 +84,23 @@ void execCommand(float *command) {
             needAdjust = false;
         }
 
-        if (command[X] != -1) {
+        if (!isnan(command[X])) {
             servoStepper.moveTo(command[X]);
         }
 
-        if (command[Y] != -1) {
+        if (!isnan(command[Y])) {
             eggStepper.moveTo(command[Y]);
         }
 
-        if (command[Z] < 0) {
-            pen.engage();
+        if (!isnan(command[Z])) {
+            if (command[Z] < 0) {
+                pen.engage();
+            }
+            if (command[Z] >= 0) {
+                pen.disengage();
+            }
         }
-        if (command[Z] >= 0) {
-            pen.disengage();
-        }
-
+        
         adjustRPM();
 
         return;
