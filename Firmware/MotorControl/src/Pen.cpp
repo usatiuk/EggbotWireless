@@ -6,9 +6,7 @@
 #define DELAY 15
 
 Pen::Pen(int pin, int posEngaged, int posDisengaged)
-    : posEngaged(posEngaged), posDisengaged(posDisengaged) {
-    servo.attach(pin);
-}
+    : posEngaged(posEngaged), posDisengaged(posDisengaged), pin(pin) {}
 
 void Pen::engage() {
     if (!engaged) {
@@ -31,6 +29,7 @@ void Pen::disengage() {
 }
 
 void Pen::init() {
+    servo.attach(pin);
     servo.write(posDisengaged);
     engaged = false;
 }

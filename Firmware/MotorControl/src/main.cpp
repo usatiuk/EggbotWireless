@@ -6,22 +6,29 @@
 
 int curRPM = DEF_RPM;
 int adjustDelay = 10;
+
+float calculateDelay(float rpm, int stepsPerRevolution) {
+    return ((float)1000 * (float)60) / (rpm * (float)stepsPerRevolution);
+}
+
 void adjustRPM() {
-    unsigned int stepsX = servoStepper.getRemainingSteps();
-    unsigned int stepsY = eggStepper.getRemainingSteps();
-    if (stepsX != 0 && stepsY != 0) {
-        if (stepsX > stepsY) {
-            float rpm = (float)curRPM * (float)stepsY / (float)stepsX;
-            eggStepperRPM = rpm;
-        } else if (stepsY > stepsX) {
-            float rpm = (float)curRPM * (float)stepsX / (float)stepsY;
-            servoStepperRPM = rpm;
-        } else {
-            eggStepperRPM = curRPM;
-            servoStepperRPM = curRPM;
+    eggStepperRPM = curRPM;
+    servoStepperRPM = curRPM;
+    if (needAdjust) {
+        unsigned int stepsX = servoStepper.getRemainingSteps();
+        unsigned int stepsY = eggStepper.getRemainingSteps();
+        if (stepsX != 0 && stepsY != 0) {
+            if (stepsX > stepsY) {
+                float rpm = (float)curRPM * (float)stepsY / (float)stepsX;
+                eggStepperRPM = rpm;
+            } else if (stepsY > stepsX) {
+                float rpm = (float)curRPM * (float)stepsX / (float)stepsY;
+                servoStepperRPM = rpm;
+            }
         }
-        recalculateDelays = true;
     }
+    eggStepperDelay = calculateDelay(eggStepperRPM, STEPS_PER_REVOLUTION);
+    servoStepperDelay = calculateDelay(servoStepperRPM, STEPS_PER_REVOLUTION);
 }
 
 int curFloat = 0;
@@ -69,12 +76,6 @@ void requestEvent() {
     }
 }
 
-float calculateDelay(float rpm, int stepsPerRevolution) {
-    return ((float)1000 * (float)60) / (rpm * (float)stepsPerRevolution);
-}
-
-Servo servo;
-
 void execCommand(float *command) {
     if (command[0] == G01 || command[0] == G00) {
         if (command[0] == G01) {
@@ -111,8 +112,7 @@ void setup() {
     Wire.onReceive(receiveEvent);
     Wire.onRequest(requestEvent);
     Serial.println("Hello!");
-    recalculateDelays = true;
-    eggStepperRPM = servoStepperRPM = 4;
+    eggStepperRPM = servoStepperRPM = curRPM;
     OCR2 = 250;
     TCCR2 |= (1 << WGM12) | (1 << CS22);
     TIMSK |= (1 << OCIE2);
@@ -129,25 +129,20 @@ ISR(TIMER2_COMP_vect) {
     if (fmod(ms, servoStepperDelay) < 1) {
         servoStepper.doStep();
     }
-    if (fmod(ms, adjustDelay) < 1) {
-        adjustRPM();
-    }
 }
 
 void loop() {
-    if (eggStepper.getRemainingSteps() == 0 &&
-        servoStepper.getRemainingSteps() == 0) {
-        executing = false;
+    unsigned long ms = millis();
+    if (ms % adjustDelay < 2) {
+        adjustRPM();
     }
     if (newCommand) {
         newCommand = false;
         executing = true;
         execCommand(command);
     }
-    if (recalculateDelays) {
-        eggStepperDelay = calculateDelay(eggStepperRPM, STEPS_PER_REVOLUTION);
-        servoStepperDelay =
-            calculateDelay(servoStepperRPM, STEPS_PER_REVOLUTION);
-        recalculateDelays = false;
+    if (eggStepper.getRemainingSteps() == 0 &&
+        servoStepper.getRemainingSteps() == 0) {
+        executing = false;
     }
 }
