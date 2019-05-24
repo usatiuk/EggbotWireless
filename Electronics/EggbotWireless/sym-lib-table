@@ -1,0 +1,7 @@
+(sym_lib_table
+  (lib (name MP2359)(type Legacy)(uri /home/stepanusatiuk/projects/ustk_kicad_libs/MP2359.lib)(options "")(descr ""))
+  (lib (name LM2621)(type Legacy)(uri /home/stepanusatiuk/projects/ustk_kicad_libs/LM2621.lib)(options "")(descr ""))
+  (lib (name DW01)(type Legacy)(uri /home/stepanusatiuk/projects/ustk_kicad_libs/DW01.lib)(options "")(descr ""))
+  (lib (name 8205)(type Legacy)(uri /home/stepanusatiuk/projects/ustk_kicad_libs/8205.lib)(options "")(descr ""))
+  (lib (name EggbotWireless-rescue)(type Legacy)(uri ${KIPRJMOD}/EggbotWireless-rescue.lib)(options "")(descr ""))
+)

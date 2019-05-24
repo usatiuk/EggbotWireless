@@ -77,6 +77,7 @@ void requestEvent() {
 }
 
 void execCommand(float *command) {
+    executing = true;
     if (command[0] == G01 || command[0] == G00) {
         if (command[0] == G01) {
             needAdjust = true;
@@ -133,6 +134,13 @@ ISR(TIMER2_COMP_vect) {
     }
 }
 
+void updateExecution() {
+    if (eggStepper.getRemainingSteps() == 0 &&
+        servoStepper.getRemainingSteps() == 0) {
+        executing = false;
+    }
+}
+
 void loop() {
     unsigned long ms = millis();
     if (ms % adjustDelay < 2) {
@@ -140,11 +148,7 @@ void loop() {
     }
     if (newCommand) {
         newCommand = false;
-        executing = true;
         execCommand(command);
     }
-    if (eggStepper.getRemainingSteps() == 0 &&
-        servoStepper.getRemainingSteps() == 0) {
-        executing = false;
-    }
+    updateExecution();
 }

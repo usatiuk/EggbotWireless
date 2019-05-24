@@ -22,7 +22,7 @@ if not ser.is_open:
 
 gcodef = open(gcode, "r")
 for line in gcodef:
-    print(line)
+    print(line, end="")
     ser.write(line.encode())
     response = ser.readline().decode("utf-8").strip()
     if response != "OK":
