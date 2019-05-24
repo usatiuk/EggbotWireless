@@ -57,7 +57,7 @@ void sendCommand(float *command) {
 
 void setup() {
     Serial.begin(115200);
-    Wire.begin(D1, D2);
+    Wire.begin(12, 13);
 }
 
 void loop() {
