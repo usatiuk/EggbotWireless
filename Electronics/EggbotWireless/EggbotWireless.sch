@@ -1150,17 +1150,6 @@ F 3 "" H 9300 4150 50  0001 C CNN
 	1    9300 4150
 	1    0    0    -1  
 $EndComp
-$Comp
-L Driver_Motor:Pololu_Breakout_A4988 A1
-U 1 1 5CE85B52
-P 5100 3550
-F 0 "A1" H 5150 4431 50  0000 C CNN
-F 1 "Pololu_Breakout_A4988" H 5150 4340 50  0000 C CNN
-F 2 "Module:Pololu_Breakout-16_15.2x20.3mm" H 5375 2800 50  0001 L CNN
-F 3 "https://www.pololu.com/product/2980/pictures" H 5200 3250 50  0001 C CNN
-	1    5100 3550
-	1    0    0    -1  
-$EndComp
 Text GLabel 2900 6700 2    50   Input ~ 0
 SDA
 Text GLabel 2900 6800 2    50   Input ~ 0
@@ -1323,17 +1312,6 @@ F 3 " ~" H 2325 2250 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Driver_Motor:Pololu_Breakout_A4988 A2
-U 1 1 5CE843A9
-P 5150 5500
-F 0 "A2" H 5200 6381 50  0000 C CNN
-F 1 "Pololu_Breakout_A4988" H 5200 6290 50  0000 C CNN
-F 2 "Module:Pololu_Breakout-16_15.2x20.3mm" H 5425 4750 50  0001 L CNN
-F 3 "https://www.pololu.com/product/2980/pictures" H 5250 5200 50  0001 C CNN
-	1    5150 5500
-	1    0    0    -1  
-$EndComp
-$Comp
 L Motor:Stepper_Motor_bipolar M1
 U 1 1 5CF4B0D1
 P 6100 4250
@@ -1485,4 +1463,26 @@ Wire Wire Line
 Connection ~ 9100 5150
 Wire Wire Line
 	9100 5150 9100 5250
+$Comp
+L Driver_Motor:Pololu_Breakout_DRV8825 A1
+U 1 1 5CE88FAE
+P 5050 4150
+F 0 "A1" H 5050 4931 50  0000 C CNN
+F 1 "Pololu_Breakout_DRV8825" H 5050 4840 50  0000 C CNN
+F 2 "Module:Pololu_Breakout-16_15.2x20.3mm" H 5250 3350 50  0001 L CNN
+F 3 "https://www.pololu.com/product/2982" H 5150 3850 50  0001 C CNN
+	1    5050 4150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Driver_Motor:Pololu_Breakout_DRV8825 A2
+U 1 1 5CE8A6D5
+P 5050 5850
+F 0 "A2" H 5050 6631 50  0000 C CNN
+F 1 "Pololu_Breakout_DRV8825" H 5050 6540 50  0000 C CNN
+F 2 "Module:Pololu_Breakout-16_15.2x20.3mm" H 5250 5050 50  0001 L CNN
+F 3 "https://www.pololu.com/product/2982" H 5150 5550 50  0001 C CNN
+	1    5050 5850
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
