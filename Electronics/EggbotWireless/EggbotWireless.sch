@@ -1254,11 +1254,11 @@ F 3 "" H 2550 950 50  0001 C CNN
 $EndComp
 Connection ~ 1550 1500
 $Comp
-L MCU_Microchip_ATmega:ATmega16A-AU U2
+L MCU_Microchip_ATmega:ATmega32A-AU U2
 U 1 1 5CE9956C
 P 2150 3200
 F 0 "U2" H 2450 1250 50  0000 C CNN
-F 1 "ATmega16A-AU" H 2700 1150 50  0000 C CNN
+F 1 "ATmega32A-AU" H 2700 1150 50  0000 C CNN
 F 2 "Package_QFP:TQFP-44_10x10mm_P0.8mm" H 2150 3200 50  0001 C CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8154-8-bit-AVR-ATmega16A_Datasheet.pdf" H 2150 3200 50  0001 C CNN
 	1    2150 3200
