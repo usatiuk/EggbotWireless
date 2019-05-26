@@ -1706,17 +1706,6 @@ F 3 "~" H 9100 5900 50  0001 C CNN
 	1    9100 5900
 	-1   0    0    1   
 $EndComp
-$Comp
-L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0135
-U 1 1 5D0DAD88
-P 9100 6050
-F 0 "#PWR0135" H 9100 5800 50  0001 C CNN
-F 1 "GND" H 9105 5877 50  0000 C CNN
-F 2 "" H 9100 6050 50  0001 C CNN
-F 3 "" H 9100 6050 50  0001 C CNN
-	1    9100 6050
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	9100 4600 9100 5200
 $Comp
@@ -1747,5 +1736,16 @@ F 2 "" H 8700 6050 50  0001 C CNN
 F 3 "" H 8700 6050 50  0001 C CNN
 	1    8700 6050
 	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0135
+U 1 1 5CEC8E18
+P 9100 6050
+F 0 "#PWR0135" H 9100 5900 50  0001 C CNN
+F 1 "+3.3V" H 9115 6223 50  0000 C CNN
+F 2 "" H 9100 6050 50  0001 C CNN
+F 3 "" H 9100 6050 50  0001 C CNN
+	1    9100 6050
+	-1   0    0    1   
 $EndComp
 $EndSCHEMATC
