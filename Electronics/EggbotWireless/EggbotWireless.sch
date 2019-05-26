@@ -506,8 +506,8 @@ L Device:D_Schottky D1
 U 1 1 5D005B12
 P 9950 4450
 F 0 "D1" H 9950 4234 50  0000 C CNN
-F 1 "D_Schottky" H 9950 4325 50  0000 C CNN
-F 2 "Diode_SMD:D_SMA_Handsoldering" H 9950 4450 50  0001 C CNN
+F 1 "SK24" H 9950 4325 50  0000 C CNN
+F 2 "Diode_SMD:D_SMB_Handsoldering" H 9950 4450 50  0001 C CNN
 F 3 "~" H 9950 4450 50  0001 C CNN
 	1    9950 4450
 	-1   0    0    1   
@@ -797,9 +797,9 @@ F 3 "" H 2300 5900 50  0001 C CNN
 	1    2300 5900
 	1    0    0    -1  
 $EndComp
-Text GLabel 2900 6600 2    50   Input ~ 0
+Text GLabel 2900 6900 2    50   Input ~ 0
 12V_SWITCH
-Text GLabel 8800 5150 3    50   Input ~ 0
+Text GLabel 8400 5850 1    50   Input ~ 0
 12V_SWITCH
 $Comp
 L LM3478:LM3478 U8
@@ -1021,9 +1021,9 @@ Connection ~ 10200 4450
 Wire Wire Line
 	10200 4450 10400 4450
 Wire Wire Line
-	10200 5550 10200 5850
+	10200 5550 10200 6300
 Wire Wire Line
-	8100 5850 8100 4750
+	8100 6300 8100 4750
 Wire Wire Line
 	8150 4750 8100 4750
 $Comp
@@ -1080,7 +1080,7 @@ Wire Wire Line
 	7500 5300 7500 5350
 Connection ~ 7500 5350
 Wire Wire Line
-	8100 5850 10200 5850
+	8100 6300 10200 6300
 Wire Wire Line
 	7500 4700 7500 4600
 Wire Wire Line
@@ -1102,24 +1102,13 @@ Wire Wire Line
 $Comp
 L Device:R R13
 U 1 1 5D0DA168
-P 9100 5400
-F 0 "R13" H 9300 5350 50  0000 R CNN
-F 1 "27K" H 9300 5450 50  0000 R CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 9030 5400 50  0001 C CNN
-F 3 "~" H 9100 5400 50  0001 C CNN
-	1    9100 5400
+P 9100 5350
+F 0 "R13" H 9300 5300 50  0000 R CNN
+F 1 "27K" H 9300 5400 50  0000 R CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 9030 5350 50  0001 C CNN
+F 3 "~" H 9100 5350 50  0001 C CNN
+	1    9100 5350
 	-1   0    0    1   
-$EndComp
-$Comp
-L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0135
-U 1 1 5D0DAD88
-P 9100 5550
-F 0 "#PWR0135" H 9100 5300 50  0001 C CNN
-F 1 "GND" H 9105 5377 50  0000 C CNN
-F 2 "" H 9100 5550 50  0001 C CNN
-F 3 "" H 9100 5550 50  0001 C CNN
-	1    9100 5550
-	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	9050 4600 9100 4600
@@ -1454,13 +1443,6 @@ F 3 "" H 6500 2250 50  0001 C CNN
 	1    6500 2250
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	8800 5150 9100 5150
-Wire Wire Line
-	9100 4600 9100 5150
-Connection ~ 9100 5150
-Wire Wire Line
-	9100 5150 9100 5250
 $Comp
 L Driver_Motor:Pololu_Breakout_DRV8825 A1
 U 1 1 5CE88FAE
@@ -1713,4 +1695,57 @@ Wire Wire Line
 	9200 1300 9200 1500
 Wire Wire Line
 	9200 850  9200 950 
+$Comp
+L Device:R R19
+U 1 1 5CECA907
+P 9100 5900
+F 0 "R19" H 8950 5950 50  0000 C CNN
+F 1 "10K" H 8950 5850 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 9030 5900 50  0001 C CNN
+F 3 "~" H 9100 5900 50  0001 C CNN
+	1    9100 5900
+	-1   0    0    1   
+$EndComp
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0135
+U 1 1 5D0DAD88
+P 9100 6050
+F 0 "#PWR0135" H 9100 5800 50  0001 C CNN
+F 1 "GND" H 9105 5877 50  0000 C CNN
+F 2 "" H 9100 6050 50  0001 C CNN
+F 3 "" H 9100 6050 50  0001 C CNN
+	1    9100 6050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 4600 9100 5200
+$Comp
+L Transistor_FET:2N7002 Q2
+U 1 1 5CF2F5A0
+P 8600 5850
+F 0 "Q2" H 8806 5896 50  0000 L CNN
+F 1 "2N7002" H 8806 5805 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 8800 5775 50  0001 L CIN
+F 3 "https://www.fairchildsemi.com/datasheets/2N/2N7002.pdf" H 8600 5850 50  0001 L CNN
+	1    8600 5850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8700 5650 9100 5650
+Wire Wire Line
+	9100 5500 9100 5650
+Connection ~ 9100 5650
+Wire Wire Line
+	9100 5650 9100 5750
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0152
+U 1 1 5CFAA2C4
+P 8700 6050
+F 0 "#PWR0152" H 8700 5800 50  0001 C CNN
+F 1 "GND" H 8705 5877 50  0000 C CNN
+F 2 "" H 8700 6050 50  0001 C CNN
+F 3 "" H 8700 6050 50  0001 C CNN
+	1    8700 6050
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

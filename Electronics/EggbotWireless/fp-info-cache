@@ -1,589 +1,554 @@
-130620512569692
-Button_Switch_THT
-KSA_Tactile_SPST
-KSA http://www.ckswitches.com/media/1457/ksa_ksl.pdf
-SWITCH SMD KSA SW
-0
-5
-5
-Button_Switch_THT
-Nidec_Copal_SH-7010C
-4-bit rotary coded switch, through-hole, https://www.nidec-copal-electronics.com/e/catalog/switch/sh-7000.pdf
-rotary switch bcd
-0
-6
-5
-Button_Switch_THT
-Push_E-Switch_KS01Q01
-E-Switch KS01Q01 http://spec_sheets.e-switch.com/specs/29-KS01Q01.pdf
-Push Button
+122845482058808
+Diode_SMD
+Diode_Bridge_Diotec_ABS
+SMD diode bridge ABS (Diotec), see https://diotec.com/tl_files/diotec/files/pdf/datasheets/abs2.pdf
+ABS MBLS
 0
 4
 4
-Button_Switch_THT
-SW_CuK_JS202011AQN_DPDT_Angled
-CuK sub miniature slide switch, JS series, DPDT, right angle, http://www.ckswitches.com/media/1422/js.pdf
-switch DPDT
+Diode_SMD
+Diode_Bridge_Diotec_MicroDil_3.0x3.0x1.8mm
+SMD package Diotec Diotec MicroDil, body 3.0x3.0x1.8mm (e.g. diode bridge), see https://diotec.com/tl_files/diotec/files/pdf/datasheets/mys40.pdf
+Diotec MicroDil diode bridge
 0
-6
-6
-Button_Switch_THT
-SW_CuK_JS202011CQN_DPDT_Straight
-CuK sub miniature slide switch, JS series, DPDT, right angle, http://www.ckswitches.com/media/1422/js.pdf
-switch DPDT
+4
+4
+Diode_SMD
+Diode_Bridge_Diotec_SO-DIL-Slim
+SMD diode bridge Diotec SO-DIL Slim, see https://diotec.com/tl_files/diotec/files/pdf/datasheets/b40fs.pdf
+DFS SO-DIL Slim
 0
-6
-6
-Button_Switch_THT
-SW_CuK_OS102011MA1QN1_SPDT_Angled
-CuK miniature slide switch, OS series, SPDT, right angle, http://www.ckswitches.com/media/1428/os.pdf
-switch SPDT
+4
+4
+Diode_SMD
+Diode_Bridge_Vishay_DFS
+SMD diode bridge DFS, see http://www.vishay.com/docs/88854/padlayouts.pdf
+DFS
 0
-5
+4
+4
+Diode_SMD
+Diode_Bridge_Vishay_DFSFlat
+SMD diode bridge Low Profile DFS "Flat", see http://www.vishay.com/docs/88874/dfl15005.pdf
+DFS
+0
+4
+4
+Diode_SMD
+Diode_Bridge_Vishay_MBLS
+SMD diode bridge MBLS, see http://www.vishay.com/docs/89959/mbl104s.pdf http://www.vishay.com/docs/88854/padlayouts.pdf
+DFS
+0
+4
+4
+Diode_SMD
+D_0201_0603Metric
+Diode SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator
+diode
+0
+4
+2
+Diode_SMD
+D_0402_1005Metric
+Diode SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode
+0
+2
+2
+Diode_SMD
+D_0603_1608Metric
+Diode SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode
+0
+2
+2
+Diode_SMD
+D_0603_1608Metric_Castellated
+Diode SMD 0603 (1608 Metric), castellated end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode castellated
+0
+2
+2
+Diode_SMD
+D_0603_1608Metric_Pad1.05x0.95mm_HandSolder
+Diode SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode handsolder
+0
+2
+2
+Diode_SMD
+D_0805_2012Metric
+Diode SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
+diode
+0
+2
+2
+Diode_SMD
+D_0805_2012Metric_Castellated
+Diode SMD 0805 (2012 Metric), castellated end terminal, IPC_7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
+diode castellated
+0
+2
+2
+Diode_SMD
+D_0805_2012Metric_Pad1.15x1.40mm_HandSolder
+Diode SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
+diode handsolder
+0
+2
+2
+Diode_SMD
+D_01005_0402Metric
+Diode SMD 01005 (0402 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.vishay.com/docs/20056/crcw01005e3.pdf), generated with kicad-footprint-generator
+diode
+0
+4
+2
+Diode_SMD
+D_1206_3216Metric
+Diode SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode
+0
+2
+2
+Diode_SMD
+D_1206_3216Metric_Castellated
+Diode SMD 1206 (3216 Metric), castellated end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode castellated
+0
+2
+2
+Diode_SMD
+D_1206_3216Metric_Pad1.42x1.75mm_HandSolder
+Diode SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode handsolder
+0
+2
+2
+Diode_SMD
+D_1210_3225Metric
+Diode SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode
+0
+2
+2
+Diode_SMD
+D_1210_3225Metric_Castellated
+Diode SMD 1210 (3225 Metric), castellated end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode castellated
+0
+2
+2
+Diode_SMD
+D_1210_3225Metric_Pad1.42x2.65mm_HandSolder
+Diode SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode handsolder
+0
+2
+2
+Diode_SMD
+D_1806_4516Metric
+Diode SMD 1806 (4516 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
+diode
+0
+2
+2
+Diode_SMD
+D_1806_4516Metric_Castellated
+Diode SMD 1806 (4516 Metric), castellated end terminal, IPC_7351 nominal, (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
+diode castellated
+0
+2
+2
+Diode_SMD
+D_1806_4516Metric_Pad1.57x1.80mm_HandSolder
+Diode SMD 1806 (4516 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.modelithics.com/models/Vendor/MuRata/BLM41P.pdf), generated with kicad-footprint-generator
+diode handsolder
+0
+2
+2
+Diode_SMD
+D_1812_4532Metric
+Diode SMD 1812 (4532 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.nikhef.nl/pub/departments/mt/projects/detectorR_D/dtddice/ERJ2G.pdf), generated with kicad-footprint-generator
+diode
+0
+2
+2
+Diode_SMD
+D_1812_4532Metric_Castellated
+Diode SMD 1812 (4532 Metric), castellated end terminal, IPC_7351 nominal, (Body size source: https://www.nikhef.nl/pub/departments/mt/projects/detectorR_D/dtddice/ERJ2G.pdf), generated with kicad-footprint-generator
+diode castellated
+0
+2
+2
+Diode_SMD
+D_1812_4532Metric_Pad1.30x3.40mm_HandSolder
+Diode SMD 1812 (4532 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.nikhef.nl/pub/departments/mt/projects/detectorR_D/dtddice/ERJ2G.pdf), generated with kicad-footprint-generator
+diode handsolder
+0
+2
+2
+Diode_SMD
+D_2010_5025Metric
+Diode SMD 2010 (5025 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode
+0
+2
+2
+Diode_SMD
+D_2010_5025Metric_Castellated
+Diode SMD 2010 (5025 Metric), castellated end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode castellated
+0
+2
+2
+Diode_SMD
+D_2010_5025Metric_Pad1.52x2.65mm_HandSolder
+Diode SMD 2010 (5025 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode handsolder
+0
+2
+2
+Diode_SMD
+D_2114_3652Metric
+Diode SMD 2114 (3652 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size from: http://datasheets.avx.com/schottky.pdf), generated with kicad-footprint-generator
+diode
+0
+2
+2
+Diode_SMD
+D_2114_3652Metric_Castellated
+Diode SMD 2114 (3652 Metric), castellated end terminal, IPC_7351 nominal, (Body size from: http://datasheets.avx.com/schottky.pdf), generated with kicad-footprint-generator
+diode castellated
+0
+2
+2
+Diode_SMD
+D_2114_3652Metric_Pad1.85x3.75mm_HandSolder
+Diode SMD 2114 (3652 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size from: http://datasheets.avx.com/schottky.pdf), generated with kicad-footprint-generator
+diode handsolder
+0
+2
+2
+Diode_SMD
+D_2512_6332Metric
+Diode SMD 2512 (6332 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode
+0
+2
+2
+Diode_SMD
+D_2512_6332Metric_Castellated
+Diode SMD 2512 (6332 Metric), castellated end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode castellated
+0
+2
+2
+Diode_SMD
+D_2512_6332Metric_Pad1.52x3.35mm_HandSolder
+Diode SMD 2512 (6332 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+diode handsolder
+0
+2
+2
+Diode_SMD
+D_2816_7142Metric
+Diode SMD 2816 (7142 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size from: https://www.vishay.com/docs/30100/wsl.pdf), generated with kicad-footprint-generator
+diode
+0
+2
+2
+Diode_SMD
+D_2816_7142Metric_Castellated
+Diode SMD 2816 (7142 Metric), castellated end terminal, IPC_7351 nominal, (Body size from: https://www.vishay.com/docs/30100/wsl.pdf), generated with kicad-footprint-generator
+diode castellated
+0
+2
+2
+Diode_SMD
+D_2816_7142Metric_Pad3.20x4.45mm_HandSolder
+Diode SMD 2816 (7142 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size from: https://www.vishay.com/docs/30100/wsl.pdf), generated with kicad-footprint-generator
+diode handsolder
+0
+2
+2
+Diode_SMD
+D_3220_8050Metric
+Diode SMD 3220 (8050 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size from: http://datasheets.avx.com/schottky.pdf), generated with kicad-footprint-generator
+diode
+0
+2
+2
+Diode_SMD
+D_3220_8050Metric_Castellated
+Diode SMD 3220 (8050 Metric), castellated end terminal, IPC_7351 nominal, (Body size from: http://datasheets.avx.com/schottky.pdf), generated with kicad-footprint-generator
+diode castellated
+0
+2
+2
+Diode_SMD
+D_3220_8050Metric_Pad2.65x5.15mm_HandSolder
+Diode SMD 3220 (8050 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size from: http://datasheets.avx.com/schottky.pdf), generated with kicad-footprint-generator
+diode handsolder
+0
+2
+2
+Diode_SMD
+D_MELF
+Diode, MELF,,
+Diode MELF 
+0
+2
+2
+Diode_SMD
+D_MELF-RM10_Universal_Handsoldering
+Diode, Universal, MELF, RM10, Handsoldering, SMD, Thruhole,
+Diode Universal MELF RM10 Handsoldering SMD Thruhole 
+0
+2
+2
+Diode_SMD
+D_MELF_Handsoldering
+Diode MELF Handsoldering
+Diode MELF Handsoldering
+0
+2
+2
+Diode_SMD
+D_MicroMELF
+Diode, MicroMELF, http://www.vishay.com/docs/85597/bzm55-se.pdf
+MicroMELF Diode
+0
+2
+2
+Diode_SMD
+D_MicroMELF_Hadsoldering
+Diode, MicroMELF, hand-soldering, http://www.vishay.com/docs/85597/bzm55-se.pdf
+MicroMELF Diode
+0
+2
+2
+Diode_SMD
+D_MiniMELF
+Diode Mini-MELF
+Diode Mini-MELF
+0
+2
+2
+Diode_SMD
+D_MiniMELF_Handsoldering
+Diode Mini-MELF Handsoldering
+Diode Mini-MELF Handsoldering
+0
+2
+2
+Diode_SMD
+D_PowerDI-123
+http://www.diodes.com/_files/datasheets/ds30497.pdf
+PowerDI diode vishay
+0
+2
+2
+Diode_SMD
+D_Powermite2_AK
+Microsemi Powermite 2 SMD power package (https://www.microsemi.com/packaging-information/partpackage/details?pid=5341)
+PowerMite2
+0
+2
+2
+Diode_SMD
+D_Powermite2_KA
+Microsemi Powermite 2 SMD power package (https://www.microsemi.com/packaging-information/partpackage/details?pid=5341)
+PowerMite2
+0
+2
+2
+Diode_SMD
+D_Powermite3
+Microsemi Powermite 3 SMD power package (https://www.microsemi.com/packaging-information/partpackage/details?pid=5340)
+PowerMite3
+0
 3
-Button_Switch_THT
-SW_CW_GPTS203211B
-SPST Off-On Pushbutton, 1A, 30V, CW Industries P/N GPTS203211B, http://switches-connectors-custom.cwind.com/Asset/GPTS203211BR2.pdf
-SPST button switch Off-On
-0
-2
-2
-Button_Switch_THT
-SW_DIP_SPSTx01_Piano_10.8x4.1mm_W7.62mm_P2.54mm
-1x-dip-switch SPST , Piano, row spacing 7.62 mm (300 mils), body size 10.8x4.1mm
-DIP Switch SPST Piano 7.62mm 300mil
-0
-2
-2
-Button_Switch_THT
-SW_DIP_SPSTx01_Slide_6.7x4.1mm_W7.62mm_P2.54mm_LowProfile
-1x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 6.7x4.1mm (see e.g. https://www.ctscorp.com/wp-content/uploads/209-210.pdf), LowProfile
-DIP Switch SPST Slide 7.62mm 300mil LowProfile
-0
-2
-2
-Button_Switch_THT
-SW_DIP_SPSTx01_Slide_9.78x4.72mm_W7.62mm_P2.54mm
-1x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 9.78x4.72mm (see e.g. https://www.ctscorp.com/wp-content/uploads/206-208.pdf)
-DIP Switch SPST Slide 7.62mm 300mil
-0
-2
-2
-Button_Switch_THT
-SW_DIP_SPSTx02_Piano_10.8x6.64mm_W7.62mm_P2.54mm
-2x-dip-switch SPST , Piano, row spacing 7.62 mm (300 mils), body size 10.8x6.64mm
-DIP Switch SPST Piano 7.62mm 300mil
-0
-4
-4
-Button_Switch_THT
-SW_DIP_SPSTx02_Piano_CTS_Series194-2MSTN_W7.62mm_P2.54mm
-2x-dip-switch SPST CTS_Series194-2MSTN, Piano, row spacing 7.62 mm (300 mils), body size  (see https://www.ctscorp.com/wp-content/uploads/194-195.pdf)
-DIP Switch SPST Piano 7.62mm 300mil
-0
-4
-4
-Button_Switch_THT
-SW_DIP_SPSTx02_Slide_6.7x6.64mm_W7.62mm_P2.54mm_LowProfile
-2x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 6.7x6.64mm (see e.g. https://www.ctscorp.com/wp-content/uploads/209-210.pdf), LowProfile
-DIP Switch SPST Slide 7.62mm 300mil LowProfile
-0
-4
-4
-Button_Switch_THT
-SW_DIP_SPSTx02_Slide_9.78x7.26mm_W7.62mm_P2.54mm
-2x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 9.78x7.26mm (see e.g. https://www.ctscorp.com/wp-content/uploads/206-208.pdf)
-DIP Switch SPST Slide 7.62mm 300mil
-0
-4
-4
-Button_Switch_THT
-SW_DIP_SPSTx03_Piano_10.8x9.18mm_W7.62mm_P2.54mm
-3x-dip-switch SPST , Piano, row spacing 7.62 mm (300 mils), body size 10.8x9.18mm
-DIP Switch SPST Piano 7.62mm 300mil
-0
-6
-6
-Button_Switch_THT
-SW_DIP_SPSTx03_Piano_CTS_Series194-3MSTN_W7.62mm_P2.54mm
-3x-dip-switch SPST CTS_Series194-3MSTN, Piano, row spacing 7.62 mm (300 mils), body size  (see https://www.ctscorp.com/wp-content/uploads/194-195.pdf)
-DIP Switch SPST Piano 7.62mm 300mil
-0
-6
-6
-Button_Switch_THT
-SW_DIP_SPSTx03_Slide_6.7x9.18mm_W7.62mm_P2.54mm_LowProfile
-3x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 6.7x9.18mm (see e.g. https://www.ctscorp.com/wp-content/uploads/209-210.pdf), LowProfile
-DIP Switch SPST Slide 7.62mm 300mil LowProfile
-0
-6
-6
-Button_Switch_THT
-SW_DIP_SPSTx03_Slide_9.78x9.8mm_W7.62mm_P2.54mm
-3x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 9.78x9.8mm (see e.g. https://www.ctscorp.com/wp-content/uploads/206-208.pdf)
-DIP Switch SPST Slide 7.62mm 300mil
-0
-6
-6
-Button_Switch_THT
-SW_DIP_SPSTx04_Piano_10.8x11.72mm_W7.62mm_P2.54mm
-4x-dip-switch SPST , Piano, row spacing 7.62 mm (300 mils), body size 10.8x11.72mm
-DIP Switch SPST Piano 7.62mm 300mil
-0
-8
-8
-Button_Switch_THT
-SW_DIP_SPSTx04_Piano_CTS_Series194-4MSTN_W7.62mm_P2.54mm
-4x-dip-switch SPST CTS_Series194-4MSTN, Piano, row spacing 7.62 mm (300 mils), body size  (see https://www.ctscorp.com/wp-content/uploads/194-195.pdf)
-DIP Switch SPST Piano 7.62mm 300mil
-0
-8
-8
-Button_Switch_THT
-SW_DIP_SPSTx04_Slide_6.7x11.72mm_W7.62mm_P2.54mm_LowProfile
-4x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 6.7x11.72mm (see e.g. https://www.ctscorp.com/wp-content/uploads/209-210.pdf), LowProfile
-DIP Switch SPST Slide 7.62mm 300mil LowProfile
-0
-8
-8
-Button_Switch_THT
-SW_DIP_SPSTx04_Slide_9.78x12.34mm_W7.62mm_P2.54mm
-4x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 9.78x12.34mm (see e.g. https://www.ctscorp.com/wp-content/uploads/206-208.pdf)
-DIP Switch SPST Slide 7.62mm 300mil
-0
-8
-8
-Button_Switch_THT
-SW_DIP_SPSTx05_Piano_10.8x14.26mm_W7.62mm_P2.54mm
-5x-dip-switch SPST , Piano, row spacing 7.62 mm (300 mils), body size 10.8x14.26mm
-DIP Switch SPST Piano 7.62mm 300mil
-0
-10
-10
-Button_Switch_THT
-SW_DIP_SPSTx05_Piano_CTS_Series194-5MSTN_W7.62mm_P2.54mm
-5x-dip-switch SPST CTS_Series194-5MSTN, Piano, row spacing 7.62 mm (300 mils), body size  (see https://www.ctscorp.com/wp-content/uploads/194-195.pdf)
-DIP Switch SPST Piano 7.62mm 300mil
-0
-10
-10
-Button_Switch_THT
-SW_DIP_SPSTx05_Slide_6.7x14.26mm_W7.62mm_P2.54mm_LowProfile
-5x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 6.7x14.26mm (see e.g. https://www.ctscorp.com/wp-content/uploads/209-210.pdf), LowProfile
-DIP Switch SPST Slide 7.62mm 300mil LowProfile
-0
-10
-10
-Button_Switch_THT
-SW_DIP_SPSTx05_Slide_9.78x14.88mm_W7.62mm_P2.54mm
-5x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 9.78x14.88mm (see e.g. https://www.ctscorp.com/wp-content/uploads/206-208.pdf)
-DIP Switch SPST Slide 7.62mm 300mil
-0
-10
-10
-Button_Switch_THT
-SW_DIP_SPSTx06_Piano_10.8x16.8mm_W7.62mm_P2.54mm
-6x-dip-switch SPST , Piano, row spacing 7.62 mm (300 mils), body size 10.8x16.8mm
-DIP Switch SPST Piano 7.62mm 300mil
-0
-12
-12
-Button_Switch_THT
-SW_DIP_SPSTx06_Piano_CTS_Series194-6MSTN_W7.62mm_P2.54mm
-6x-dip-switch SPST CTS_Series194-6MSTN, Piano, row spacing 7.62 mm (300 mils), body size  (see https://www.ctscorp.com/wp-content/uploads/194-195.pdf)
-DIP Switch SPST Piano 7.62mm 300mil
-0
-12
-12
-Button_Switch_THT
-SW_DIP_SPSTx06_Slide_6.7x16.8mm_W7.62mm_P2.54mm_LowProfile
-6x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 6.7x16.8mm (see e.g. https://www.ctscorp.com/wp-content/uploads/209-210.pdf), LowProfile
-DIP Switch SPST Slide 7.62mm 300mil LowProfile
-0
-12
-12
-Button_Switch_THT
-SW_DIP_SPSTx06_Slide_9.78x17.42mm_W7.62mm_P2.54mm
-6x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 9.78x17.42mm (see e.g. https://www.ctscorp.com/wp-content/uploads/206-208.pdf)
-DIP Switch SPST Slide 7.62mm 300mil
-0
-12
-12
-Button_Switch_THT
-SW_DIP_SPSTx07_Piano_10.8x19.34mm_W7.62mm_P2.54mm
-7x-dip-switch SPST , Piano, row spacing 7.62 mm (300 mils), body size 10.8x19.34mm
-DIP Switch SPST Piano 7.62mm 300mil
-0
-14
-14
-Button_Switch_THT
-SW_DIP_SPSTx07_Piano_CTS_Series194-7MSTN_W7.62mm_P2.54mm
-7x-dip-switch SPST CTS_Series194-7MSTN, Piano, row spacing 7.62 mm (300 mils), body size  (see https://www.ctscorp.com/wp-content/uploads/194-195.pdf)
-DIP Switch SPST Piano 7.62mm 300mil
-0
-14
-14
-Button_Switch_THT
-SW_DIP_SPSTx07_Slide_6.7x19.34mm_W7.62mm_P2.54mm_LowProfile
-7x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 6.7x19.34mm (see e.g. https://www.ctscorp.com/wp-content/uploads/209-210.pdf), LowProfile
-DIP Switch SPST Slide 7.62mm 300mil LowProfile
-0
-14
-14
-Button_Switch_THT
-SW_DIP_SPSTx07_Slide_9.78x19.96mm_W7.62mm_P2.54mm
-7x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 9.78x19.96mm (see e.g. https://www.ctscorp.com/wp-content/uploads/206-208.pdf)
-DIP Switch SPST Slide 7.62mm 300mil
-0
-14
-14
-Button_Switch_THT
-SW_DIP_SPSTx08_Piano_10.8x21.88mm_W7.62mm_P2.54mm
-8x-dip-switch SPST , Piano, row spacing 7.62 mm (300 mils), body size 10.8x21.88mm
-DIP Switch SPST Piano 7.62mm 300mil
-0
-16
-16
-Button_Switch_THT
-SW_DIP_SPSTx08_Piano_CTS_Series194-8MSTN_W7.62mm_P2.54mm
-8x-dip-switch SPST CTS_Series194-8MSTN, Piano, row spacing 7.62 mm (300 mils), body size  (see https://www.ctscorp.com/wp-content/uploads/194-195.pdf)
-DIP Switch SPST Piano 7.62mm 300mil
-0
-16
-16
-Button_Switch_THT
-SW_DIP_SPSTx08_Slide_6.7x21.88mm_W7.62mm_P2.54mm_LowProfile
-8x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 6.7x21.88mm (see e.g. https://www.ctscorp.com/wp-content/uploads/209-210.pdf), LowProfile
-DIP Switch SPST Slide 7.62mm 300mil LowProfile
-0
-16
-16
-Button_Switch_THT
-SW_DIP_SPSTx08_Slide_9.78x22.5mm_W7.62mm_P2.54mm
-8x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 9.78x22.5mm (see e.g. https://www.ctscorp.com/wp-content/uploads/206-208.pdf)
-DIP Switch SPST Slide 7.62mm 300mil
-0
-16
-16
-Button_Switch_THT
-SW_DIP_SPSTx09_Piano_10.8x24.42mm_W7.62mm_P2.54mm
-9x-dip-switch SPST , Piano, row spacing 7.62 mm (300 mils), body size 10.8x24.42mm
-DIP Switch SPST Piano 7.62mm 300mil
-0
-18
-18
-Button_Switch_THT
-SW_DIP_SPSTx09_Piano_CTS_Series194-9MSTN_W7.62mm_P2.54mm
-9x-dip-switch SPST CTS_Series194-9MSTN, Piano, row spacing 7.62 mm (300 mils), body size  (see https://www.ctscorp.com/wp-content/uploads/194-195.pdf)
-DIP Switch SPST Piano 7.62mm 300mil
-0
-18
-18
-Button_Switch_THT
-SW_DIP_SPSTx09_Slide_6.7x24.42mm_W7.62mm_P2.54mm_LowProfile
-9x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 6.7x24.42mm (see e.g. https://www.ctscorp.com/wp-content/uploads/209-210.pdf), LowProfile
-DIP Switch SPST Slide 7.62mm 300mil LowProfile
-0
-18
-18
-Button_Switch_THT
-SW_DIP_SPSTx09_Slide_9.78x25.04mm_W7.62mm_P2.54mm
-9x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 9.78x25.04mm (see e.g. https://www.ctscorp.com/wp-content/uploads/206-208.pdf)
-DIP Switch SPST Slide 7.62mm 300mil
-0
-18
-18
-Button_Switch_THT
-SW_DIP_SPSTx10_Piano_10.8x26.96mm_W7.62mm_P2.54mm
-10x-dip-switch SPST , Piano, row spacing 7.62 mm (300 mils), body size 10.8x26.96mm
-DIP Switch SPST Piano 7.62mm 300mil
-0
-20
-20
-Button_Switch_THT
-SW_DIP_SPSTx10_Piano_CTS_Series194-10MSTN_W7.62mm_P2.54mm
-10x-dip-switch SPST CTS_Series194-10MSTN, Piano, row spacing 7.62 mm (300 mils), body size  (see https://www.ctscorp.com/wp-content/uploads/194-195.pdf)
-DIP Switch SPST Piano 7.62mm 300mil
-0
-20
-20
-Button_Switch_THT
-SW_DIP_SPSTx10_Slide_6.7x26.96mm_W7.62mm_P2.54mm_LowProfile
-10x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 6.7x26.96mm (see e.g. https://www.ctscorp.com/wp-content/uploads/209-210.pdf), LowProfile
-DIP Switch SPST Slide 7.62mm 300mil LowProfile
-0
-20
-20
-Button_Switch_THT
-SW_DIP_SPSTx10_Slide_9.78x27.58mm_W7.62mm_P2.54mm
-10x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 9.78x27.58mm (see e.g. https://www.ctscorp.com/wp-content/uploads/206-208.pdf)
-DIP Switch SPST Slide 7.62mm 300mil
-0
-20
-20
-Button_Switch_THT
-SW_DIP_SPSTx11_Piano_10.8x29.5mm_W7.62mm_P2.54mm
-11x-dip-switch SPST , Piano, row spacing 7.62 mm (300 mils), body size 10.8x29.5mm
-DIP Switch SPST Piano 7.62mm 300mil
-0
-22
-22
-Button_Switch_THT
-SW_DIP_SPSTx11_Piano_CTS_Series194-11MSTN_W7.62mm_P2.54mm
-11x-dip-switch SPST CTS_Series194-11MSTN, Piano, row spacing 7.62 mm (300 mils), body size  (see https://www.ctscorp.com/wp-content/uploads/194-195.pdf)
-DIP Switch SPST Piano 7.62mm 300mil
-0
-22
-22
-Button_Switch_THT
-SW_DIP_SPSTx11_Slide_6.7x29.5mm_W7.62mm_P2.54mm_LowProfile
-11x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 6.7x29.5mm (see e.g. https://www.ctscorp.com/wp-content/uploads/209-210.pdf), LowProfile
-DIP Switch SPST Slide 7.62mm 300mil LowProfile
-0
-22
-22
-Button_Switch_THT
-SW_DIP_SPSTx11_Slide_9.78x30.12mm_W7.62mm_P2.54mm
-11x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 9.78x30.12mm (see e.g. https://www.ctscorp.com/wp-content/uploads/206-208.pdf)
-DIP Switch SPST Slide 7.62mm 300mil
-0
-22
-22
-Button_Switch_THT
-SW_DIP_SPSTx12_Piano_10.8x32.04mm_W7.62mm_P2.54mm
-12x-dip-switch SPST , Piano, row spacing 7.62 mm (300 mils), body size 10.8x32.04mm
-DIP Switch SPST Piano 7.62mm 300mil
-0
-24
-24
-Button_Switch_THT
-SW_DIP_SPSTx12_Piano_CTS_Series194-12MSTN_W7.62mm_P2.54mm
-12x-dip-switch SPST CTS_Series194-12MSTN, Piano, row spacing 7.62 mm (300 mils), body size  (see https://www.ctscorp.com/wp-content/uploads/194-195.pdf)
-DIP Switch SPST Piano 7.62mm 300mil
-0
-24
-24
-Button_Switch_THT
-SW_DIP_SPSTx12_Slide_6.7x32.04mm_W7.62mm_P2.54mm_LowProfile
-12x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 6.7x32.04mm (see e.g. https://www.ctscorp.com/wp-content/uploads/209-210.pdf), LowProfile
-DIP Switch SPST Slide 7.62mm 300mil LowProfile
-0
-24
-24
-Button_Switch_THT
-SW_DIP_SPSTx12_Slide_9.78x32.66mm_W7.62mm_P2.54mm
-12x-dip-switch SPST , Slide, row spacing 7.62 mm (300 mils), body size 9.78x32.66mm (see e.g. https://www.ctscorp.com/wp-content/uploads/206-208.pdf)
-DIP Switch SPST Slide 7.62mm 300mil
-0
-24
-24
-Button_Switch_THT
-SW_E-Switch_EG1224_SPDT_Angled
-E-Switch slide switch, EG series, SPDT, right angle, http://spec_sheets.e-switch.com/specs/P040042.pdf
-switch SPDT
-0
-7
 3
-Button_Switch_THT
-SW_E-Switch_EG1271_DPDT
-E-Switch sub miniature slide switch, EG series, DPDT, http://spec_sheets.e-switch.com/specs/P040047.pdf
-switch DPDT
+Diode_SMD
+D_Powermite_AK
+Microsemi Powermite SMD power package (https://www.microsemi.com/packaging-information/partpackage/details?pid=5339, https://www.onsemi.com/pub/Collateral/457-04.PDF)
+Powermite
 0
-6
-6
-Button_Switch_THT
-SW_E-Switch_EG2219_DPDT_Angled
-E-Switch slide switch, EG series, DPDT, right angle, http://spec_sheets.e-switch.com/specs/P040170.pdf
-switch DPDT
+2
+2
+Diode_SMD
+D_Powermite_KA
+Microsemi Powermite SMD power package (https://www.microsemi.com/packaging-information/partpackage/details?pid=5339, https://www.onsemi.com/pub/Collateral/457-04.PDF)
+Powermite
 0
-10
-6
-Button_Switch_THT
-SW_Lever_1P2T_NKK_GW12LxH
-Switch, single pole double throw, right angle, http://www.nkkswitches.com/pdf/GW.pdf
-switch single-pole double-throw spdt ON-ON horizontal
+2
+2
+Diode_SMD
+D_QFN_3.3x3.3mm_P0.65mm
+QFN, diode, 3.3x3.3x1mm (https://www.wolfspeed.com/media/downloads/846/C3D1P7060Q.pdf)
+diode qfn 3.3
 0
-5
 3
-Button_Switch_THT
-SW_MEC_5GTH9
-MEC 5G single pole normally-open tactile switch https://cdn.sos.sk/productdata/80/f6/aabf7be6/5gth9358222.pdf
-switch normally-open pushbutton push-button
-0
-4
 2
-Button_Switch_THT
-SW_NKK_BB15AH
-https://www.nkkswitches.com/pdf/Bpushbuttons-1.pdf
-Pushbutton Right-angle
+Diode_SMD
+D_SC-80
+JEITA SC-80
+SC-80
 0
-5
+2
+2
+Diode_SMD
+D_SC-80_HandSoldering
+JEITA SC-80
+SC-80
+0
+2
+2
+Diode_SMD
+D_SMA
+Diode SMA (DO-214AC)
+Diode SMA (DO-214AC)
+0
+2
+2
+Diode_SMD
+D_SMA-SMB_Universal_Handsoldering
+Diode, Universal, SMA (DO-214AC) or SMB (DO-214AA), Handsoldering,
+Diode Universal SMA (DO-214AC) SMB (DO-214AA) Handsoldering 
+0
+2
+2
+Diode_SMD
+D_SMA_Handsoldering
+Diode SMA (DO-214AC) Handsoldering
+Diode SMA (DO-214AC) Handsoldering
+0
+2
+2
+Diode_SMD
+D_SMB
+Diode SMB (DO-214AA)
+Diode SMB (DO-214AA)
+0
+2
+2
+Diode_SMD
+D_SMB-SMC_Universal_Handsoldering
+Diode, Universal, SMB(DO-214AA) or SMC (DO-214AB), Handsoldering,
+Diode Universal SMB(DO-214AA) SMC (DO-214AB) Handsoldering 
+0
+2
+2
+Diode_SMD
+D_SMB_Handsoldering
+Diode SMB (DO-214AA) Handsoldering
+Diode SMB (DO-214AA) Handsoldering
+0
+2
+2
+Diode_SMD
+D_SMB_Modified
+Diode SMB (DO-214AA) Modified (http://www.littelfuse.com/~/media/electronics/datasheets/sidactors/littelfuse_sidactor_battrax_positive_negative_modified_do_214_datasheet.pdf.pdf)
+Diode SMB (DO-214AA)
+0
 3
-Button_Switch_THT
-SW_NKK_G1xJP
-Switch NKK G1xJP http://www.nkkswitches.com/pdf/gwillum.pdf
-SWITCH TOGGLE ILLUM SPDT NKK
-0
-6
-6
-Button_Switch_THT
-SW_NKK_GW12LJP
-Switch, single pole double throw, illuminated paddle, http://www.nkkswitches.com/pdf/gwillum.pdf
-switch single-pole double-throw spdt ON-ON illuminated LED
-0
-6
-6
-Button_Switch_THT
-SW_PUSH-12mm
-SW PUSH 12mm https://www.e-switch.com/system/asset/product_line/data_sheet/143/TL1100.pdf
-tact sw push 12mm
-0
-4
-2
-Button_Switch_THT
-SW_PUSH-12mm_Wuerth-430476085716
-SW PUSH 12mm http://katalog.we-online.de/em/datasheet/430476085716.pdf
-tact sw push 12mm
-0
-4
-2
-Button_Switch_THT
-SW_PUSH_6mm
-https://www.omron.com/ecb/products/pdf/en-b3f.pdf
-tact sw push 6mm
-0
-4
-2
-Button_Switch_THT
-SW_PUSH_6mm_H4.3mm
-tactile push button, 6x6mm e.g. PHAP33xx series, height=4.3mm
-tact sw push 6mm
-0
-4
-2
-Button_Switch_THT
-SW_PUSH_6mm_H5mm
-tactile push button, 6x6mm e.g. PHAP33xx series, height=5mm
-tact sw push 6mm
-0
-4
-2
-Button_Switch_THT
-SW_PUSH_6mm_H7.3mm
-tactile push button, 6x6mm e.g. PHAP33xx series, height=7.3mm
-tact sw push 6mm
-0
-4
-2
-Button_Switch_THT
-SW_PUSH_6mm_H8.5mm
-tactile push button, 6x6mm e.g. PHAP33xx series, height=8.5mm
-tact sw push 6mm
-0
-4
-2
-Button_Switch_THT
-SW_PUSH_6mm_H8mm
-tactile push button, 6x6mm e.g. PHAP33xx series, height=8mm
-tact sw push 6mm
-0
-4
-2
-Button_Switch_THT
-SW_PUSH_6mm_H9.5mm
-tactile push button, 6x6mm e.g. PHAP33xx series, height=9.5mm
-tact sw push 6mm
-0
-4
-2
-Button_Switch_THT
-SW_PUSH_6mm_H13mm
-tactile push button, 6x6mm e.g. PHAP33xx series, height=13mm
-tact sw push 6mm
-0
-4
-2
-Button_Switch_THT
-SW_PUSH_E-Switch_FS5700DP_DPDT
-FS5700 series pushbutton footswitch, DPDT, https://www.e-switch.com/system/asset/product_line/data_sheet/226/FS5700.pdf
-switch DPDT footswitch
-0
-6
-6
-Button_Switch_THT
-SW_PUSH_LCD_E3_SAxxxx
-Switch with LCD screen E3 SAxxxx
-switch normally-open pushbutton push-button LCD
-0
-6
-6
-Button_Switch_THT
-SW_PUSH_LCD_E3_SAxxxx_SocketPins
-Switch with LCD screen E3 SAxxxx
-switch normally-open pushbutton push-button LCD
-0
-6
-6
-Button_Switch_THT
-SW_Slide_1P2T_CK_OS102011MS2Q
-CuK miniature slide switch, OS series, SPDT, https://www.ckswitches.com/media/1428/os.pdf
-switch SPDT
-0
-5
 3
-Button_Switch_THT
-SW_Tactile_SKHH_Angled
-tactile switch 6mm ALPS SKHH right angle http://www.alps.com/prod/info/E/HTML/Tact/SnapIn/SKHH/SKHHLUA010.html
-tactile switch 6mm ALPS SKHH right angle
+Diode_SMD
+D_SMC
+Diode SMC (DO-214AB)
+Diode SMC (DO-214AB)
 0
-4
 2
-Button_Switch_THT
-SW_Tactile_SPST_Angled_PTS645Vx31-2LFS
-tactile switch SPST right angle, PTS645VL31-2 LFS
-tactile switch SPST angled PTS645VL31-2 LFS C&K Button
-0
-4
 2
-Button_Switch_THT
-SW_Tactile_SPST_Angled_PTS645Vx39-2LFS
-tactile switch SPST right angle, PTS645VL39-2 LFS
-tactile switch SPST angled PTS645VL39-2 LFS C&K Button
+Diode_SMD
+D_SMC-RM10_Universal_Handsoldering
+Diode, Universal, SMC (DO-214AB), RM10, Handsoldering, SMD, Thruhole
+Diode Universal SMC (DO-214AB) RM10 Handsoldering SMD Thruhole
 0
-4
 2
-Button_Switch_THT
-SW_Tactile_SPST_Angled_PTS645Vx58-2LFS
-tactile switch SPST right angle, PTS645VL58-2 LFS
-tactile switch SPST angled PTS645VL58-2 LFS C&K Button
-0
-4
 2
-Button_Switch_THT
-SW_Tactile_SPST_Angled_PTS645Vx83-2LFS
-tactile switch SPST right angle, PTS645VL83-2 LFS
-tactile switch SPST angled PTS645VL83-2 LFS C&K Button
+Diode_SMD
+D_SMC_Handsoldering
+Diode SMC (DO-214AB) Handsoldering
+Diode SMC (DO-214AB) Handsoldering
 0
-4
 2
-Button_Switch_THT
-SW_Tactile_Straight_KSA0Axx1LFTR
-SW PUSH SMALL http://www.ckswitches.com/media/1457/ksa_ksl.pdf
-SW PUSH SMALL Tactile C&K
-0
-4
 2
-Button_Switch_THT
-SW_Tactile_Straight_KSL0Axx1LFTR
-SW PUSH SMALL http://www.ckswitches.com/media/1457/ksa_ksl.pdf
-SW PUSH SMALL Tactile C&K
+Diode_SMD
+D_SOD-110
+SOD-110
+SOD-110
 0
-4
 2
-Button_Switch_THT
-SW_TH_Tactile_Omron_B3F-10xx
-SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf
-Omron B3F-10xx
+2
+Diode_SMD
+D_SOD-123
+SOD-123
+SOD-123
 0
-4
-4
+2
+2
+Diode_SMD
+D_SOD-123F
+D_SOD-123F
+D_SOD-123F
+0
+2
+2
+Diode_SMD
+D_SOD-323
+SOD-323
+SOD-323
+0
+2
+2
+Diode_SMD
+D_SOD-323F
+SOD-323F http://www.nxp.com/documents/outline_drawing/SOD323F.pdf
+SOD-323F
+0
+2
+2
+Diode_SMD
+D_SOD-323_HandSoldering
+SOD-323
+SOD-323
+0
+2
+2
+Diode_SMD
+D_SOD-523
+http://www.diodes.com/datasheets/ap02001.pdf p.144
+Diode SOD523
+0
+2
+2
+Diode_SMD
+D_SOT-23_ANK
+SOT-23, Single Diode
+SOT-23
+0
+3
+2
+Diode_SMD
+D_SOT-23_NKA
+SOT-23, Single Diode
+SOT-23
+0
+3
+2
+Diode_SMD
+D_TUMD2
+ROHM - TUMD2
+TUMD2
+0
+2
+2
+Diode_SMD
+Littelfuse_PolyZen-LS
+http://m.littelfuse.com/~/media/electronics/datasheets/polyzen_devices/littelfuse_polyzen_standard_polyzen_catalog_datasheet.pdf.pdf
+Diode Polymer Protected Zener Diode Littelfuse LS
+0
+3
+3
