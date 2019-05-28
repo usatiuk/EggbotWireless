@@ -4,11 +4,8 @@
 class Stepper {
    private:
     int stepsPerRevolution;
-    unsigned int pin1;
-    unsigned int pin2;
-    unsigned int pin3;
-    unsigned int pin4;
-    unsigned int curStep = 1;
+    unsigned int stepPin;
+    unsigned int dirPin;
     unsigned int remainingSteps;
     float degreesPerMM;
     bool direction;
@@ -18,7 +15,7 @@ class Stepper {
     int limit;
 
    public:
-    Stepper(int pin1, int pin2, int pin3, int pin4, int stepsPerRevolution,
+    Stepper(int stepPin, int dirPin, int stepsPerRevolution,
             int limit, float degreesPerMM);
     void step(int steps);
     int getRemainingSteps();

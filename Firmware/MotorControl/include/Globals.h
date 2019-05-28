@@ -12,14 +12,14 @@
 #define EGG_LENGTH 50.0
 #define X_DEGREES_PER_MM (X_LIMIT / EGG_LENGTH)
 
-#define STEPS_PER_REVOLUTION 4076
+#define STEPS_PER_REVOLUTION (360/1.8) * 32
 #define DEF_RPM 2
 
-Stepper eggStepper(28, 29, 30, 31, STEPS_PER_REVOLUTION, 0, Y_DEGREES_PER_MM);
-Stepper servoStepper(24, 25, 26, 27, -STEPS_PER_REVOLUTION, X_LIMIT,
+Stepper eggStepper(24, 25, STEPS_PER_REVOLUTION, 0, Y_DEGREES_PER_MM);
+Stepper servoStepper(28, 29, -STEPS_PER_REVOLUTION, X_LIMIT,
                      X_DEGREES_PER_MM);
 
-Pen pen(23, 100, 150);
+Pen pen(23, 100, 180);
 
 float eggStepperDelay;
 float servoStepperDelay;
