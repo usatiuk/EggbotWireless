@@ -5,9 +5,11 @@
 #include "common/Commands.h"
 
 int curRPM = DEF_RPM;
-int adjustDelay = 10;
+int adjustDelay = 100;
+bool needAdjust;
+bool moving;
 
-float calculateDelay(float rpm, int stepsPerRevolution) {
+int calculateDelay(float rpm, int stepsPerRevolution) {
     return ((float)1000 * (float)60) / (rpm * (float)stepsPerRevolution);
 }
 
@@ -78,6 +80,7 @@ void requestEvent() {
 
 void execCommand(float *command) {
     executing = true;
+    moving = false;
     if (command[0] == G01 || command[0] == G00) {
         if (command[0] == G01) {
             needAdjust = true;
@@ -101,8 +104,10 @@ void execCommand(float *command) {
                 pen.disengage();
             }
         }
-        
+
         adjustRPM();
+
+        moving = true;
 
         return;
     }
@@ -117,20 +122,24 @@ void setup() {
     Serial.println("Hello!");
     eggStepperRPM = servoStepperRPM = curRPM;
     OCR2 = 250;
-    TCCR2 |= (1 << WGM12) | (1 << CS22);
+    TCCR2 |= (1 << WGM20) | (1 << CS22);
     TIMSK |= (1 << OCIE2);
     sei();
     servoStepper.setPos(X_LIMIT);
     pen.init();
 }
 
+unsigned int ms = 0;
+
 ISR(TIMER2_COMP_vect) {
-    unsigned long ms = millis();
-    if (fmod(ms, eggStepperDelay) < 1) {
-        eggStepper.doStep();
-    }
-    if (fmod(ms, servoStepperDelay) < 1) {
-        servoStepper.doStep();
+    ms++;
+    if (moving) {
+        if (ms % eggStepperDelay == 0) {
+            eggStepper.doStep();
+        }
+        if (ms % servoStepperDelay == 0) {
+            servoStepper.doStep();
+        }
     }
 }
 
