@@ -21,12 +21,10 @@ Stepper servoStepper(28, 29, -STEPS_PER_REVOLUTION, X_LIMIT,
 
 Pen pen(23, 100, 180);
 
-float eggStepperDelay;
-float servoStepperDelay;
+unsigned int eggStepperDelay;
+unsigned int servoStepperDelay;
 
 float eggStepperRPM;
 float servoStepperRPM;
-
-bool needAdjust;
 
 #endif

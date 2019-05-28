@@ -68,13 +68,19 @@ void loop() {
         if (inChar == '\n') {
             inString.trim();
             sendCommand(parseGCode(inString));
+            unsigned long reqTime = millis();
             while (waitingForNext) {
                 while (!Wire.available()) {
+                    if (millis() - reqTime > 500) {
+                        Wire.requestFrom(8, 1);
+                        reqTime = millis();
+                    }
                 }
                 int response = Wire.read();
                 if (response == WAIT) {
                     delay(1);
                     Wire.requestFrom(8, 1);
+                    reqTime = millis();
                 } else if (response == NEXT) {
                     Serial.println("OK");
                     waitingForNext = false;
