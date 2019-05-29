@@ -79,7 +79,7 @@ void requestEvent() {
     }
 }
 
-void execCommand(float *command) {
+void execCommand() {
     executing = true;
     cli();
     if (command[0] == G01 || command[0] == G00) {
@@ -156,7 +156,7 @@ void loop() {
     }
     if (newCommand) {
         newCommand = false;
-        execCommand(command);
+        execCommand();
     }
     updateExecution();
 }
