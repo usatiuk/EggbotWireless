@@ -81,7 +81,6 @@ void requestEvent() {
 
 void execCommand() {
     executing = true;
-    cli();
     if (command[0] == G01 || command[0] == G00) {
         if (command[0] == G01) {
             needAdjust = true;
@@ -108,10 +107,8 @@ void execCommand() {
 
         adjustRPM();
 
-        sei();
         return;
     }
-    sei();
 }
 
 void setup() {
