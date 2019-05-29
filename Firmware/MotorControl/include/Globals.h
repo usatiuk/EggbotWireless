@@ -5,11 +5,11 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-#define EGG_DIA 35.0
+#define EGG_DIA 45.0
 #define Y_DEGREES_PER_MM (360 / (PI * EGG_DIA))
 
 #define X_LIMIT 90.0
-#define EGG_LENGTH 50.0
+#define EGG_LENGTH 60.0
 #define X_DEGREES_PER_MM (X_LIMIT / EGG_LENGTH)
 
 #define STEPS_PER_REVOLUTION (360/1.8) * 32
