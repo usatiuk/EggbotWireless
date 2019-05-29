@@ -131,6 +131,9 @@ unsigned int ms = 0;
 
 ISR(TIMER2_COMP_vect) {
     ms++;
+    if (ms % adjustDelay  == 0) {
+        adjustRPM();
+    }
     if (ms % eggStepperDelay == 0) {
         eggStepper.doStep();
     }
@@ -147,10 +150,6 @@ void updateExecution() {
 }
 
 void loop() {
-    unsigned long ms = millis();
-    if (ms % adjustDelay < 2) {
-        adjustRPM();
-    }
     if (newCommand) {
         newCommand = false;
         execCommand();
