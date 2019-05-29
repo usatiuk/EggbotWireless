@@ -71,7 +71,7 @@ void loop() {
             unsigned long reqTime = millis();
             while (waitingForNext) {
                 while (!Wire.available()) {
-                    if (millis() - reqTime > 500) {
+                    if (millis() - reqTime > 100) {
                         Wire.requestFrom(8, 1);
                         reqTime = millis();
                     }
