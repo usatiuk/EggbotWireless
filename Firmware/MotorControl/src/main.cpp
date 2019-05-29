@@ -7,7 +7,6 @@
 int curRPM = DEF_RPM;
 int adjustDelay = 100;
 bool needAdjust;
-bool moving;
 
 int calculateDelay(float rpm, int stepsPerRevolution) {
     return ((float)1000 * (float)60) / (rpm * (float)stepsPerRevolution);
@@ -29,8 +28,10 @@ void adjustRPM() {
             }
         }
     }
+    cli();
     eggStepperDelay = calculateDelay(eggStepperRPM, STEPS_PER_REVOLUTION);
     servoStepperDelay = calculateDelay(servoStepperRPM, STEPS_PER_REVOLUTION);
+    sei();
 }
 
 int curFloat = 0;
@@ -80,7 +81,7 @@ void requestEvent() {
 
 void execCommand(float *command) {
     executing = true;
-    moving = false;
+    cli();
     if (command[0] == G01 || command[0] == G00) {
         if (command[0] == G01) {
             needAdjust = true;
@@ -107,10 +108,10 @@ void execCommand(float *command) {
 
         adjustRPM();
 
-        moving = true;
-
+        sei();
         return;
     }
+    sei();
 }
 
 void setup() {
@@ -133,13 +134,11 @@ unsigned int ms = 0;
 
 ISR(TIMER2_COMP_vect) {
     ms++;
-    if (moving) {
-        if (ms % eggStepperDelay == 0) {
-            eggStepper.doStep();
-        }
-        if (ms % servoStepperDelay == 0) {
-            servoStepper.doStep();
-        }
+    if (ms % eggStepperDelay == 0) {
+        eggStepper.doStep();
+    }
+    if (ms % servoStepperDelay == 0) {
+        servoStepper.doStep();
     }
 }
 
