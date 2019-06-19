@@ -1296,14 +1296,6 @@ F 3 "~" H 6450 2500 50  0001 C CNN
 $EndComp
 Text GLabel 7500 2200 2    50   Input ~ 0
 VBUS
-Text GLabel 8200 2900 2    50   Input ~ 0
-DTR_USB
-Text GLabel 8200 2500 2    50   Input ~ 0
-TXD_USB
-Text GLabel 8200 2600 2    50   Input ~ 0
-RXD_USB
-Text GLabel 8200 2700 2    50   Input ~ 0
-RTS_USB
 $Comp
 L Interface_USB:FT232RL U5
 U 1 1 5D0B79CF
@@ -1835,4 +1827,42 @@ Wire Wire Line
 	9500 2300 8800 2300
 Wire Wire Line
 	8800 2300 8800 2100
+Text GLabel 8200 2700 2    50   Input ~ 0
+RTS_USB
+Text GLabel 8200 2600 2    50   Input ~ 0
+RXD_USB
+Text GLabel 8200 2500 2    50   Input ~ 0
+TXD_USB
+Text GLabel 8200 2900 2    50   Input ~ 0
+DTR_USB
+Text GLabel 5600 2200 2    50   Input ~ 0
+TXD_USB
+$Comp
+L Connector:Conn_01x05_Male J6
+U 1 1 5D0DB384
+P 5400 2400
+F 0 "J6" H 5508 2781 50  0000 C CNN
+F 1 "Conn_01x05_Male" H 5508 2690 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 5400 2400 50  0001 C CNN
+F 3 "~" H 5400 2400 50  0001 C CNN
+	1    5400 2400
+	1    0    0    -1  
+$EndComp
+Text GLabel 5600 2300 2    50   Input ~ 0
+RXD_USB
+Text GLabel 5600 2400 2    50   Input ~ 0
+RTS_USB
+Text GLabel 5600 2500 2    50   Input ~ 0
+DTR_USB
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0147
+U 1 1 5D0DD546
+P 5600 2600
+F 0 "#PWR0147" H 5600 2350 50  0001 C CNN
+F 1 "GND" H 5605 2427 50  0000 C CNN
+F 2 "" H 5600 2600 50  0001 C CNN
+F 3 "" H 5600 2600 50  0001 C CNN
+	1    5600 2600
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
