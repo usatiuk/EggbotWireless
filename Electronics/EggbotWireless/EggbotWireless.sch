@@ -130,8 +130,6 @@ F 3 "~" H 9950 4450 50  0001 C CNN
 	1    9950 4450
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	1000 1250 1000 1350
 $Comp
 L EggbotWireless-rescue:R-Device-Catfi-rescue R1
 U 1 1 5CEB31EF
@@ -328,7 +326,7 @@ F 1 "GND" H 1555 3877 50  0000 C CNN
 F 2 "" H 1550 4050 50  0001 C CNN
 F 3 "" H 1550 4050 50  0001 C CNN
 	1    1550 4050
-	1    0    0    -1  
+	0    -1   -1   0   
 $EndComp
 $Comp
 L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0126
@@ -357,9 +355,9 @@ F 3 "" H 2300 5700 50  0001 C CNN
 	1    2300 5700
 	1    0    0    -1  
 $EndComp
-Text GLabel 1700 7000 0    50   Input ~ 0
+Text GLabel 2900 6600 2    50   Input ~ 0
 12V_SWITCH
-Text GLabel 8400 5850 1    50   Input ~ 0
+Text GLabel 8200 5850 1    50   Input ~ 0
 12V_SWITCH
 $Comp
 L LM3478:LM3478 U8
@@ -941,13 +939,13 @@ Wire Wire Line
 $Comp
 L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0152
 U 1 1 5CFAA2C4
-P 8700 6050
-F 0 "#PWR0152" H 8700 5800 50  0001 C CNN
-F 1 "GND" H 8705 5877 50  0000 C CNN
-F 2 "" H 8700 6050 50  0001 C CNN
-F 3 "" H 8700 6050 50  0001 C CNN
-	1    8700 6050
-	1    0    0    -1  
+P 8700 6200
+F 0 "#PWR0152" H 8700 5950 50  0001 C CNN
+F 1 "GND" H 8705 6027 50  0000 C CNN
+F 2 "" H 8700 6200 50  0001 C CNN
+F 3 "" H 8700 6200 50  0001 C CNN
+	1    8700 6200
+	0    -1   -1   0   
 $EndComp
 $Comp
 L power:+3.3V #PWR0135
@@ -1736,7 +1734,7 @@ L EggbotWireless-rescue:R-Device-Catfi-rescue R6
 U 1 1 5D79743A
 P 10050 1300
 F 0 "R6" V 9843 1300 50  0000 C CNN
-F 1 "10K" V 9934 1300 50  0000 C CNN
+F 1 "100K" V 9934 1300 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 9980 1300 50  0001 C CNN
 F 3 "~" H 10050 1300 50  0001 C CNN
 	1    10050 1300
@@ -1865,4 +1863,27 @@ F 3 "" H 5600 2600 50  0001 C CNN
 	1    5600 2600
 	1    0    0    -1  
 $EndComp
+$Comp
+L EggbotWireless-rescue:R-Device-Catfi-rescue R20
+U 1 1 5D171129
+P 8300 6000
+F 0 "R20" V 8093 6000 50  0000 C CNN
+F 1 "100K" V 8184 6000 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 8230 6000 50  0001 C CNN
+F 3 "~" H 8300 6000 50  0001 C CNN
+	1    8300 6000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8200 5850 8300 5850
+Wire Wire Line
+	8300 5850 8400 5850
+Connection ~ 8300 5850
+Wire Wire Line
+	8700 6200 8700 6050
+Wire Wire Line
+	8300 6150 8300 6200
+Wire Wire Line
+	8300 6200 8700 6200
+Connection ~ 8700 6200
 $EndSCHEMATC
