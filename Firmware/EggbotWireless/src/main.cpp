@@ -58,6 +58,8 @@ void sendCommand(float *command) {
 void setup() {
     Serial.begin(115200);
     Wire.begin(12, 13);
+    pinMode(5, OUTPUT);
+    digitalWrite(5, true);
 }
 
 void loop() {

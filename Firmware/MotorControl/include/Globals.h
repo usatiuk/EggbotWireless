@@ -15,11 +15,11 @@
 #define STEPS_PER_REVOLUTION (360/1.8) * 32
 #define DEF_RPM 2
 
-Stepper eggStepper(24, 25, STEPS_PER_REVOLUTION, 0, Y_DEGREES_PER_MM);
-Stepper servoStepper(28, 29, -STEPS_PER_REVOLUTION, X_LIMIT,
+Stepper eggStepper(6, 5, STEPS_PER_REVOLUTION, 0, Y_DEGREES_PER_MM);
+Stepper servoStepper(4, 3, -STEPS_PER_REVOLUTION, X_LIMIT,
                      X_DEGREES_PER_MM);
 
-Pen pen(23, 120, 180);
+Pen pen(7, 120, 180);
 
 unsigned int eggStepperDelay;
 unsigned int servoStepperDelay;
