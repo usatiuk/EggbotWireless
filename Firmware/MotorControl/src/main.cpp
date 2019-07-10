@@ -112,24 +112,24 @@ void execCommand() {
 }
 
 void setup() {
-    cli();
     Serial.begin(115200);
     Wire.begin(8);
     Wire.onReceive(receiveEvent);
     Wire.onRequest(requestEvent);
     Serial.println("Hello!");
     eggStepperRPM = servoStepperRPM = curRPM;
-    OCR2 = 250;
-    TCCR2 |= (1 << WGM20) | (1 << CS22);
-    TIMSK |= (1 << OCIE2);
-    sei();
+    pinMode(A0, OUTPUT);
+    digitalWrite(A0, true);
+    OCR0A = 250;
+    TCCR0A |= (1 << WGM20) | (1 << CS22);
+    TIMSK0 |= (1 << OCIE0A);
     servoStepper.setPos(X_LIMIT);
     pen.init();
 }
 
 unsigned int ms = 0;
 
-ISR(TIMER2_COMP_vect) {
+ISR(TIMER0_COMPA_vect) {
     ms++;
     if (ms % adjustDelay  == 0) {
         adjustRPM();
