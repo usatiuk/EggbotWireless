@@ -1290,8 +1290,6 @@ F 3 "~" H 6450 2500 50  0001 C CNN
 	1    6450 2500
 	0    -1   -1   0   
 $EndComp
-Text GLabel 7500 2200 2    50   Input ~ 0
-VBUS
 $Comp
 L Interface_USB:FT232RL U5
 U 1 1 5D0B79CF
@@ -2075,4 +2073,16 @@ F 3 "~" H 4000 1100 50  0001 C CNN
 	1    4000 1100
 	1    0    0    -1  
 $EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5D283EF7
+P 7500 2200
+F 0 "#PWR?" H 7500 2050 50  0001 C CNN
+F 1 "+5V" H 7515 2373 50  0000 C CNN
+F 2 "" H 7500 2200 50  0001 C CNN
+F 3 "" H 7500 2200 50  0001 C CNN
+	1    7500 2200
+	0    1    1    0   
+$EndComp
+Connection ~ 7500 2200
 $EndSCHEMATC
