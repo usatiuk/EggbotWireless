@@ -16,7 +16,7 @@
 #define DEF_RPM 2
 
 Stepper eggStepper(6, 5, STEPS_PER_REVOLUTION, 0, Y_DEGREES_PER_MM);
-Stepper servoStepper(4, 3, -STEPS_PER_REVOLUTION, X_LIMIT,
+Stepper servoStepper(4, 3, STEPS_PER_REVOLUTION, X_LIMIT,
                      X_DEGREES_PER_MM);
 
 Pen pen(7, 120, 180);

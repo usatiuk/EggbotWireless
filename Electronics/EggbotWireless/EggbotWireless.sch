@@ -107,17 +107,6 @@ Wire Wire Line
 Wire Wire Line
 	9950 2850 10350 2850
 $Comp
-L power:+12V #PWR0124
-U 1 1 5CF327F6
-P 10550 4450
-F 0 "#PWR0124" H 10550 4300 50  0001 C CNN
-F 1 "+12V" V 10565 4578 50  0000 L CNN
-F 2 "" H 10550 4450 50  0001 C CNN
-F 3 "" H 10550 4450 50  0001 C CNN
-	1    10550 4450
-	0    1    1    0   
-$EndComp
-$Comp
 L Device:D_Schottky D1
 U 1 1 5D005B12
 P 9950 4450
@@ -480,8 +469,6 @@ F 3 "~" H 10400 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 10400 4450
-Wire Wire Line
-	10400 4450 10550 4450
 $Comp
 L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0132
 U 1 1 5CF5F1C3
@@ -1793,36 +1780,6 @@ Text GLabel 8200 2500 2    50   Input ~ 0
 TXD_USB
 Text GLabel 8200 2900 2    50   Input ~ 0
 DTR_USB
-Text GLabel 5600 2200 2    50   Input ~ 0
-TXD_USB
-$Comp
-L Connector:Conn_01x05_Male J6
-U 1 1 5D0DB384
-P 5400 2400
-F 0 "J6" H 5508 2781 50  0000 C CNN
-F 1 "Conn_01x05_Male" H 5508 2690 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 5400 2400 50  0001 C CNN
-F 3 "~" H 5400 2400 50  0001 C CNN
-	1    5400 2400
-	1    0    0    -1  
-$EndComp
-Text GLabel 5600 2300 2    50   Input ~ 0
-RXD_USB
-Text GLabel 5600 2400 2    50   Input ~ 0
-RTS_USB
-Text GLabel 5600 2500 2    50   Input ~ 0
-DTR_USB
-$Comp
-L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0147
-U 1 1 5D0DD546
-P 5600 2600
-F 0 "#PWR0147" H 5600 2350 50  0001 C CNN
-F 1 "GND" H 5605 2427 50  0000 C CNN
-F 2 "" H 5600 2600 50  0001 C CNN
-F 3 "" H 5600 2600 50  0001 C CNN
-	1    5600 2600
-	1    0    0    -1  
-$EndComp
 $Comp
 L EggbotWireless-rescue:R-Device-Catfi-rescue R20
 U 1 1 5D171129
@@ -1857,34 +1814,8 @@ F 3 "" H 7300 2200 50  0001 C CNN
 	1    7300 2200
 	1    0    0    -1  
 $EndComp
-$Comp
-L EggbotWireless-rescue:R-Device-Catfi-rescue R23
-U 1 1 5D123411
-P 8450 3650
-F 0 "R23" H 8520 3696 50  0000 L CNN
-F 1 "10K" H 8520 3605 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 8380 3650 50  0001 C CNN
-F 3 "~" H 8450 3650 50  0001 C CNN
-	1    8450 3650
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3.3V #PWR0154
-U 1 1 5D1276CA
-P 8450 3500
-F 0 "#PWR0154" H 8450 3350 50  0001 C CNN
-F 1 "+3.3V" H 8400 3650 50  0000 C CNN
-F 2 "" H 8450 3500 50  0001 C CNN
-F 3 "" H 8450 3500 50  0001 C CNN
-	1    8450 3500
-	1    0    0    -1  
-$EndComp
-Text GLabel 8650 3800 2    50   Input ~ 0
-PWREN
 Text GLabel 8200 3900 2    50   Input ~ 0
 SLEEP
-Text GLabel 2900 6500 2    50   Input ~ 0
-PWREN
 $Comp
 L Device:LED D3
 U 1 1 5D296C74
@@ -1909,62 +1840,8 @@ F 3 "~" H 4900 1500 50  0001 C CNN
 $EndComp
 Text GLabel 4900 1050 1    50   Input ~ 0
 VBUS
-Wire Wire Line
-	8200 3800 8450 3800
-Connection ~ 8450 3800
-$Comp
-L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0155
-U 1 1 5D40FE66
-P 6200 2150
-F 0 "#PWR0155" H 6200 1900 50  0001 C CNN
-F 1 "GND" H 6205 1977 50  0000 C CNN
-F 2 "" H 6200 2150 50  0001 C CNN
-F 3 "" H 6200 2150 50  0001 C CNN
-	1    6200 2150
-	1    0    0    -1  
-$EndComp
-$Comp
-L EggbotWireless-rescue:R-Device-Catfi-rescue R22
-U 1 1 5D432E09
-P 5900 1800
-F 0 "R22" V 5693 1800 50  0000 C CNN
-F 1 "100K" V 5784 1800 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5830 1800 50  0001 C CNN
-F 3 "~" H 5900 1800 50  0001 C CNN
-	1    5900 1800
-	-1   0    0    1   
-$EndComp
-$Comp
-L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0156
-U 1 1 5D433746
-P 5900 1650
-F 0 "#PWR0156" H 5900 1400 50  0001 C CNN
-F 1 "GND" H 5905 1477 50  0000 C CNN
-F 2 "" H 5900 1650 50  0001 C CNN
-F 3 "" H 5900 1650 50  0001 C CNN
-	1    5900 1650
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	5800 1950 5900 1950
-Text GLabel 5800 1950 0    50   Input ~ 0
-CHEN
 Text GLabel 2150 2250 2    50   Input ~ 0
 CHEN
-$Comp
-L Transistor_FET:2N7002 Q4
-U 1 1 5D4B609F
-P 6100 1950
-F 0 "Q4" H 6306 1996 50  0000 L CNN
-F 1 "2N7002" H 6306 1905 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 6300 1875 50  0001 L CIN
-F 3 "https://www.fairchildsemi.com/datasheets/2N/2N7002.pdf" H 6100 1950 50  0001 L CNN
-	1    6100 1950
-	1    0    0    -1  
-$EndComp
-Connection ~ 5900 1950
-Wire Wire Line
-	8450 3800 8650 3800
 $Comp
 L Device:CP C12
 U 1 1 5D6221F0
@@ -2074,10 +1951,10 @@ F 3 "~" H 4000 1100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L power:+5V #PWR0111
 U 1 1 5D283EF7
 P 7500 2200
-F 0 "#PWR?" H 7500 2050 50  0001 C CNN
+F 0 "#PWR0111" H 7500 2050 50  0001 C CNN
 F 1 "+5V" H 7515 2373 50  0000 C CNN
 F 2 "" H 7500 2200 50  0001 C CNN
 F 3 "" H 7500 2200 50  0001 C CNN
@@ -2085,4 +1962,142 @@ F 3 "" H 7500 2200 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Connection ~ 7500 2200
+$Comp
+L EggbotWireless-rescue:R-Device-Catfi-rescue R26
+U 1 1 5D30426E
+P 1200 6500
+F 0 "R26" H 1270 6546 50  0000 L CNN
+F 1 "12K" H 1270 6455 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 1130 6500 50  0001 C CNN
+F 3 "~" H 1200 6500 50  0001 C CNN
+	1    1200 6500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L EggbotWireless-rescue:R-Device-Catfi-rescue R27
+U 1 1 5D304274
+P 1450 6750
+F 0 "R27" H 1520 6796 50  0000 L CNN
+F 1 "3K" H 1520 6705 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 1380 6750 50  0001 C CNN
+F 3 "~" H 1450 6750 50  0001 C CNN
+	1    1450 6750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1450 6600 1450 6500
+Wire Wire Line
+	1450 6500 1700 6500
+Wire Wire Line
+	1350 6500 1450 6500
+Connection ~ 1450 6500
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0158
+U 1 1 5D30427E
+P 1450 6900
+F 0 "#PWR0158" H 1450 6650 50  0001 C CNN
+F 1 "GND" H 1455 6727 50  0000 C CNN
+F 2 "" H 1450 6900 50  0001 C CNN
+F 3 "" H 1450 6900 50  0001 C CNN
+	1    1450 6900
+	1    0    0    -1  
+$EndComp
+Text GLabel 1050 6500 0    50   Input ~ 0
+BATT
+Text GLabel 7650 1000 3    50   Input ~ 0
+BATT
+Text GLabel 4200 1550 2    50   Input ~ 0
+TXD_USB
+$Comp
+L Connector:Conn_01x05_Male J6
+U 1 1 5D0DB384
+P 4000 1750
+F 0 "J6" H 4108 2131 50  0000 C CNN
+F 1 "Conn_01x05_Male" H 4108 2040 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 4000 1750 50  0001 C CNN
+F 3 "~" H 4000 1750 50  0001 C CNN
+	1    4000 1750
+	1    0    0    -1  
+$EndComp
+Text GLabel 4200 1650 2    50   Input ~ 0
+RXD_USB
+Text GLabel 4200 1750 2    50   Input ~ 0
+RTS_USB
+Text GLabel 4200 1850 2    50   Input ~ 0
+DTR_USB
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0147
+U 1 1 5D0DD546
+P 4200 1950
+F 0 "#PWR0147" H 4200 1700 50  0001 C CNN
+F 1 "GND" H 4205 1777 50  0000 C CNN
+F 2 "" H 4200 1950 50  0001 C CNN
+F 3 "" H 4200 1950 50  0001 C CNN
+	1    4200 1950
+	1    0    0    -1  
+$EndComp
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0155
+U 1 1 5D40FE66
+P 6200 2150
+F 0 "#PWR0155" H 6200 1900 50  0001 C CNN
+F 1 "GND" H 6205 1977 50  0000 C CNN
+F 2 "" H 6200 2150 50  0001 C CNN
+F 3 "" H 6200 2150 50  0001 C CNN
+	1    6200 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5800 1950 5900 1950
+Text GLabel 5800 1950 0    50   Input ~ 0
+CHEN
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0156
+U 1 1 5D433746
+P 5900 1650
+F 0 "#PWR0156" H 5900 1400 50  0001 C CNN
+F 1 "GND" H 5905 1477 50  0000 C CNN
+F 2 "" H 5900 1650 50  0001 C CNN
+F 3 "" H 5900 1650 50  0001 C CNN
+	1    5900 1650
+	-1   0    0    1   
+$EndComp
+$Comp
+L EggbotWireless-rescue:R-Device-Catfi-rescue R22
+U 1 1 5D432E09
+P 5900 1800
+F 0 "R22" V 5693 1800 50  0000 C CNN
+F 1 "100K" V 5784 1800 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5830 1800 50  0001 C CNN
+F 3 "~" H 5900 1800 50  0001 C CNN
+	1    5900 1800
+	-1   0    0    1   
+$EndComp
+Connection ~ 5900 1950
+$Comp
+L Transistor_FET:IRLML6402 Q4
+U 1 1 5D31E4EE
+P 6100 1950
+F 0 "Q4" H 6306 1904 50  0000 L CNN
+F 1 "IRLML6402" H 6306 1995 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 6300 1875 50  0001 L CIN
+F 3 "https://www.infineon.com/dgdl/irlml6402pbf.pdf?fileId=5546d462533600a401535668d5c2263c" H 6100 1950 50  0001 L CNN
+	1    6100 1950
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	10400 4450 10550 4450
+$Comp
+L power:+12V #PWR0124
+U 1 1 5CF327F6
+P 10550 4450
+F 0 "#PWR0124" H 10550 4300 50  0001 C CNN
+F 1 "+12V" V 10565 4578 50  0000 L CNN
+F 2 "" H 10550 4450 50  0001 C CNN
+F 3 "" H 10550 4450 50  0001 C CNN
+	1    10550 4450
+	0    1    1    0   
+$EndComp
+Text GLabel 2900 6500 2    50   Input ~ 0
+SLEEP
 $EndSCHEMATC
