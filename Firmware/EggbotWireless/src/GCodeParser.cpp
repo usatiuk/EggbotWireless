@@ -1,13 +1,10 @@
-#include "GCodeParser.h"
 #include <Arduino.h>
 
-float bytecode[4] = {-1, -1, -1, -1};
+#include "GCodeParser.h"
 
-float* parseGCode(String gcode) {
-    for (int i = 0; i < 4; i++) {
-        bytecode[i] = nanf("");
-    }
+Command bufcmd;
 
+Command parseGCode(String gcode) {
     char commandStringIn[50];
     char commandString[50];
 
@@ -55,28 +52,28 @@ float* parseGCode(String gcode) {
             floatValue = atof(value);
 
             if (strcmp(axis, "X") == 0) {
-                bytecode[X] = floatValue;
+                bufcmd.arg1 = floatValue;
             } else if (strcmp(axis, "Y") == 0) {
-                bytecode[Y] = floatValue;
+                bufcmd.arg2 = floatValue;
             } else if (strcmp(axis, "Z") == 0) {
-                bytecode[Z] = floatValue;
+                bufcmd.arg3 = floatValue;
             }
         }
         if (strcmp(command, "G00") == 0) {
-            bytecode[0] = G00;
-            return bytecode;
+            bufcmd.type = CommandType::G00;
+            return bufcmd;
         }
         if (strcmp(command, "G01") == 0) {
-            bytecode[0] = G01;
-            return bytecode;
+            bufcmd.type = CommandType::G01;
+            return bufcmd;
         }
     }
 
     if (strcmp(command, "M99") == 0) {
-        bytecode[0] = M99;
-        return bytecode;
+        bufcmd.type = CommandType::M99;
+        return bufcmd;
     }
 
-    bytecode[0] = unk;
-    return bytecode;
+    bufcmd.type = CommandType::unk;
+    return bufcmd;
 }
