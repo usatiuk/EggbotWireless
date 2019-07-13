@@ -34,44 +34,44 @@ void adjustRPM() {
     sei();
 }
 
-int curFloat = 0;
-float command[4];
+Command command;
 
 bool newCommand = false;
 bool executing = false;
 
 int curByte = 0;
-byte rxBuffer[4];
+int curFloat = 0;
+byte rxBuffer[7][sizeof(float)];
 void receiveEvent(int howMany) {
     while (Wire.available() > 0) {
         if (!newCommand) {
             char c = Wire.read();
-            rxBuffer[curByte] = c;
+            rxBuffer[curFloat][curByte] = c;
             curByte++;
             if (curByte == 4) {
                 curByte = 0;
-                bytesToFloat(&command[curFloat], rxBuffer);
                 curFloat++;
             }
-            if (curFloat == 4) {
+            if (curFloat == 7) {
                 curFloat = 0;
+                command.fromBytes(rxBuffer[0]);
                 newCommand = true;
             }
         }
     }
 }
 
-byte txBuffer[5 * sizeof(float)];
+byte txBuffer[5][sizeof(float)];
 void requestEvent() {
-    if (command[0] == M99) {
-        floatToBytes(&txBuffer[0], servoStepper.getPos());
-        floatToBytes(&txBuffer[sizeof(float)], eggStepper.getPos());
+    if (command.type == CommandType::M99) {
+        floatToBytes(txBuffer[0], servoStepper.getPos());
+        floatToBytes(txBuffer[1], eggStepper.getPos());
 
-        floatToBytes(&txBuffer[sizeof(float) * 2], servoStepper.getPosMm());
-        floatToBytes(&txBuffer[sizeof(float) * 3], eggStepper.getPosMm());
+        floatToBytes(txBuffer[2], servoStepper.getPosMm());
+        floatToBytes(txBuffer[3], eggStepper.getPosMm());
 
-        floatToBytes(&txBuffer[sizeof(float) * 4], (float)pen.getEngaged());
-        Wire.write(txBuffer, 5 * sizeof(float));
+        floatToBytes(txBuffer[4], (float)pen.getEngaged());
+        Wire.write(txBuffer[0], 5 * sizeof(float));
     } else if (executing || newCommand) {
         Wire.write(WAIT);
     } else {
@@ -81,26 +81,27 @@ void requestEvent() {
 
 void execCommand() {
     executing = true;
-    if (command[0] == G01 || command[0] == G00) {
-        if (command[0] == G01) {
+
+    if (command.type == CommandType::G01 || command.type == CommandType::G00) {
+        if (command.type == CommandType::G01) {
             needAdjust = true;
         } else {
             needAdjust = false;
         }
 
-        if (!isnan(command[X])) {
-            servoStepper.moveTo(command[X]);
+        if (!isnan(command.arg1)) {
+            servoStepper.moveTo(command.arg1);
         }
 
-        if (!isnan(command[Y])) {
-            eggStepper.moveTo(command[Y]);
+        if (!isnan(command.arg2)) {
+            eggStepper.moveTo(command.arg2);
         }
 
-        if (!isnan(command[Z])) {
-            if (command[Z] < 0) {
+        if (!isnan(command.arg3)) {
+            if (command.arg3 < 0) {
                 pen.engage();
             }
-            if (command[Z] >= 0) {
+            if (command.arg3 >= 0) {
                 pen.disengage();
             }
         }
@@ -127,11 +128,11 @@ void setup() {
     pen.init();
 }
 
-unsigned int ms = 0;
+volatile unsigned int ms = 0;
 
 ISR(TIMER0_COMPA_vect) {
     ms++;
-    if (ms % adjustDelay  == 0) {
+    if (ms % adjustDelay == 0) {
         adjustRPM();
     }
     if (ms % eggStepperDelay == 0) {
