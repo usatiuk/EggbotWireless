@@ -2,9 +2,19 @@
 
 Power::Power() {
     pinMode(pin12v, OUTPUT);
-    enable12v();
+    disable12v();
 }
 
-void Power::disable12v() { digitalWrite(pin12v, false); }
+void Power::disable12v() {
+    digitalWrite(pin12v, false);
+    enabled12v = false;
+}
 
-void Power::enable12v() { digitalWrite(pin12v, true); }
+void Power::enable12v() {
+    digitalWrite(pin12v, true);
+    enabled12v = true;
+}
+
+bool Power::isEnabled12v() {
+    return enabled12v;
+}

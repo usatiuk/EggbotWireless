@@ -2,6 +2,8 @@
 #include <ESP8266WiFi.h>
 #include <Ticker.h>
 #include <Wire.h>
+#include "Globals.h"
+#include "Power.h"
 #include "GCodeParser.h"
 #include "common/Commands.h"
 
@@ -71,18 +73,28 @@ void execCommand(Command command) {
 void setup() {
     Serial.begin(115200);
     Wire.begin(12, 13);
-    pinMode(5, OUTPUT);
-    digitalWrite(5, true);
+    power.enable12v();
 }
 
+unsigned long commandTime = 0;
+constexpr unsigned long commandTimeout = 20000;
+
 void loop() {
+    if(millis() - commandTime > commandTimeout) {
+        power.disable12v();
+    }
     while (Serial.available() > 0) {
         char inChar = Serial.read();
         inString += inChar;
 
         if (inChar == '\n') {
             inString.trim();
+            if(!power.isEnabled12v()){
+                power.enable12v();
+                delay(100);
+            }
             execCommand(parseGCode(inString));
+            commandTime = millis();
             unsigned long reqTime = millis();
             while (waitingForNext) {
                 while (!Wire.available()) {
