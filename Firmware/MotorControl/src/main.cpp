@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <Servo.h>
 #include <Wire.h>
+#include <util/atomic.h>
 #include "Globals.h"
 #include "common/Commands.h"
 
@@ -28,10 +29,11 @@ void adjustRPM() {
             }
         }
     }
-    cli();
-    eggStepperDelay = calculateDelay(eggStepperRPM, STEPS_PER_REVOLUTION);
-    servoStepperDelay = calculateDelay(servoStepperRPM, STEPS_PER_REVOLUTION);
-    sei();
+    ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+        eggStepperDelay = calculateDelay(eggStepperRPM, STEPS_PER_REVOLUTION);
+        servoStepperDelay =
+            calculateDelay(servoStepperRPM, STEPS_PER_REVOLUTION);
+    }
 }
 
 Command command;
@@ -39,10 +41,10 @@ Command command;
 bool newCommand = false;
 bool executing = false;
 
-int curByte = 0;
-int curFloat = 0;
 byte rxBuffer[7][sizeof(float)];
 void receiveEvent(int howMany) {
+    static int curByte = 0;
+    static int curFloat = 0;
     while (Wire.available() > 0) {
         if (!newCommand) {
             char c = Wire.read();
@@ -121,29 +123,36 @@ void setup() {
     eggStepperRPM = servoStepperRPM = curRPM;
     pinMode(A0, OUTPUT);
     digitalWrite(A0, true);
-    OCR0A = 250;
-    TCCR0A |= (1 << WGM20) | (1 << CS22);
-    TIMSK0 |= (1 << OCIE0A);
+    OCR2A = 250;
+    TCCR2A |= (1 << WGM20) | (1 << CS22);
+    TIMSK2 |= (1 << OCIE2A);
     servoStepper.setPos(X_LIMIT);
     pen.init();
 }
 
-volatile unsigned int ms = 0;
+volatile unsigned int tick = 0;
+volatile bool armed = false;
 
-ISR(TIMER0_COMPA_vect) {
-    ms++;
-    if (ms % adjustDelay == 0) {
-        adjustRPM();
-    }
-    if (ms % eggStepperDelay == 0) {
-        eggStepper.doStep();
-    }
-    if (ms % servoStepperDelay == 0) {
-        servoStepper.doStep();
+ISR(TIMER2_COMPA_vect) {
+    if (armed) {
+        tick++;
+        armed = false;
     }
 }
 
 void updateExecution() {
+    if (!armed) {
+        if (tick % adjustDelay == 0) {
+            adjustRPM();
+        }
+        if (tick % eggStepperDelay == 0) {
+            eggStepper.doStep();
+        }
+        if (tick % servoStepperDelay == 0) {
+            servoStepper.doStep();
+        }
+        armed = true;
+    }
     if (eggStepper.getRemainingSteps() == 0 &&
         servoStepper.getRemainingSteps() == 0) {
         executing = false;

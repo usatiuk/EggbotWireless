@@ -49,11 +49,20 @@ void execCommand(Command command) {
         }
 
         Serial.println("Status:");
-        Serial.println("X: " + String(resp[servoRot]));
-        Serial.println("Y: " + String(resp[eggRot]));
-        Serial.println("Xmm: " + String(resp[servoPos]));
-        Serial.println("Ymm: " + String(resp[eggPos]));
-        Serial.println("PEN: " + String(resp[penPos]));
+        Serial.print("X: ");
+        Serial.println(resp[servoRot]);
+
+        Serial.print("Y: ");
+        Serial.println(resp[eggRot]);
+
+        Serial.print("Xmm: ");
+        Serial.println(resp[servoPos]);
+
+        Serial.print("Ymm: ");
+        Serial.println(resp[eggPos]);
+
+        Serial.print("PEN: ");
+        Serial.println(resp[penPos]);
 
         return;
     }
