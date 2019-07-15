@@ -6,10 +6,14 @@
 #include "Config.h"
 
 class Power {
-    public:
+   private:
+    bool enabled12v = false;
+
+   public:
     Power();
     void disable12v();
     void enable12v();
+    bool isEnabled12v();
 };
 
-#endif // POWER_H
+#endif  // POWER_H
