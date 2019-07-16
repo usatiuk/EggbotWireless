@@ -2091,10 +2091,10 @@ Connection ~ 10450 1400
 Wire Wire Line
 	10450 1400 10550 1400
 $Comp
-L Jumper:SolderJumper_2_Bridged JP?
+L Jumper:SolderJumper_2_Bridged JP3
 U 1 1 5D3CD55E
 P 4300 4150
-F 0 "JP?" H 4300 4355 50  0000 C CNN
+F 0 "JP3" H 4300 4355 50  0000 C CNN
 F 1 "SolderJumper_2_Bridged" H 4300 4264 50  0000 C CNN
 F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged_Pad1.0x1.5mm" H 4300 4150 50  0001 C CNN
 F 3 "~" H 4300 4150 50  0001 C CNN
@@ -2102,10 +2102,10 @@ F 3 "~" H 4300 4150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Jumper:SolderJumper_2_Bridged JP?
+L Jumper:SolderJumper_2_Bridged JP2
 U 1 1 5D3CED16
 P 4250 4350
-F 0 "JP?" H 4250 4555 50  0000 C CNN
+F 0 "JP2" H 4250 4555 50  0000 C CNN
 F 1 "SolderJumper_2_Bridged" H 4250 4464 50  0000 C CNN
 F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged_Pad1.0x1.5mm" H 4250 4350 50  0001 C CNN
 F 3 "~" H 4250 4350 50  0001 C CNN
@@ -2113,10 +2113,10 @@ F 3 "~" H 4250 4350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Jumper:SolderJumper_2_Bridged JP?
+L Jumper:SolderJumper_2_Bridged JP1
 U 1 1 5D3CF16C
 P 4200 4550
-F 0 "JP?" H 4200 4755 50  0000 C CNN
+F 0 "JP1" H 4200 4755 50  0000 C CNN
 F 1 "SolderJumper_2_Bridged" H 4200 4664 50  0000 C CNN
 F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged_Pad1.0x1.5mm" H 4200 4550 50  0001 C CNN
 F 3 "~" H 4200 4550 50  0001 C CNN
