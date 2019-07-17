@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Device:L L2
+L EggbotWireless-rescue:L-Device L2
 U 1 1 5CE6FFE2
 P 10150 2650
 F 0 "L2" V 10340 2650 50  0000 C CNN
@@ -26,7 +26,7 @@ F 3 "~" H 10150 2650 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Device:C C5
+L EggbotWireless-rescue:C-Device C5
 U 1 1 5CE79D1A
 P 10900 2800
 F 0 "C5" H 11015 2846 50  0000 L CNN
@@ -37,7 +37,7 @@ F 3 "~" H 10900 2800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C2
+L EggbotWireless-rescue:C-Device C2
 U 1 1 5CE7AF72
 P 9100 2900
 F 0 "C2" H 9215 2946 50  0000 L CNN
@@ -70,7 +70,7 @@ Connection ~ 9350 3050
 Wire Wire Line
 	9350 3050 9650 3050
 $Comp
-L Regulator_Switching:TPS62203DBV U1
+L EggbotWireless-rescue:TPS62203DBV-Regulator_Switching U1
 U 1 1 5CE8E5BF
 P 9650 2850
 F 0 "U1" H 9650 3275 50  0000 C CNN
@@ -107,7 +107,7 @@ Wire Wire Line
 Wire Wire Line
 	9950 2850 10350 2850
 $Comp
-L Device:D_Schottky D1
+L EggbotWireless-rescue:D_Schottky-Device D1
 U 1 1 5D005B12
 P 9950 4450
 F 0 "D1" H 9950 4234 50  0000 C CNN
@@ -138,7 +138,7 @@ Wire Wire Line
 Wire Wire Line
 	1550 750  1550 800 
 $Comp
-L power:+3.3V #PWR0107
+L EggbotWireless-rescue:+3.3V-power #PWR0107
 U 1 1 5CEB7CB7
 P 1550 750
 F 0 "#PWR0107" H 1550 600 50  0001 C CNN
@@ -267,7 +267,7 @@ F 3 "http://wiki.ai-thinker.com/_media/esp8266/esp8266_series_modules_user_manua
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:Crystal Y1
+L EggbotWireless-rescue:Crystal-Device Y1
 U 1 1 5CED63CD
 P 2700 1500
 F 0 "Y1" V 2746 1369 50  0000 R CNN
@@ -332,7 +332,7 @@ Wire Wire Line
 	2550 1050 2700 1050
 Connection ~ 2700 1050
 $Comp
-L power:+3.3V #PWR0129
+L EggbotWireless-rescue:+3.3V-power #PWR0129
 U 1 1 5D0C7E91
 P 2300 5700
 F 0 "#PWR0129" H 2300 5550 50  0001 C CNN
@@ -360,7 +360,7 @@ $EndComp
 Wire Wire Line
 	9050 3850 9050 4450
 $Comp
-L Device:L L1
+L EggbotWireless-rescue:L-Device L1
 U 1 1 5CEC224D
 P 9450 4450
 F 0 "L1" V 9400 4450 50  0000 C CNN
@@ -383,7 +383,7 @@ Wire Wire Line
 Wire Wire Line
 	9400 4750 9050 4750
 $Comp
-L Device:R R15
+L EggbotWireless-rescue:R-Device R15
 U 1 1 5CEF81B9
 P 9700 5350
 F 0 "R15" H 9770 5396 50  0000 L CNN
@@ -396,7 +396,7 @@ $EndComp
 Wire Wire Line
 	9700 5200 9700 5100
 $Comp
-L Device:R R14
+L EggbotWireless-rescue:R-Device R14
 U 1 1 5CF00015
 P 9500 5100
 F 0 "R14" V 9707 5100 50  0000 C CNN
@@ -456,7 +456,7 @@ Wire Wire Line
 	9200 5100 9200 4100
 Connection ~ 9300 5100
 $Comp
-L Device:CP C13
+L EggbotWireless-rescue:CP-Device C13
 U 1 1 5CF5EC34
 P 10400 4600
 F 0 "C13" H 10518 4646 50  0000 L CNN
@@ -495,7 +495,7 @@ Wire Wire Line
 	8650 5050 8600 5050
 Connection ~ 8600 5050
 $Comp
-L Device:R R16
+L EggbotWireless-rescue:R-Device R16
 U 1 1 5CF6C873
 P 10200 5400
 F 0 "R16" H 10270 5446 50  0000 L CNN
@@ -506,7 +506,7 @@ F 3 "~" H 10200 5400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R R5
+L EggbotWireless-rescue:R-Device R5
 U 1 1 5CF6CC3B
 P 7850 5150
 F 0 "R5" H 7920 5196 50  0000 L CNN
@@ -563,7 +563,7 @@ F 3 "~" H 7500 4850 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:R R4
+L EggbotWireless-rescue:R-Device R4
 U 1 1 5CFEC7EA
 P 7500 5150
 F 0 "R4" H 7570 5196 50  0000 L CNN
@@ -603,7 +603,7 @@ Wire Wire Line
 Wire Wire Line
 	7850 5350 7850 5300
 $Comp
-L Device:R R13
+L EggbotWireless-rescue:R-Device R13
 U 1 1 5D0DA168
 P 9100 5350
 F 0 "R13" H 9300 5300 50  0000 R CNN
@@ -702,7 +702,7 @@ F 3 "" H 3650 2250 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L power:+3.3V #PWR0127
+L EggbotWireless-rescue:+3.3V-power #PWR0127
 U 1 1 5D03EF52
 P 3650 3150
 F 0 "#PWR0127" H 3650 3000 50  0001 C CNN
@@ -713,7 +713,7 @@ F 3 "" H 3650 3150 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Connector:AVR-ISP-6 J4
+L EggbotWireless-rescue:AVR-ISP-6-Connector J4
 U 1 1 5D029176
 P 3550 2650
 F 0 "J4" H 3271 2746 50  0000 R CNN
@@ -724,7 +724,7 @@ F 3 " ~" H 2275 2100 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Connector:Conn_01x03_Female J5
+L EggbotWireless-rescue:Conn_01x03_Female-Connector J5
 U 1 1 5CF7E398
 P 2850 3150
 F 0 "J5" H 2878 3176 50  0000 L CNN
@@ -784,7 +784,7 @@ Wire Wire Line
 Wire Wire Line
 	5650 5900 5400 5900
 $Comp
-L power:+12V #PWR0142
+L EggbotWireless-rescue:+12V-power #PWR0142
 U 1 1 5CF0714E
 P 5000 5000
 F 0 "#PWR0142" H 5000 4850 50  0001 C CNN
@@ -795,7 +795,7 @@ F 3 "" H 5000 5000 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:+12V #PWR0143
+L EggbotWireless-rescue:+12V-power #PWR0143
 U 1 1 5CF093C7
 P 4950 3150
 F 0 "#PWR0143" H 4950 3000 50  0001 C CNN
@@ -838,7 +838,7 @@ Wire Wire Line
 	4950 4550 5000 4550
 Connection ~ 5000 4550
 $Comp
-L power:+3.3V #PWR0148
+L EggbotWireless-rescue:+3.3V-power #PWR0148
 U 1 1 5CF94114
 P 4600 5300
 F 0 "#PWR0148" H 4600 5150 50  0001 C CNN
@@ -851,7 +851,7 @@ $EndComp
 Wire Wire Line
 	4600 5300 4600 5400
 $Comp
-L power:+3.3V #PWR0149
+L EggbotWireless-rescue:+3.3V-power #PWR0149
 U 1 1 5CFA006C
 P 4550 3450
 F 0 "#PWR0149" H 4550 3300 50  0001 C CNN
@@ -864,7 +864,7 @@ $EndComp
 Wire Wire Line
 	4550 3450 4550 3550
 $Comp
-L Motor:Motor_Servo M3
+L EggbotWireless-rescue:Motor_Servo-Motor M3
 U 1 1 5CEA7A5C
 P 3200 3600
 F 0 "M3" H 3532 3665 50  0000 L CNN
@@ -888,7 +888,7 @@ F 3 "" H 2900 3700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R R19
+L EggbotWireless-rescue:R-Device R19
 U 1 1 5CECA907
 P 9100 5900
 F 0 "R19" H 8950 5950 50  0000 C CNN
@@ -901,7 +901,7 @@ $EndComp
 Wire Wire Line
 	9100 4600 9100 5200
 $Comp
-L Transistor_FET:2N7002 Q2
+L EggbotWireless-rescue:2N7002-Transistor_FET Q2
 U 1 1 5CF2F5A0
 P 8600 5850
 F 0 "Q2" H 8806 5896 50  0000 L CNN
@@ -930,7 +930,7 @@ F 3 "" H 8700 6200 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L power:+3.3V #PWR0135
+L EggbotWireless-rescue:+3.3V-power #PWR0135
 U 1 1 5CEC8E18
 P 9100 6050
 F 0 "#PWR0135" H 9100 5900 50  0001 C CNN
@@ -946,7 +946,7 @@ Wire Wire Line
 	4450 4150 4500 4150
 Connection ~ 4600 5300
 $Comp
-L Driver_Motor:Pololu_Breakout_DRV8825 A2
+L EggbotWireless-rescue:Pololu_Breakout_DRV8825-Driver_Motor A2
 U 1 1 5CE8A6D5
 P 5000 5600
 F 0 "A2" H 5000 6381 50  0000 C CNN
@@ -973,7 +973,7 @@ Wire Wire Line
 	4350 6200 4600 6200
 Connection ~ 4550 3450
 $Comp
-L Driver_Motor:Pololu_Breakout_DRV8825 A1
+L EggbotWireless-rescue:Pololu_Breakout_DRV8825-Driver_Motor A1
 U 1 1 5CE88FAE
 P 4950 3750
 F 0 "A1" H 4950 4531 50  0000 C CNN
@@ -990,7 +990,7 @@ Wire Wire Line
 Wire Wire Line
 	4450 4350 4550 4350
 $Comp
-L power:+3.3V #PWR0146
+L EggbotWireless-rescue:+3.3V-power #PWR0146
 U 1 1 5D2FA0EE
 P 4150 4150
 F 0 "#PWR0146" H 4150 4000 50  0001 C CNN
@@ -1009,7 +1009,7 @@ Wire Wire Line
 Wire Wire Line
 	4050 4350 4050 4550
 $Comp
-L power:+3.3V #PWR0138
+L EggbotWireless-rescue:+3.3V-power #PWR0138
 U 1 1 5CEA2E4D
 P 1800 4900
 F 0 "#PWR0138" H 1800 4750 50  0001 C CNN
@@ -1020,7 +1020,7 @@ F 3 "" H 1800 4900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR0137
+L EggbotWireless-rescue:+3.3V-power #PWR0137
 U 1 1 5CEA2524
 P 1500 4900
 F 0 "#PWR0137" H 1500 4750 50  0001 C CNN
@@ -1057,7 +1057,7 @@ SCL
 Text GLabel 1800 5200 3    50   Input ~ 0
 SDA
 $Comp
-L MCU_Microchip_ATmega:ATmega328P-AU U2
+L EggbotWireless-rescue:ATmega328P-AU-MCU_Microchip_ATmega U2
 U 1 1 5D42120B
 P 1550 2550
 F 0 "U2" H 1550 961 50  0000 C CNN
@@ -1076,7 +1076,7 @@ Wire Wire Line
 Wire Wire Line
 	2500 2850 2500 2800
 $Comp
-L power:+3.3V #PWR0151
+L EggbotWireless-rescue:+3.3V-power #PWR0151
 U 1 1 5D6D37B2
 P 2500 2500
 F 0 "#PWR0151" H 2500 2350 50  0001 C CNN
@@ -1165,7 +1165,7 @@ Wire Wire Line
 Wire Wire Line
 	1150 5700 2200 5700
 $Comp
-L Device:Q_NMOS_GDS Q1
+L EggbotWireless-rescue:Q_NMOS_GDS-Device Q1
 U 1 1 5CEE2D00
 P 9600 4750
 F 0 "Q1" H 9806 4796 50  0000 L CNN
@@ -1176,7 +1176,7 @@ F 3 "~" H 9600 4750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR0102
+L EggbotWireless-rescue:+5V-power #PWR0102
 U 1 1 5D136419
 P 9100 2650
 F 0 "#PWR0102" H 9100 2500 50  0001 C CNN
@@ -1188,7 +1188,7 @@ F 3 "" H 9100 2650 50  0001 C CNN
 $EndComp
 Connection ~ 9100 2650
 $Comp
-L power:+5V #PWR0108
+L EggbotWireless-rescue:+5V-power #PWR0108
 U 1 1 5D15A988
 P 9300 3800
 F 0 "#PWR0108" H 9300 3650 50  0001 C CNN
@@ -1199,7 +1199,7 @@ F 3 "" H 9300 3800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR0109
+L EggbotWireless-rescue:+5V-power #PWR0109
 U 1 1 5D15FDEC
 P 2900 3600
 F 0 "#PWR0109" H 2900 3450 50  0001 C CNN
@@ -1232,7 +1232,7 @@ F 3 "~" H 6450 2500 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Interface_USB:FT232RL U5
+L EggbotWireless-rescue:FT232RL-Interface_USB U5
 U 1 1 5D0B79CF
 P 7400 3200
 F 0 "U5" H 7950 4200 50  0000 C CNN
@@ -1283,7 +1283,7 @@ Wire Wire Line
 Wire Wire Line
 	4200 1200 4300 1200
 $Comp
-L power:+12V #PWR0101
+L EggbotWireless-rescue:+12V-power #PWR0101
 U 1 1 5CEAFAB1
 P 4300 1100
 F 0 "#PWR0101" H 4300 950 50  0001 C CNN
@@ -1294,7 +1294,7 @@ F 3 "" H 4300 1100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:+3.3V #PWR0110
+L EggbotWireless-rescue:+3.3V-power #PWR0110
 U 1 1 5CEB1C70
 P 4300 1200
 F 0 "#PWR0110" H 4300 1050 50  0001 C CNN
@@ -1455,7 +1455,7 @@ F 3 "" H 7500 1900 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Motor:Stepper_Motor_bipolar M1
+L EggbotWireless-rescue:Stepper_Motor_bipolar-Motor M1
 U 1 1 5CF4B0D1
 P 6000 3950
 F 0 "M1" H 6188 4074 50  0000 L CNN
@@ -1466,7 +1466,7 @@ F 3 "http://www.infineon.com/dgdl/Application-Note-TLE8110EE_driving_UniPolarSte
 	1    0    0    -1  
 $EndComp
 $Comp
-L Motor:Stepper_Motor_bipolar M2
+L EggbotWireless-rescue:Stepper_Motor_bipolar-Motor M2
 U 1 1 5CF4C34B
 P 5950 5800
 F 0 "M2" H 6138 5924 50  0000 L CNN
@@ -1490,7 +1490,7 @@ F 3 "~" H 7300 1100 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L power:+3.3V #PWR0122
+L EggbotWireless-rescue:+3.3V-power #PWR0122
 U 1 1 5CEB99B1
 P 10900 2500
 F 0 "#PWR0122" H 10900 2350 50  0001 C CNN
@@ -1639,7 +1639,7 @@ F 3 "~" H 10050 1300 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:D_Schottky D2
+L EggbotWireless-rescue:D_Schottky-Device D2
 U 1 1 5D797446
 P 10150 1950
 F 0 "D2" H 10150 1734 50  0000 C CNN
@@ -1650,7 +1650,7 @@ F 3 "~" H 10150 1950 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Switch:SW_SPDT SW1
+L EggbotWireless-rescue:SW_SPDT-Switch SW1
 U 1 1 5CEB7C0D
 P 10750 1400
 F 0 "SW1" H 10750 1550 50  0000 C CNN
@@ -1661,7 +1661,7 @@ F 3 "~" H 10750 1400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR0130
+L EggbotWireless-rescue:+5V-power #PWR0130
 U 1 1 5D7ABED4
 P 10950 1300
 F 0 "#PWR0130" H 10950 1150 50  0001 C CNN
@@ -1727,7 +1727,7 @@ Wire Wire Line
 	8300 6200 8700 6200
 Connection ~ 8700 6200
 $Comp
-L power:+3.3V #PWR0153
+L EggbotWireless-rescue:+3.3V-power #PWR0153
 U 1 1 5D0D61D4
 P 7300 2200
 F 0 "#PWR0153" H 7300 2050 50  0001 C CNN
@@ -1740,7 +1740,7 @@ $EndComp
 Text GLabel 8200 3900 2    50   Input ~ 0
 SLEEP
 $Comp
-L Device:LED D3
+L EggbotWireless-rescue:LED-Device D3
 U 1 1 5D296C74
 P 4900 1200
 F 0 "D3" V 4939 1083 50  0000 R CNN
@@ -1766,7 +1766,7 @@ VBUS
 Text GLabel 2150 2250 2    50   Input ~ 0
 CHEN
 $Comp
-L Device:CP C12
+L EggbotWireless-rescue:CP-Device C12
 U 1 1 5D6221F0
 P 10500 2800
 F 0 "C12" H 10618 2846 50  0000 L CNN
@@ -1841,7 +1841,7 @@ ESPRST
 Text GLabel 3400 6200 2    50   Input ~ 0
 GPIO0
 $Comp
-L Device:Q_NPN_BEC Q5
+L EggbotWireless-rescue:Q_NPN_BEC-Device Q5
 U 1 1 5D2B6423
 P 4500 6650
 F 0 "Q5" H 4690 6696 50  0000 L CNN
@@ -1852,7 +1852,7 @@ F 3 "~" H 4500 6650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:Q_NPN_BEC Q6
+L EggbotWireless-rescue:Q_NPN_BEC-Device Q6
 U 1 1 5D2BB966
 P 4500 7350
 F 0 "Q6" H 4690 7304 50  0000 L CNN
@@ -1863,7 +1863,7 @@ F 3 "~" H 4500 7350 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L Connector:Conn_01x03_Male J2
+L EggbotWireless-rescue:Conn_01x03_Male-Connector J2
 U 1 1 5D2FE20C
 P 4000 1100
 F 0 "J2" H 4108 1381 50  0000 C CNN
@@ -1874,7 +1874,7 @@ F 3 "~" H 4000 1100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR0111
+L EggbotWireless-rescue:+5V-power #PWR0111
 U 1 1 5D283EF7
 P 7500 2200
 F 0 "#PWR0111" H 7500 2050 50  0001 C CNN
@@ -1932,7 +1932,7 @@ BATT
 Text GLabel 4200 1550 2    50   Input ~ 0
 TXD_USB
 $Comp
-L Connector:Conn_01x05_Male J6
+L EggbotWireless-rescue:Conn_01x05_Male-Connector J6
 U 1 1 5D0DB384
 P 4000 1750
 F 0 "J6" H 4108 2131 50  0000 C CNN
@@ -1998,7 +1998,7 @@ F 3 "~" H 5900 1800 50  0001 C CNN
 $EndComp
 Connection ~ 5900 1950
 $Comp
-L Transistor_FET:IRLML6402 Q4
+L EggbotWireless-rescue:IRLML6402-Transistor_FET Q4
 U 1 1 5D31E4EE
 P 6100 1950
 F 0 "Q4" H 6306 1904 50  0000 L CNN
@@ -2011,7 +2011,7 @@ $EndComp
 Wire Wire Line
 	10400 4450 10550 4450
 $Comp
-L power:+12V #PWR0124
+L EggbotWireless-rescue:+12V-power #PWR0124
 U 1 1 5CF327F6
 P 10550 4450
 F 0 "#PWR0124" H 10550 4300 50  0001 C CNN
@@ -2035,7 +2035,7 @@ F 3 "~" H 8300 6000 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:D_Schottky D4
+L EggbotWireless-rescue:D_Schottky-Device D4
 U 1 1 5D32EDF7
 P 10200 650
 F 0 "D4" H 10200 434 50  0000 C CNN
@@ -2056,7 +2056,7 @@ Connection ~ 9300 3850
 Wire Wire Line
 	9050 3850 9300 3850
 $Comp
-L Device:C C17
+L EggbotWireless-rescue:C-Device C17
 U 1 1 5D338D3C
 P 9700 4000
 F 0 "C17" H 9815 4046 50  0000 L CNN
@@ -2072,7 +2072,7 @@ Wire Wire Line
 	9700 4150 9300 4150
 Connection ~ 9300 4150
 $Comp
-L Transistor_FET:IRLML6402 Q3
+L EggbotWireless-rescue:IRLML6402-Transistor_FET Q3
 U 1 1 5D2DC610
 P 10250 1100
 F 0 "Q3" H 10456 1054 50  0000 L CNN
@@ -2091,7 +2091,7 @@ Connection ~ 10450 1400
 Wire Wire Line
 	10450 1400 10550 1400
 $Comp
-L Jumper:SolderJumper_2_Bridged JP3
+L EggbotWireless-rescue:SolderJumper_2_Bridged-Jumper JP3
 U 1 1 5D3CD55E
 P 4300 4150
 F 0 "JP3" H 4300 4355 50  0000 C CNN
@@ -2102,7 +2102,7 @@ F 3 "~" H 4300 4150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Jumper:SolderJumper_2_Bridged JP2
+L EggbotWireless-rescue:SolderJumper_2_Bridged-Jumper JP2
 U 1 1 5D3CED16
 P 4250 4350
 F 0 "JP2" H 4250 4555 50  0000 C CNN
@@ -2113,7 +2113,7 @@ F 3 "~" H 4250 4350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Jumper:SolderJumper_2_Bridged JP1
+L EggbotWireless-rescue:SolderJumper_2_Bridged-Jumper JP1
 U 1 1 5D3CF16C
 P 4200 4550
 F 0 "JP1" H 4200 4755 50  0000 C CNN
