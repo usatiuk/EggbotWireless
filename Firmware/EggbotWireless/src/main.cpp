@@ -2,73 +2,12 @@
 #include <ESP8266WiFi.h>
 #include <Ticker.h>
 #include <Wire.h>
+#include "GCodeParser.h"
 #include "Globals.h"
 #include "Power.h"
-#include "GCodeParser.h"
 #include "common/Commands.h"
 
 String inString;
-bool waitingForNext = false;
-
-void execCommand(Command command) {
-    if (command.type != CommandType::unk) {
-        Wire.beginTransmission(8);
-        byte buffer[7][sizeof(float)];
-        command.toBytes(buffer[0]);
-        for (int i = 0; i < 7; i++) {
-            /*
-            float dbg;
-            bytesToFloat(&dbg, buffer[i]);
-            Serial.println(dbg);
-             */
-            Wire.write(buffer[i], sizeof(float));
-        }
-        Wire.endTransmission();
-    } else {
-        Serial.println("OK");
-        return;
-    }
-
-    if (command.type == CommandType::G01 || command.type == CommandType::G00) {
-        Wire.requestFrom(8, 1);
-        waitingForNext = true;
-        return;
-    }
-
-    if (command.type == CommandType::M99) {
-        Wire.requestFrom(8, 5 * sizeof(float));
-
-        float resp[5];
-        byte buffer[sizeof(float)];
-
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < sizeof(float); j++) {
-                while (!Wire.available()) {
-                }
-                buffer[j] = Wire.read();
-            }
-            bytesToFloat(&resp[i], buffer);
-        }
-
-        Serial.println("Status:");
-        Serial.print("X: ");
-        Serial.println(resp[servoRot]);
-
-        Serial.print("Y: ");
-        Serial.println(resp[eggRot]);
-
-        Serial.print("Xmm: ");
-        Serial.println(resp[servoPos]);
-
-        Serial.print("Ymm: ");
-        Serial.println(resp[eggPos]);
-
-        Serial.print("PEN: ");
-        Serial.println(resp[penPos]);
-
-        return;
-    }
-}
 
 void setup() {
     Serial.begin(115200);
@@ -80,7 +19,7 @@ unsigned long commandTime = 0;
 constexpr unsigned long commandTimeout = 20000;
 
 void loop() {
-    if(millis() - commandTime > commandTimeout) {
+    if (millis() - commandTime > commandTimeout) {
         power.disable12v();
     }
     while (Serial.available() > 0) {
@@ -89,32 +28,23 @@ void loop() {
 
         if (inChar == '\n') {
             inString.trim();
-            if(!power.isEnabled12v()){
+            if (!power.isEnabled12v()) {
                 power.enable12v();
                 delay(100);
             }
-            execCommand(parseGCode(inString));
+            executor.execCommand(parseGCode(inString));
             commandTime = millis();
-            unsigned long reqTime = millis();
-            while (waitingForNext) {
-                while (!Wire.available()) {
-                    if (millis() - reqTime > 100) {
-                        Wire.requestFrom(8, 1);
-                        reqTime = millis();
-                    }
-                }
-                int response = Wire.read();
-                if (response == WAIT) {
+            I2CStatusMsg response;
+            do {
+                response = executor.status();
+                if (response == I2CStatusMsg::WAIT) {
                     delay(1);
-                    Wire.requestFrom(8, 1);
-                    reqTime = millis();
-                } else if (response == NEXT) {
+                } else if (response == I2CStatusMsg::NEXT) {
                     Serial.println("OK");
-                    waitingForNext = false;
                 } else {
                     Serial.println("Error");
                 }
-            }
+            } while (response != I2CStatusMsg::NEXT);
             inString = "";
         }
     }
