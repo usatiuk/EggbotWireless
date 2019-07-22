@@ -10,6 +10,8 @@ enum bcAxis {
 enum class I2CStatusMsg {
     WAIT = 0,
     NEXT,
+    TIMEOUT,
+    ERR,
 };
 
 enum PosMsg {

@@ -64,15 +64,27 @@ void Executor::execCommand(Command command) {
 
 I2CStatusMsg Executor::status() {
     unsigned long reqTime = millis();
-    Wire.requestFrom(8, 1);
+    int tries = 0;
 
-    while (!Wire.available()) {
-        if (millis() - reqTime > 100) {
-            Wire.requestFrom(8, 1);
-            reqTime = millis();
-        }
+    if (reqTime - lastStsTime < lastStsTTL) {
+        return lastSts;
     }
 
+    Wire.requestFrom(8, 1);
+    while (!Wire.available()) {
+        if (millis() - reqTime > 10 && tries < 10) {
+            Wire.requestFrom(8, 1);
+            tries++;
+            reqTime = millis();
+        } else {
+            return I2CStatusMsg::TIMEOUT;
+        }
+        delay(1);
+    }
     int resp = Wire.read();
-    return static_cast<I2CStatusMsg>(resp);
+
+    lastStsTime = millis();
+    lastSts = static_cast<I2CStatusMsg>(resp);
+
+    return lastSts;
 }

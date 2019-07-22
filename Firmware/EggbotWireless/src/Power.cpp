@@ -27,10 +27,12 @@ void Power::enable12v() {
     enabled12v = true;
 }
 
-bool Power::isEnabled12v() {
-    return enabled12v;
-}
+bool Power::isEnabled12v() { return enabled12v; }
 
 void Power::commandHook() {
     lastCmdTime = millis();
+    if (!isEnabled12v()) {
+        enable12v();
+        delay(100);
+    }
 }
