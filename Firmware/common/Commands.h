@@ -7,12 +7,12 @@ enum bcAxis {
     Z = 3,
 };
 
-enum I2CMessage {
-    WAIT,
+enum class I2CStatusMsg {
+    WAIT = 0,
     NEXT,
 };
 
-enum StatusMSG {
+enum PosMsg {
     servoRot,
     eggRot,
     servoPos,

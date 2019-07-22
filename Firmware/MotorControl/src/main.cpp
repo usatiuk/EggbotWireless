@@ -65,7 +65,7 @@ void receiveEvent(int howMany) {
 
 byte txBuffer[5][sizeof(float)];
 void requestEvent() {
-    if (command.type == CommandType::M99) {
+    if (command.type == CommandType::M99 && newCommand) {
         floatToBytes(txBuffer[0], servoStepper.getPos());
         floatToBytes(txBuffer[1], eggStepper.getPos());
 
@@ -74,10 +74,11 @@ void requestEvent() {
 
         floatToBytes(txBuffer[4], (float)pen.getEngaged());
         Wire.write(txBuffer[0], 5 * sizeof(float));
+        newCommand = false;
     } else if (executing || newCommand) {
-        Wire.write(WAIT);
+        Wire.write(static_cast<int>(I2CStatusMsg::WAIT));
     } else {
-        Wire.write(NEXT);
+        Wire.write(static_cast<int>(I2CStatusMsg::NEXT));
     }
 }
 
@@ -85,6 +86,7 @@ void execCommand() {
     executing = true;
 
     if (command.type == CommandType::G01 || command.type == CommandType::G00) {
+        newCommand = false;
         if (command.type == CommandType::G01) {
             needAdjust = true;
         } else {
@@ -109,9 +111,9 @@ void execCommand() {
         }
 
         adjustRPM();
-
-        return;
     }
+
+    return;
 }
 
 void setup() {
@@ -161,7 +163,6 @@ void updateExecution() {
 
 void loop() {
     if (newCommand) {
-        newCommand = false;
         execCommand();
     }
     updateExecution();
