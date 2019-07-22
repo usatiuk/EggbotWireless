@@ -135,6 +135,11 @@ void setup() {
 volatile unsigned int tick = 0;
 volatile bool armed = false;
 
+/*
+We use our own timer for more precise timings
+And it ticks only when armed, to ensure
+that updateExecution() doesn't skip a single tick
+ */
 ISR(TIMER2_COMPA_vect) {
     if (armed) {
         tick++;
