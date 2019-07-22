@@ -4,6 +4,7 @@
 #include <Wire.h>
 #include "GCodeParser.h"
 #include "Globals.h"
+#include "Executor.h"
 #include "Power.h"
 #include "common/Commands.h"
 
@@ -15,13 +16,8 @@ void setup() {
     power.enable12v();
 }
 
-unsigned long commandTime = 0;
-constexpr unsigned long commandTimeout = 20000;
 
 void loop() {
-    if (millis() - commandTime > commandTimeout) {
-        power.disable12v();
-    }
     while (Serial.available() > 0) {
         char inChar = Serial.read();
         inString += inChar;
@@ -32,8 +28,8 @@ void loop() {
                 power.enable12v();
                 delay(100);
             }
+            power.commandHook();
             executor.execCommand(parseGCode(inString));
-            commandTime = millis();
             I2CStatusMsg response;
             do {
                 response = executor.status();
