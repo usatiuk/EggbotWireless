@@ -2,13 +2,16 @@
 #include <ESP8266WiFi.h>
 #include <Ticker.h>
 #include <Wire.h>
+#include "Executor.h"
 #include "GCodeParser.h"
 #include "Globals.h"
-#include "Executor.h"
 #include "Power.h"
 #include "common/Commands.h"
 
 String inString;
+String commandBuf;
+bool newCommand;
+bool shouldPrintSts;
 
 void setup() {
     Serial.begin(115200);
@@ -16,6 +19,21 @@ void setup() {
     power.enable12v();
 }
 
+void sendCommand(String command) {
+    power.commandHook();
+    executor.execCommand(parseGCode(command));
+    shouldPrintSts = true;
+}
+
+void printSts(I2CStatusMsg status) {
+    if (status == I2CStatusMsg::WAIT) {
+        shouldPrintSts = true;
+    } else if (status == I2CStatusMsg::NEXT) {
+        Serial.println("OK");
+    } else {
+        Serial.println("Error");
+    }
+}
 
 void loop() {
     while (Serial.available() > 0) {
@@ -24,24 +42,19 @@ void loop() {
 
         if (inChar == '\n') {
             inString.trim();
-            if (!power.isEnabled12v()) {
-                power.enable12v();
-                delay(100);
-            }
-            power.commandHook();
-            executor.execCommand(parseGCode(inString));
-            I2CStatusMsg response;
-            do {
-                response = executor.status();
-                if (response == I2CStatusMsg::WAIT) {
-                    delay(1);
-                } else if (response == I2CStatusMsg::NEXT) {
-                    Serial.println("OK");
-                } else {
-                    Serial.println("Error");
-                }
-            } while (response != I2CStatusMsg::NEXT);
+            commandBuf = inString;
             inString = "";
+            newCommand = true;
         }
+    }
+
+    I2CStatusMsg status = executor.status();
+    if (shouldPrintSts) {
+        shouldPrintSts = false;
+        printSts(status);
+    }
+    if (newCommand && status == I2CStatusMsg::NEXT) {
+        newCommand = false;
+        sendCommand(commandBuf);
     }
 }
