@@ -1,5 +1,7 @@
 #include "Executor.h"
 
+Executor executor;
+
 Executor::Executor() {}
 
 void Executor::execCommand(Command command) {

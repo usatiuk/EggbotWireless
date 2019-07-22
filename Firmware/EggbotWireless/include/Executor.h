@@ -17,6 +17,6 @@ public:
     I2CStatusMsg status();
 };
 
-
+extern Executor executor;
 
 #endif 
