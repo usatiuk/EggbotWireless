@@ -12,7 +12,6 @@ class Executor
 private:
     unsigned long lastStsTime;
     I2CStatusMsg lastSts;
-    static constexpr int lastStsTTL = 1;
 public:
     Executor(/* args */);
     void execCommand(Command command);

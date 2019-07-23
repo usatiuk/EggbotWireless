@@ -1,9 +1,8 @@
 #include "Power.h"
 #include "Globals.h"
+#include "Config.h"
 
 Power power;
-
-constexpr unsigned long commandTimeout = 20000;
 
 Power::Power() {
     pinMode(pin12v, OUTPUT);
@@ -12,7 +11,7 @@ Power::Power() {
 }
 
 void Power::tickerRoutine() {
-    if (millis() - lastCmdTime > commandTimeout) {
+    if (millis() - lastCmdTime > powerTimeout) {
         disable12v();
     }
 }
@@ -33,6 +32,6 @@ void Power::commandHook() {
     lastCmdTime = millis();
     if (!isEnabled12v()) {
         enable12v();
-        delay(100);
+        delay(powerStartupDelay);
     }
 }

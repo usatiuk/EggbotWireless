@@ -4,7 +4,7 @@
 
 Command::Command(float *floats) { fromFloats(floats); }
 
-int Command::fromFloats(float *floats) {
+void Command::fromFloats(float *floats) {
     type = static_cast<CommandType>(floats[0]);
     arg1 = floats[1];
     arg2 = floats[2];
@@ -14,7 +14,7 @@ int Command::fromFloats(float *floats) {
     arg6 = floats[6];
 }
 
-int Command::toFloats(float *floats) {
+void Command::toFloats(float *floats) {
     floats[0] = static_cast<float>(type);
     floats[1] = arg1;
     floats[2] = arg2;
@@ -26,28 +26,28 @@ int Command::toFloats(float *floats) {
 
 Command::Command(byte *bytes) { fromBytes(bytes); }
 
-int Command::fromBytes(byte *bytes) {
-    float floats[7];
-    for (int i = 0; i < 7; i++) {
-        bytesToFloat(&floats[i], &bytes[i * sizeof(float)]);
+void Command::fromBytes(byte *bytes) {
+    float floats[i2cCmdFloats];
+    for (int i = 0; i < i2cCmdFloats; i++) {
+        bytesToFloat(&floats[i], &bytes[i * i2cFloatSize]);
     }
     fromFloats(floats);
 }
 
-int Command::toBytes(byte *bytes) {
-    float floats[7];
+void Command::toBytes(byte *bytes) {
+    float floats[i2cCmdFloats];
     toFloats(floats);
     for (int i = 0; i < 7; i++) {
-        floatToBytes(&bytes[i * sizeof(float)], floats[i]);
+        floatToBytes(&bytes[i * i2cFloatSize], floats[i]);
     }
 }
 
 void bytesToFloat(float *target, byte *val) {
-    memcpy(target, val, sizeof(float));
+    memcpy(target, val, i2cFloatSize);
     return;
 }
 
 void floatToBytes(byte *target, float val) {
-    memcpy(target, &val, sizeof(float));
+    memcpy(target, &val, i2cFloatSize);
     return;
 }
