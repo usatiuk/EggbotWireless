@@ -41,39 +41,34 @@ Command command;
 bool newCommand = false;
 bool executing = false;
 
-byte rxBuffer[7][sizeof(float)];
+byte rxBuffer[i2cCmdBytes];
 void receiveEvent(int howMany) {
     static int curByte = 0;
-    static int curFloat = 0;
     while (Wire.available() > 0) {
         if (!newCommand) {
             char c = Wire.read();
-            rxBuffer[curFloat][curByte] = c;
+            rxBuffer[curByte] = c;
             curByte++;
-            if (curByte == 4) {
+            if (curByte == i2cCmdBytes) {
                 curByte = 0;
-                curFloat++;
-            }
-            if (curFloat == 7) {
-                curFloat = 0;
-                command.fromBytes(rxBuffer[0]);
+                command.fromBytes(rxBuffer);
                 newCommand = true;
             }
         }
     }
 }
 
-byte txBuffer[5][sizeof(float)];
+byte txBuffer[5 * i2cFloatSize];
 void requestEvent() {
     if (command.type == CommandType::M99 && newCommand) {
-        floatToBytes(txBuffer[0], servoStepper.getPos());
-        floatToBytes(txBuffer[1], eggStepper.getPos());
+        floatToBytes(&txBuffer[0 * i2cFloatSize], servoStepper.getPos());
+        floatToBytes(&txBuffer[1 * i2cFloatSize], eggStepper.getPos());
 
-        floatToBytes(txBuffer[2], servoStepper.getPosMm());
-        floatToBytes(txBuffer[3], eggStepper.getPosMm());
+        floatToBytes(&txBuffer[2 * i2cFloatSize], servoStepper.getPosMm());
+        floatToBytes(&txBuffer[3 * i2cFloatSize], eggStepper.getPosMm());
 
-        floatToBytes(txBuffer[4], (float)pen.getEngaged());
-        Wire.write(txBuffer[0], 5 * sizeof(float));
+        floatToBytes(&txBuffer[4 * i2cFloatSize], (float)pen.getEngaged());
+        Wire.write(txBuffer, 5 * i2cFloatSize);
         newCommand = false;
     } else if (executing || newCommand) {
         Wire.write(static_cast<int>(I2CStatusMsg::WAIT));

@@ -1,6 +1,9 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
+constexpr int i2cFloatSize{4}, i2cCmdFloats{7},
+    i2cCmdBytes{i2cFloatSize * i2cCmdFloats};
+
 enum bcAxis {
     X = 1,
     Y = 2,
@@ -50,12 +53,12 @@ struct Command {
           arg6(arg6){};
 
     Command(float *floats);
-    int fromFloats(float *floats);
-    int toFloats(float *floats);
+    void fromFloats(float *floats);
+    void toFloats(float *floats);
 
     Command(byte *bytes);
-    int fromBytes(byte *bytes);
-    int toBytes(byte *bytes);
+    void fromBytes(byte *bytes);
+    void toBytes(byte *bytes);
 };
 
 void bytesToFloat(float *target, byte *val);

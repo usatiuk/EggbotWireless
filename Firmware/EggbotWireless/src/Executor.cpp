@@ -1,22 +1,22 @@
 #include "Executor.h"
+#include "Config.h"
+#include "common/Commands.h"
 
 Executor executor;
 
 Executor::Executor() {}
 
 void Executor::execCommand(Command command) {
-    if (command.type != CommandType::unk) {
-        Wire.beginTransmission(8);
-        byte buffer[7][sizeof(float)];
-        command.toBytes(buffer[0]);
-        for (int i = 0; i < 7; i++) {
-            Wire.write(buffer[i], sizeof(float));
-        }
-        Wire.endTransmission();
-    } else {
+    if (command.type == CommandType::unk) {
         Serial.println("OK");
         return;
     }
+
+    Wire.beginTransmission(8);
+    byte buffer[i2cCmdBytes];
+    command.toBytes(buffer);
+    Wire.write(buffer, i2cCmdBytes);
+    Wire.endTransmission();
 
     if (command.type == CommandType::G01 || command.type == CommandType::G00) {
         return;
@@ -24,13 +24,13 @@ void Executor::execCommand(Command command) {
 
     if (command.type == CommandType::M99) {
         delay(10);
-        Wire.requestFrom(8, 5 * sizeof(float));
+        Wire.requestFrom(8, 5 * i2cFloatSize);
 
         float resp[5];
-        byte buffer[sizeof(float)];
+        byte buffer[i2cFloatSize];
 
         for (int i = 0; i < 5; i++) {
-            for (unsigned int j = 0; j < sizeof(float); j++) {
+            for (unsigned int j = 0; j < i2cFloatSize; j++) {
                 while (!Wire.available()) {
                 }
                 buffer[j] = Wire.read();
@@ -68,7 +68,7 @@ I2CStatusMsg Executor::status() {
 
     Wire.requestFrom(8, 1);
     while (!Wire.available()) {
-        if (millis() - reqTime > 10 && tries < 10) {
+        if (millis() - reqTime > i2cTimeout && tries < i2cTimeoutTries) {
             Wire.requestFrom(8, 1);
             tries++;
             reqTime = millis();
