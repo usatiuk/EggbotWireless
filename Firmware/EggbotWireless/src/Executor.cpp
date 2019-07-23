@@ -10,11 +10,6 @@ void Executor::execCommand(Command command) {
         byte buffer[7][sizeof(float)];
         command.toBytes(buffer[0]);
         for (int i = 0; i < 7; i++) {
-            /*
-            float dbg;
-            bytesToFloat(&dbg, buffer[i]);
-            Serial.println(dbg);
-             */
             Wire.write(buffer[i], sizeof(float));
         }
         Wire.endTransmission();
@@ -28,6 +23,7 @@ void Executor::execCommand(Command command) {
     }
 
     if (command.type == CommandType::M99) {
+        delay(10);
         Wire.requestFrom(8, 5 * sizeof(float));
 
         float resp[5];
