@@ -147,7 +147,7 @@ ISR(TIMER2_COMPA_vect) {
     }
 }
 
-void updateExecution() {
+void steppersRoutine() {
     if (!armed) {
         if (tick % adjustDelay == 0) {
             adjustRPM();
@@ -170,5 +170,5 @@ void loop() {
     if (newCommand) {
         execCommand();
     }
-    updateExecution();
+    steppersRoutine();
 }
