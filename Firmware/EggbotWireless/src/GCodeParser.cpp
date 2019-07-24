@@ -53,14 +53,19 @@ Command parseGCode(String gcode) {
     }
 
     if (strcmp(command, "G01") == 0 || strcmp(command, "G00") == 0) {
-        if(argsMap.count('X') > 0) {
-            bufcmd.arg1 = argsMap['X'];
+        auto xIter = argsMap.find('X');
+        auto yIter = argsMap.find('Y');
+        auto zIter = argsMap.find('Z');
+        auto endIter = argsMap.end();
+
+        if(xIter != endIter) {
+            bufcmd.arg1 = xIter->second;
         }
-        if (argsMap.count('Y') > 0) {
-            bufcmd.arg2 = argsMap['Y'];
+        if (yIter != endIter) {
+            bufcmd.arg2 = yIter->second;
         }
-        if (argsMap.count('Z') > 0) {
-            bufcmd.arg3 = argsMap['Z'];
+        if (zIter != endIter) {
+            bufcmd.arg3 = zIter->second;
         }
 
         if (strcmp(command, "G00") == 0) {
