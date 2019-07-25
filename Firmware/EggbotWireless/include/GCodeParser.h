@@ -4,6 +4,6 @@
 #include <Arduino.h>
 #include "common/Commands.h"
 
-Command parseGCode(String gcode);
+Command parseGCode(std::string gcode);
 
 #endif // PARSER_H

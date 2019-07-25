@@ -5,11 +5,11 @@
 
 Command bufcmd;
 
-Command parseGCode(String gcode) {
+Command parseGCode(std::string gcode) {
     char commandString[50];
     std::unordered_map<char, float> argsMap;
 
-    gcode.toCharArray(commandString, 50);
+    strncpy(commandString, gcode.c_str(), 50);
 
     // Convert command to uppercase
     for (int i = 0; commandString[i] != '\0'; i++) {
