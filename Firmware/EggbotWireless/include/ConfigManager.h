@@ -7,12 +7,16 @@
 
 class ConfigManager {
    private:
+    bool saved = false;
+
    public:
     std::unordered_map<std::string, std::string> map;
     ConfigManager();
     std::string get(std::string &prop);
     void update(std::string &prop, std::string &val);
     void load();
+    void write();
+    bool isSaved();
 };
 
 extern ConfigManager configManager;

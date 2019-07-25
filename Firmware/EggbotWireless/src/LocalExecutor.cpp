@@ -14,7 +14,7 @@ void LocalExecutor::execCommand(LCommand cmd) {
 
         return;
     }
-    if (cmd.type == LCommandType::ConfSet) {
+    if (cmd.type == LCommandType::ConfPut) {
         Serial.print(cmd.arg1);
         Serial.print(": ");
         std::string arg1 = std::string(cmd.arg1);
@@ -34,6 +34,15 @@ void LocalExecutor::execCommand(LCommand cmd) {
         }
     }
 
+    if(cmd.type == LCommandType::ConfLoad) {
+        configManager.load();
+        return;
+    }
+
+    if(cmd.type == LCommandType::ConfWrite) {
+        configManager.write();
+        return;
+    }
 }
 
 LocalExecutor localExecutor;

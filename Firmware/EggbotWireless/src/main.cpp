@@ -3,6 +3,7 @@
 #include <Ticker.h>
 #include <Wire.h>
 #include <string>
+#include "ConfigManager.h"
 #include "Executor.h"
 #include "GCodeParser.h"
 #include "Globals.h"
@@ -22,6 +23,7 @@ void setup() {
     power.enable12v();
     inString.reserve(50);
     commandBuf.reserve(50);
+    configManager.load();
 }
 
 void sendCommand(std::string command) {
