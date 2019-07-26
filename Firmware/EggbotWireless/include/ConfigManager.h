@@ -14,8 +14,8 @@ class ConfigManager {
    public:
     std::unordered_map<std::string, std::string> map;
     ConfigManager();
-    std::string get(std::string &prop);
-    void update(std::string &prop, std::string &val);
+    std::string get(std::string prop);
+    void update(std::string prop, std::string val);
     void load();
     void write();
     void reset();
