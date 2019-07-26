@@ -10,6 +10,7 @@ enum class LCommandType {
     ConfPut,    // LCP
     ConfLoad,   // LCL
     ConfWrite,  // LCW
+    ConfReset,  // LCR
 };
 
 struct LCommand {

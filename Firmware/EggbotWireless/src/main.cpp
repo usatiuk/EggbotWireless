@@ -2,6 +2,7 @@
 #include <ESP8266WiFi.h>
 #include <Ticker.h>
 #include <Wire.h>
+#include <queue>
 #include <string>
 #include "ConfigManager.h"
 #include "Executor.h"
@@ -11,30 +12,15 @@
 #include "Power.h"
 #include "common/Commands.h"
 
-std::string inString;
-std::string commandBuf;
-bool newCommand;
-bool localCmd;
+std::queue<Command> commandQueue;
+std::queue<LCommand> lCommandQueue;
 bool shouldPrintSts;
 
 void setup() {
     Serial.begin(115200);
     Wire.begin(12, 13);
     power.enable12v();
-    inString.reserve(50);
-    commandBuf.reserve(50);
     configManager.load();
-}
-
-void sendCommand(std::string command) {
-    power.commandHook();
-    executor.execCommand(parseGCode(command));
-    shouldPrintSts = true;
-}
-
-void execLocalCommand(std::string command) {
-    localExecutor.execCommand(LCommand(command));
-    shouldPrintSts = true;
 }
 
 void printSts(I2CStatusMsg status) {
@@ -47,7 +33,9 @@ void printSts(I2CStatusMsg status) {
     }
 }
 
-void loop() {
+void serialLoop() {
+    static std::string inString;
+    static bool localCmd = false;
     while (Serial.available() > 0) {
         char inChar = Serial.read();
 
@@ -61,26 +49,39 @@ void loop() {
         }
 
         if (inChar == '\n') {
-            commandBuf = inString;
+            if (localCmd) {
+                lCommandQueue.emplace(inString);
+                localCmd = false;
+            } else {
+                commandQueue.push(parseGCode(inString));
+            }
             inString = "";
-            newCommand = true;
         } else {
             inString += inChar;
         }
     }
+}
 
+void commandsLoop() {
     I2CStatusMsg status = executor.status();
     if (shouldPrintSts) {
         shouldPrintSts = false;
         printSts(status);
     }
-    if (!localCmd && newCommand && status == I2CStatusMsg::NEXT) {
-        newCommand = false;
-        sendCommand(commandBuf);
+    if (status == I2CStatusMsg::NEXT && !commandQueue.empty()) {
+        power.commandHook();
+        executor.execCommand(commandQueue.front());
+        commandQueue.pop();
+        shouldPrintSts = true;
     }
-    if (localCmd && newCommand) {
-        localCmd = false;
-        newCommand = false;
-        execLocalCommand(commandBuf);
+    if (!lCommandQueue.empty()) {
+        localExecutor.execCommand(lCommandQueue.front());
+        lCommandQueue.pop();
+        shouldPrintSts = true;
     }
+}
+
+void loop() {
+    serialLoop();
+    commandsLoop();
 }
