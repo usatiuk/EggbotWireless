@@ -43,6 +43,11 @@ void LocalExecutor::execCommand(LCommand cmd) {
         configManager.write();
         return;
     }
+
+    if (cmd.type == LCommandType::ConfReset) {
+        configManager.reset();
+        return;
+    }
 }
 
 LocalExecutor localExecutor;

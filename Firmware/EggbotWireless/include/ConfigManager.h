@@ -5,6 +5,8 @@
 #include <string>
 #include <unordered_map>
 
+extern const std::unordered_map<std::string, std::string> defaults; 
+
 class ConfigManager {
    private:
     bool saved = false;
@@ -16,6 +18,7 @@ class ConfigManager {
     void update(std::string &prop, std::string &val);
     void load();
     void write();
+    void reset();
     bool isSaved();
 };
 

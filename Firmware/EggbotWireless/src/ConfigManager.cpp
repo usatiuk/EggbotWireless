@@ -2,6 +2,14 @@
 
 #include "ConfigManager.h"
 
+const std::unordered_map<std::string, std::string> defaults{
+    {{"wifiClient", "off"},
+     {"wifiClientSSID", ""},
+     {"wifiClientPass", ""},
+     {"wifiAP", "on"},
+     {"wifiAPSSID", "eggbot"},
+     {"wifiAPPASS", "eggbot"}}};
+
 /*
     Max string length is 25
     Pairs are stored in EEPROM as 50 chars (25 chars for one string)
@@ -48,7 +56,9 @@ void ConfigManager::load() {
     }
 
     if (strcmp(curStr, "good") != 0) {
+        map = defaults;
         EEPROM.end();
+        configManager.write();
         return;
     }
 
@@ -81,25 +91,39 @@ void ConfigManager::write() {
 
     int curPair = 0;
     char buffer[2048];
-    memset(buffer, 0, 2047);
+    memset(buffer, 0, 2048);
 
-    strncpy(buffer, "good", 24);
+    strncpy(buffer, "good", 25);
     curPair++;
 
     EEPROM.begin(2048);
 
     for (auto &val : map) {
-        strncpy(&buffer[curPair * 50], val.first.c_str(), 24);
-        strncpy(&buffer[(curPair * 50) + 25], val.second.c_str(), 24);
+        strncpy(&buffer[curPair * 50], val.first.c_str(), 25);
+        strncpy(&buffer[(curPair * 50) + 25], val.second.c_str(), 25);
         curPair++;
     }
 
-    strncpy(&buffer[curPair * 50], "end", 24);
+    strncpy(&buffer[curPair * 50], "end", 25);
     curPair++;
 
     for (int i = 0; i < curPair * 50; i++) {
         EEPROM.write(i, buffer[i]);
     }
+    EEPROM.commit();
+    EEPROM.end();
+}
+
+void ConfigManager::reset() {
+    char buffer[50];
+    memset(buffer, 0, 50);
+    strncpy(buffer, "reset", 50);
+    EEPROM.begin(50);
+
+    for (unsigned int i = 0; i < sizeof(buffer); i++) {
+        EEPROM.write(i, buffer[i]);
+    }
+
     EEPROM.commit();
     EEPROM.end();
 }

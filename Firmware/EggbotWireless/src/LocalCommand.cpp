@@ -25,6 +25,8 @@ void LCommand::fromChars(char *cmd) {
                 type = LCommandType::ConfLoad;
             } else if (strcmp("LCW", cmd) == 0) {
                 type = LCommandType::ConfWrite;
+            } else if (strcmp("LCR", cmd) == 0) {
+                type = LCommandType::ConfReset;
             }
         } else if (i == 1) {
             strncpy(arg1, token, 25);
