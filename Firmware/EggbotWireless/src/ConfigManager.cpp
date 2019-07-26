@@ -1,14 +1,10 @@
 #include "EEPROM.h"
 
+#include "Config.h"
 #include "ConfigManager.h"
 
 const std::unordered_map<std::string, std::string> defaults{
-    {{"wifiClient", "off"},
-     {"wifiClientSSID", ""},
-     {"wifiClientPass", ""},
-     {"wifiAP", "on"},
-     {"wifiAPSSID", "eggbot"},
-     {"wifiAPPASS", "eggbot"}}};
+    {{"wifiMode", "ap"}, {"wifiSSID", defSSID}, {"wifiPass", defPass}}};
 
 /*
     Max string length is 25
@@ -19,7 +15,7 @@ const std::unordered_map<std::string, std::string> defaults{
 
 ConfigManager::ConfigManager() { map.reserve(20); }
 
-void ConfigManager::update(std::string &prop, std::string &val) {
+void ConfigManager::update(std::string prop, std::string val) {
     if (prop == "good" || prop == "reset" || prop == "end") {
         return;
     }
@@ -33,7 +29,7 @@ void ConfigManager::update(std::string &prop, std::string &val) {
     saved = false;
 }
 
-std::string ConfigManager::get(std::string &prop) {
+std::string ConfigManager::get(std::string prop) {
     auto valp = map.find(prop);
     if (valp != map.end()) {
         return valp->second;

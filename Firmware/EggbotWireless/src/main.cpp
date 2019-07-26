@@ -9,6 +9,7 @@
 #include "GCodeParser.h"
 #include "Globals.h"
 #include "LocalExecutor.h"
+#include "WiFiManager.h"
 #include "Power.h"
 #include "common/Commands.h"
 
@@ -21,6 +22,7 @@ void setup() {
     Wire.begin(12, 13);
     power.enable12v();
     configManager.load();
+    wifiManager.init();
 }
 
 void printSts(I2CStatusMsg status) {
