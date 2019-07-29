@@ -9,8 +9,8 @@
 #include "GCodeParser.h"
 #include "Globals.h"
 #include "LocalExecutor.h"
-#include "WiFiManager.h"
 #include "Power.h"
+#include "WiFiManager.h"
 #include "common/Commands.h"
 
 std::queue<Command> commandQueue;
@@ -25,13 +25,16 @@ void setup() {
     wifiManager.init();
 }
 
-void printSts(I2CStatusMsg status) {
-    if (status == I2CStatusMsg::WAIT) {
+void printSts(Status status) {
+    if (status.type == StatusType::WAIT) {
         shouldPrintSts = true;
-    } else if (status == I2CStatusMsg::NEXT) {
+    } else if (status.type == StatusType::NEXT) {
         Serial.println("OK");
+    } else if (status.type == StatusType::TIMEOUT) {
+        Serial.println("Timeout");
     } else {
-        Serial.println("Error");
+        Serial.print("Error: ");
+        Serial.println(static_cast<int>(status.type));
     }
 }
 
@@ -65,12 +68,12 @@ void serialLoop() {
 }
 
 void commandsLoop() {
-    I2CStatusMsg status = executor.status();
+    Status status = executor.status();
     if (shouldPrintSts) {
         shouldPrintSts = false;
         printSts(status);
     }
-    if (status == I2CStatusMsg::NEXT && !commandQueue.empty()) {
+    if (status.type == StatusType::NEXT && !commandQueue.empty()) {
         power.commandHook();
         executor.execCommand(commandQueue.front());
         commandQueue.pop();

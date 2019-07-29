@@ -27,6 +27,8 @@ void LCommand::fromChars(char *cmd) {
                 type = LCommandType::ConfWrite;
             } else if (strcmp("LCR", cmd) == 0) {
                 type = LCommandType::ConfReset;
+            } else if (strcmp("LSP", cmd) == 0) {
+                type = LCommandType::StsPrint;
             }
         } else if (i == 1) {
             strncpy(arg1, token, 25);

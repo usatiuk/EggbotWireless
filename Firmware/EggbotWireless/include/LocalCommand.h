@@ -11,6 +11,7 @@ enum class LCommandType {
     ConfLoad,   // LCL
     ConfWrite,  // LCW
     ConfReset,  // LCR
+    StsPrint,   // LSP
 };
 
 struct LCommand {

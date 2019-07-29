@@ -5,17 +5,17 @@
 #include <Wire.h>
 
 #include "common/Commands.h"
-
+#include "common/Status.h"
 
 class Executor
 {
 private:
     unsigned long lastStsTime;
-    I2CStatusMsg lastSts;
+    Status lastSts;
 public:
     Executor(/* args */);
     void execCommand(Command command);
-    I2CStatusMsg status();
+    Status status();
 };
 
 extern Executor executor;
