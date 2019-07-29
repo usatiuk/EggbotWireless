@@ -2,8 +2,10 @@
 #include <Servo.h>
 #include <Wire.h>
 #include <util/atomic.h>
+#include "Config.h"
 #include "Globals.h"
 #include "common/Commands.h"
+#include "common/Status.h"
 
 int curRPM = DEF_RPM;
 int adjustDelay = 100;
@@ -29,10 +31,13 @@ void adjustRPM() {
             }
         }
     }
+    int newEggStepperDelay =
+        calculateDelay(eggStepperRPM, STEPS_PER_REVOLUTION);
+    int newServoStepperDelay =
+        calculateDelay(servoStepperRPM, STEPS_PER_REVOLUTION);
     ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-        eggStepperDelay = calculateDelay(eggStepperRPM, STEPS_PER_REVOLUTION);
-        servoStepperDelay =
-            calculateDelay(servoStepperRPM, STEPS_PER_REVOLUTION);
+        eggStepperDelay = newEggStepperDelay;
+        servoStepperDelay = newServoStepperDelay;
     }
 }
 
@@ -58,24 +63,9 @@ void receiveEvent(int howMany) {
     }
 }
 
-byte txBuffer[5 * i2cFloatSize];
-void requestEvent() {
-    if (command.type == CommandType::M99 && newCommand) {
-        floatToBytes(&txBuffer[0 * i2cFloatSize], servoStepper.getPos());
-        floatToBytes(&txBuffer[1 * i2cFloatSize], eggStepper.getPos());
-
-        floatToBytes(&txBuffer[2 * i2cFloatSize], servoStepper.getPosMm());
-        floatToBytes(&txBuffer[3 * i2cFloatSize], eggStepper.getPosMm());
-
-        floatToBytes(&txBuffer[4 * i2cFloatSize], (float)pen.getEngaged());
-        Wire.write(txBuffer, 5 * i2cFloatSize);
-        newCommand = false;
-    } else if (executing || newCommand) {
-        Wire.write(static_cast<int>(I2CStatusMsg::WAIT));
-    } else {
-        Wire.write(static_cast<int>(I2CStatusMsg::NEXT));
-    }
-}
+byte txBuffer[i2cStsBytes];
+Status sts;
+void requestEvent() { Wire.write(txBuffer, i2cStsBytes); }
 
 void execCommand() {
     executing = true;
@@ -152,6 +142,20 @@ void steppersRoutine() {
         }
         if (tick % servoStepperDelay == 0) {
             servoStepper.doStep();
+        }
+        if (tick % stsUpdDelay == 0) {
+            if (executing || newCommand) {
+                sts.type = StatusType::WAIT;
+            } else {
+                sts.type = StatusType::NEXT;
+            }
+
+            sts.mmS = servoStepper.getPosMm();
+            sts.mmE = eggStepper.getPosMm();
+
+            sts.pEng = (float)pen.getEngaged();
+
+            ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { sts.toBytes(txBuffer); }
         }
         armed = true;
     }

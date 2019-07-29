@@ -2,6 +2,8 @@
 
 #include <string>
 #include "ConfigManager.h"
+#include "Executor.h"
+#include "common/Status.h"
 
 LocalExecutor::LocalExecutor() {}
 
@@ -26,26 +28,42 @@ void LocalExecutor::execCommand(LCommand cmd) {
         return;
     }
 
-    if(cmd.type == LCommandType::ConfList) {
-        for(auto &val : configManager.map) {
+    if (cmd.type == LCommandType::ConfList) {
+        for (auto &val : configManager.map) {
             Serial.print(val.first.c_str());
             Serial.print(": ");
             Serial.println(val.second.c_str());
         }
     }
 
-    if(cmd.type == LCommandType::ConfLoad) {
+    if (cmd.type == LCommandType::ConfLoad) {
         configManager.load();
         return;
     }
 
-    if(cmd.type == LCommandType::ConfWrite) {
+    if (cmd.type == LCommandType::ConfWrite) {
         configManager.write();
         return;
     }
 
     if (cmd.type == LCommandType::ConfReset) {
         configManager.reset();
+        return;
+    }
+
+    if (cmd.type == LCommandType::StsPrint) {
+        Status status = executor.status();
+
+        Serial.println("Status:");
+
+        Serial.print("Xmm: ");
+        Serial.println(status.mmS);
+
+        Serial.print("Ymm: ");
+        Serial.println(status.mmE);
+
+        Serial.print("PEN: ");
+        Serial.println(status.pEng);
         return;
     }
 }

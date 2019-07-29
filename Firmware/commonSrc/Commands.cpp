@@ -2,6 +2,16 @@
 
 #include "common/Commands.h"
 
+Command::Command(CommandType type, float arg1, float arg2, float arg3,
+                 float arg4, float arg5, float arg6)
+    : type(type),
+      arg1(arg1),
+      arg2(arg2),
+      arg3(arg3),
+      arg4(arg4),
+      arg5(arg5),
+      arg6(arg6){};
+
 Command::Command(float *floats) { fromFloats(floats); }
 
 void Command::fromFloats(float *floats) {
@@ -40,14 +50,4 @@ void Command::toBytes(byte *bytes) {
     for (int i = 0; i < 7; i++) {
         floatToBytes(&bytes[i * i2cFloatSize], floats[i]);
     }
-}
-
-void bytesToFloat(float *target, byte *val) {
-    memcpy(target, val, i2cFloatSize);
-    return;
-}
-
-void floatToBytes(byte *target, float val) {
-    memcpy(target, &val, i2cFloatSize);
-    return;
 }
