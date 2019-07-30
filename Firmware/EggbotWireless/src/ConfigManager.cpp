@@ -4,7 +4,10 @@
 #include "ConfigManager.h"
 
 const std::unordered_map<std::string, std::string> defaults{
-    {{"wifiMode", "ap"}, {"wifiSSID", defSSID}, {"wifiPass", defPass}}};
+    {{"wifiMode", "ap"},
+     {"wifiSSID", defSSID},
+     {"wifiPass", defPass},
+     {"defRpm", "2"}}};
 
 /*
     Max string length is 25

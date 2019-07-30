@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <unordered_map>
 
+#include "ConfigManager.h"
 #include "GCodeParser.h"
 
 Command bufcmd;
@@ -56,9 +57,10 @@ Command parseGCode(std::string gcode) {
         auto xIter = argsMap.find('X');
         auto yIter = argsMap.find('Y');
         auto zIter = argsMap.find('Z');
+        auto fIter = argsMap.find('F');
         auto endIter = argsMap.end();
 
-        if(xIter != endIter) {
+        if (xIter != endIter) {
             bufcmd.arg1 = xIter->second;
         }
         if (yIter != endIter) {
@@ -66,6 +68,11 @@ Command parseGCode(std::string gcode) {
         }
         if (zIter != endIter) {
             bufcmd.arg3 = zIter->second;
+        }
+        if (fIter != endIter) {
+            bufcmd.arg4 = fIter->second;
+        } else {
+            bufcmd.arg4 = atof(configManager.get("defRpm").c_str());
         }
 
         if (strcmp(command, "G00") == 0) {
