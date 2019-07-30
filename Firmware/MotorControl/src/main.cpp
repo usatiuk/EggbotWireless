@@ -7,7 +7,7 @@
 #include "common/Commands.h"
 #include "common/Status.h"
 
-int curRPM = DEF_RPM;
+int curRPM = defRPM;
 int adjustDelay = 100;
 bool needAdjust;
 
@@ -95,6 +95,10 @@ void execCommand() {
             }
         }
 
+        if (!isnan(command.arg4)) {
+            curRPM = command.arg4;
+        }
+
         adjustRPM();
     }
 
@@ -113,7 +117,7 @@ void setup() {
     OCR2A = 250;
     TCCR2A |= (1 << WGM20) | (1 << CS22);
     TIMSK2 |= (1 << OCIE2A);
-    servoStepper.setPos(X_LIMIT);
+    servoStepper.setPos(xLimit);
     pen.init();
 }
 
