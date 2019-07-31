@@ -4,6 +4,9 @@
 #include <Wire.h>
 #include <queue>
 #include <string>
+#include <ESP8266WebServer.h>
+#include <ESP8266mDNS.h>
+
 #include "ConfigManager.h"
 #include "Executor.h"
 #include "GCodeParser.h"
@@ -11,10 +14,9 @@
 #include "LocalExecutor.h"
 #include "Power.h"
 #include "WiFiManager.h"
+#include "WebAPI.h"
 #include "common/Commands.h"
 
-std::queue<Command> commandQueue;
-std::queue<LCommand> lCommandQueue;
 bool shouldPrintSts;
 
 void setup() {
@@ -23,6 +25,9 @@ void setup() {
     power.enable12v();
     configManager.load();
     wifiManager.init();
+
+    MDNS.begin(configManager.get("name").c_str());
+    webApi.init();
 }
 
 void printSts(Status status) {
@@ -89,4 +94,7 @@ void commandsLoop() {
 void loop() {
     serialLoop();
     commandsLoop();
+
+    MDNS.update();
+    webApi.loopRoutine();
 }

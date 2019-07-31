@@ -6,6 +6,7 @@ constexpr int i2cTimeout{10}, i2cTimeoutTries{10};
 constexpr int lastStsTTL{10};
 constexpr unsigned long powerTimeout{20000}, powerStartupDelay{100};
 
-constexpr const char *defSSID{"eggbot"}, *defPass{"eggbotwi"};
+constexpr const char *defSSID{"eggbot"}, *defPass{"eggbotwi"},
+    *defName{"eggbot"};
 
 #endif  // CONFIG_H
