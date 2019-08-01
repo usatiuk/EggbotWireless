@@ -5,16 +5,16 @@ QueueManager::QueueManager() {}
 void QueueManager::init() {}
 
 void QueueManager::printSts(Status status) {
-        if (status.type == StatusType::WAIT) {
-            shouldPrintSts = true;
-        } else if (status.type == StatusType::NEXT) {
-            Serial.println("OK");
-        } else if (status.type == StatusType::TIMEOUT) {
-            Serial.println("Timeout");
-        } else {
-            Serial.print("Error: ");
-            Serial.println(static_cast<int>(status.type));
-        }
+    if (status.type == StatusType::WAIT) {
+        shouldPrintSts = true;
+    } else if (status.type == StatusType::NEXT) {
+        Serial.println("OK");
+    } else if (status.type == StatusType::TIMEOUT) {
+        Serial.println("Timeout");
+    } else {
+        Serial.print("Error: ");
+        Serial.println(static_cast<int>(status.type));
+    }
 }
 
 void QueueManager::loopRoutine() {
@@ -43,5 +43,11 @@ void QueueManager::putCommand(std::string cmd) {
         commandQueue.push(parseGCode(cmd));
     }
 }
+
+uint8_t QueueManager::execQueueSize() {
+    return commandQueue.size();
+}
+
+void QueueManager::putCommand(char *cmd) { putCommand(std::string(cmd)); }
 
 QueueManager queueManager;
