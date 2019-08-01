@@ -7,6 +7,7 @@
 class WebAPI {
    private:
     void handleNotFound();
+    void handlePutCommand();
 
    public:
     WebAPI();

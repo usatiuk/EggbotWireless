@@ -25,7 +25,7 @@ class QueueManager {
     QueueManager();
     void init();
     void loopRoutine();
-    uint8_t execQueueNum();
+    uint8_t execQueueSize();
     void putCommand(std::string cmd);
     void putCommand(char *cmd);
 };
