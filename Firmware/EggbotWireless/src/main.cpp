@@ -15,9 +15,8 @@
 #include "Power.h"
 #include "WiFiManager.h"
 #include "WebAPI.h"
+#include "QueueManager.h"
 #include "common/Commands.h"
-
-bool shouldPrintSts;
 
 void setup() {
     Serial.begin(115200);
@@ -30,22 +29,8 @@ void setup() {
     webApi.init();
 }
 
-void printSts(Status status) {
-    if (status.type == StatusType::WAIT) {
-        shouldPrintSts = true;
-    } else if (status.type == StatusType::NEXT) {
-        Serial.println("OK");
-    } else if (status.type == StatusType::TIMEOUT) {
-        Serial.println("Timeout");
-    } else {
-        Serial.print("Error: ");
-        Serial.println(static_cast<int>(status.type));
-    }
-}
-
 void serialLoop() {
     static std::string inString;
-    static bool localCmd = false;
     while (Serial.available() > 0) {
         char inChar = Serial.read();
 
@@ -54,17 +39,8 @@ void serialLoop() {
             break;
         }
 
-        if (inString.length() == 0 && toupper(inChar) == 'L') {
-            localCmd = true;
-        }
-
         if (inChar == '\n') {
-            if (localCmd) {
-                lCommandQueue.emplace(inString);
-                localCmd = false;
-            } else {
-                commandQueue.push(parseGCode(inString));
-            }
+            queueManager.putCommand(inString);
             inString = "";
         } else {
             inString += inChar;
@@ -72,28 +48,9 @@ void serialLoop() {
     }
 }
 
-void commandsLoop() {
-    Status status = executor.status();
-    if (shouldPrintSts) {
-        shouldPrintSts = false;
-        printSts(status);
-    }
-    if (status.type == StatusType::NEXT && !commandQueue.empty()) {
-        power.commandHook();
-        executor.execCommand(commandQueue.front());
-        commandQueue.pop();
-        shouldPrintSts = true;
-    }
-    if (!lCommandQueue.empty()) {
-        localExecutor.execCommand(lCommandQueue.front());
-        lCommandQueue.pop();
-        shouldPrintSts = true;
-    }
-}
-
 void loop() {
     serialLoop();
-    commandsLoop();
+    queueManager.loopRoutine();
 
     MDNS.update();
     webApi.loopRoutine();
