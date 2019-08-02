@@ -3,12 +3,13 @@
 
 #include <Arduino.h>
 #include <ESP8266WebServer.h>
+#include <ArduinoJson.h>
 
 class WebAPI {
    private:
     void handleNotFound();
     void handlePutCommand();
-
+    String getStatusJson();
    public:
     WebAPI();
     void init();
