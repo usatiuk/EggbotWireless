@@ -23,16 +23,33 @@ String WebAPI::getStatusJson() {
     return out;
 }
 
+void WebAPI::sendCORS() {
+    server.sendHeader("Access-Control-Allow-Origin", "*");
+    server.sendHeader("Access-Control-Max-Age", "10000");
+    server.sendHeader("Access-Control-Allow-Methods", "PUT,POST,GET,OPTIONS");
+    server.sendHeader("Access-Control-Allow-Headers",
+                      "X-Requested-With, X-HTTP-Method-Override, "
+                      "Content-Type, Cache-Control, Accept");
+}
+
 void WebAPI::handleNotFound() {
-    server.send(404, "text/plain", "File Not Found\n\n");
+    if (server.method() == HTTP_OPTIONS) {
+        sendCORS();
+        server.send(204);
+    } else {
+        server.send(404, "text/plain", "");
+    }
 }
 
 void WebAPI::handlePutCommand() {
-    queueManager.putCommand(server.arg("plain").c_str());
+    sendCORS();
+    String cmd = server.arg("plain");
+    queueManager.putCommand(cmd.c_str());
     server.send(200, "application/json", getStatusJson());
 }
 
 void WebAPI::handleGetStatus() {
+    sendCORS();
     server.send(200, "application/json", getStatusJson());
 }
 

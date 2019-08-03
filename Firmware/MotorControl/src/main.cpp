@@ -35,10 +35,8 @@ void adjustRPM() {
         calculateDelay(eggStepperRPM, STEPS_PER_REVOLUTION);
     int newServoStepperDelay =
         calculateDelay(servoStepperRPM, STEPS_PER_REVOLUTION);
-    ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-        eggStepperDelay = newEggStepperDelay;
-        servoStepperDelay = newServoStepperDelay;
-    }
+    eggStepperDelay = newEggStepperDelay;
+    servoStepperDelay = newServoStepperDelay;
 }
 
 Command command;
@@ -67,36 +65,36 @@ byte txBuffer[i2cStsBytes];
 Status sts;
 void requestEvent() { Wire.write(txBuffer, i2cStsBytes); }
 
-void execCommand() {
+void execCommand(Command cmd) {
     executing = true;
+    newCommand = false;
 
-    if (command.type == CommandType::G01 || command.type == CommandType::G00) {
-        newCommand = false;
-        if (command.type == CommandType::G01) {
+    if (cmd.type == CommandType::G01 || cmd.type == CommandType::G00) {
+        if (cmd.type == CommandType::G01) {
             needAdjust = true;
         } else {
             needAdjust = false;
         }
 
-        if (!isnan(command.arg1)) {
-            servoStepper.moveTo(command.arg1);
+        if (!isnan(cmd.arg1)) {
+            servoStepper.moveTo(cmd.arg1);
         }
 
-        if (!isnan(command.arg2)) {
-            eggStepper.moveTo(command.arg2);
+        if (!isnan(cmd.arg2)) {
+            eggStepper.moveTo(cmd.arg2);
         }
 
-        if (!isnan(command.arg3)) {
-            if (command.arg3 < 0) {
+        if (!isnan(cmd.arg3)) {
+            if (cmd.arg3 < 0) {
                 pen.engage();
             }
-            if (command.arg3 >= 0) {
+            if (cmd.arg3 >= 0) {
                 pen.disengage();
             }
         }
 
-        if (!isnan(command.arg4)) {
-            curRPM = command.arg4;
+        if (!isnan(cmd.arg4)) {
+            curRPM = cmd.arg4;
         }
 
         adjustRPM();
@@ -157,6 +155,8 @@ void steppersRoutine() {
             sts.mmS = servoStepper.getPosMm();
             sts.mmE = eggStepper.getPosMm();
 
+            sts.feedrate = curRPM;
+
             sts.pEng = (float)pen.getEngaged();
 
             ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { sts.toBytes(txBuffer); }
@@ -171,7 +171,7 @@ void steppersRoutine() {
 
 void loop() {
     if (newCommand) {
-        execCommand();
+        execCommand(command);
     }
     steppersRoutine();
 }
