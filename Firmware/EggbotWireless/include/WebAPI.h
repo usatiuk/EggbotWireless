@@ -9,6 +9,7 @@ class WebAPI {
    private:
     void handleNotFound();
     void handlePutCommand();
+    void handleGetStatus();
     String getStatusJson();
    public:
     WebAPI();

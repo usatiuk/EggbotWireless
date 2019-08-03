@@ -29,12 +29,19 @@ void WebAPI::handleNotFound() {
 
 void WebAPI::handlePutCommand() {
     queueManager.putCommand(server.arg("plain").c_str());
-    server.send(200, "text/plain", getStatusJson());
+    server.send(200, "application/json", getStatusJson());
+}
+
+void WebAPI::handleGetStatus() {
+    server.send(200, "application/json", getStatusJson());
 }
 
 void WebAPI::init() {
     server.on("/putCommand", HTTP_POST,
               std::bind(&WebAPI::handlePutCommand, this));
+    server.on("/getStatus", HTTP_GET,
+              std::bind(&WebAPI::handleGetStatus, this));
+
     server.onNotFound(std::bind(&WebAPI::handleNotFound, this));
     server.begin();
 }
