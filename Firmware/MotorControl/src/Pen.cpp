@@ -3,27 +3,19 @@
 
 #include "Pen.h"
 
-#define DELAY 15
-
 Pen::Pen(int pin, int posEngaged, int posDisengaged)
     : posEngaged(posEngaged), posDisengaged(posDisengaged), pin(pin) {}
 
 void Pen::engage() {
     if (!engaged) {
-        for (int i = posDisengaged; i > posEngaged; i--) {
-            servo.write(i);
-            delay(DELAY);
-        }
+        servo.write(posEngaged);
     }
     engaged = true;
 }
 
 void Pen::disengage() {
     if (engaged) {
-        for (int i = posEngaged; i < posDisengaged; i++) {
-            servo.write(i);
-            delay(DELAY);
-        }
+        servo.write(posDisengaged);
     }
     engaged = false;
 }
@@ -36,4 +28,4 @@ void Pen::init() {
 
 bool Pen::getEngaged() { return engaged; }
 
-Pen::~Pen() {}
+Pen pen(7, 120, 170);

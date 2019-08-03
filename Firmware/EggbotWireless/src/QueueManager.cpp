@@ -37,16 +37,19 @@ void QueueManager::loopRoutine() {
 }
 
 void QueueManager::putCommand(std::string cmd) {
+    if (!std::isalnum(cmd[0])) {
+        return;
+    }
+
     if (toupper(cmd[0]) == 'L') {
         lCommandQueue.emplace(cmd);
     } else {
-        commandQueue.push(parseGCode(cmd));
+        Command cmdp = parseGCode(cmd);
+        commandQueue.push(cmdp);
     }
 }
 
-uint8_t QueueManager::execQueueSize() {
-    return commandQueue.size();
-}
+uint8_t QueueManager::execQueueSize() { return commandQueue.size(); }
 
 void QueueManager::putCommand(char *cmd) { putCommand(std::string(cmd)); }
 

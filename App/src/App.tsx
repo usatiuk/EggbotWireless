@@ -1,7 +1,8 @@
 import * as React from "react";
+import { GcodeSender } from "~GcodeSender";
 
 export function AppComponent() {
-    return <div>Hello</div>;
+    return <GcodeSender />;
 }
 
 export const App = AppComponent;

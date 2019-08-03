@@ -17,7 +17,8 @@ class Pen {
     void disengage();
     void init();
     bool getEngaged();
-    ~Pen();
 };
+
+extern Pen pen;
 
 #endif

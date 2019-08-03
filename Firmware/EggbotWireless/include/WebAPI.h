@@ -10,6 +10,8 @@ class WebAPI {
     void handleNotFound();
     void handlePutCommand();
     void handleGetStatus();
+    void sendCORS();
+
     String getStatusJson();
    public:
     WebAPI();
