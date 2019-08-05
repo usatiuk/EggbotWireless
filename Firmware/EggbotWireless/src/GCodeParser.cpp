@@ -4,9 +4,8 @@
 #include "ConfigManager.h"
 #include "GCodeParser.h"
 
-Command bufcmd;
-
 Command parseGCode(std::string gcode) {
+    Command bufcmd;
     char commandString[50];
     std::unordered_map<char, float> argsMap;
 
