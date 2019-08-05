@@ -1,6 +1,6 @@
 #include "Globals.h"
 
-Stepper eggStepper(6, 5, STEPS_PER_REVOLUTION, 0, defYDegPerMM);
+Stepper eggStepper(6, 5, -STEPS_PER_REVOLUTION, 0, defYDegPerMM);
 Stepper servoStepper(4, 3, STEPS_PER_REVOLUTION, xLimit, defXDegPerMM);
 
 unsigned int eggStepperDelay;

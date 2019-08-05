@@ -51,6 +51,5 @@ export function parseCommand(cmd: string): Command {
         (command as any)[arg] = parseFloat(val);
     });
 
-    console.log(command);
     return command;
 }
