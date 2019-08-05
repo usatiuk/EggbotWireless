@@ -1,4 +1,4 @@
-(kicad_pcb (version 20171130) (host pcbnew 5.1.2-5.1.2)
+(kicad_pcb (version 20171130) (host pcbnew 5.1.2-1.fc30)
 
   (general
     (thickness 1.6)
@@ -735,7 +735,7 @@
     (fp_text reference R27 (at 0 -1.65 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value 3K (at 0 1.65 90) (layer F.Fab)
+    (fp_text value 2.2K (at 0 1.65 90) (layer F.Fab)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text user %R (at 0 0 90) (layer F.Fab)
@@ -1313,7 +1313,7 @@
     (fp_text reference R21 (at -3.15 0.3 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value 330 (at 0 1.65) (layer F.Fab)
+    (fp_text value 510 (at 0 1.65) (layer F.Fab)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text user %R (at 0 0) (layer F.Fab)
@@ -3709,7 +3709,7 @@
   (gr_line (start 137.364 77.528) (end 19.364 77.528) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 137.364 37.528) (end 137.364 77.528) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 19.364 37.528) (end 137.364 37.528) (layer Edge.Cuts) (width 0.05))
-  (gr_text "Eggbot Wireless v1.3" (at 29.764 75.128) (layer F.SilkS) (tstamp 5D0BB958)
+  (gr_text "Eggbot Wireless v1.3f" (at 29.764 75.128) (layer F.SilkS) (tstamp 5D0BB958)
     (effects (font (size 1.5 1.5) (thickness 0.3)) (justify left))
   )
 
@@ -4709,7 +4709,7 @@
   (via (at 110.472 56.292) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 72))
   (segment (start 110.472 56.292) (end 110.928 56.292) (width 2) (layer B.Cu) (net 72))
 
-  (zone (net 1) (net_name GND) (layer F.Cu) (tstamp 5D0BEF9A) (hatch edge 0.508)
+  (zone (net 1) (net_name GND) (layer F.Cu) (tstamp 5D484675) (hatch edge 0.508)
     (connect_pads (clearance 0.2))
     (min_thickness 0.2)
     (fill yes (arc_segments 32) (thermal_gap 0.508) (thermal_bridge_width 0.508))
@@ -6479,7 +6479,7 @@
       )
     )
   )
-  (zone (net 1) (net_name GND) (layer B.Cu) (tstamp 5D0BEF97) (hatch edge 0.508)
+  (zone (net 1) (net_name GND) (layer B.Cu) (tstamp 5D484672) (hatch edge 0.508)
     (connect_pads (clearance 0.2))
     (min_thickness 0.254)
     (fill yes (arc_segments 32) (thermal_gap 0.508) (thermal_bridge_width 0.508))
