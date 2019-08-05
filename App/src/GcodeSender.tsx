@@ -71,7 +71,7 @@ export class GcodeSenderComponent extends React.PureComponent<
             }
         }
 
-        this.setState({ gcodeLinesQueue, gcodeLinesSent });
+        await this.setState({ gcodeLinesQueue, gcodeLinesSent });
     }
 
     render() {
