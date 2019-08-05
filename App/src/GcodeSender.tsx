@@ -1,5 +1,7 @@
 import * as React from "react";
 import { IEggbotStatus, getStatus, putCommand } from "~api/eggbot";
+import GcodeVisualiser from "~GcodeVisualiser";
+import { parseCommand } from "~GcodeParser";
 
 interface IGcodeSenderComponentState {
     eggbotStatus: IEggbotStatus | null;
@@ -25,8 +27,8 @@ export class GcodeSenderComponent extends React.PureComponent<
     {},
     IGcodeSenderComponentState
 > {
-    constructor() {
-        super(null);
+    constructor(props: {}) {
+        super(props);
         this.state = defaultState;
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -57,13 +59,13 @@ export class GcodeSenderComponent extends React.PureComponent<
 
     public async update() {
         const status = await getStatus();
-        console.log(status);
         const gcodeLinesQueue = [...this.state.gcodeLinesQueue];
         const gcodeLinesSent = [...this.state.gcodeLinesSent];
         const { executing } = this.state;
         if (executing && status.commandQueue < 5) {
             if (gcodeLinesQueue && gcodeLinesQueue.length > 0) {
                 const command = gcodeLinesQueue.shift();
+                console.log(parseCommand(command));
                 putCommand(command.substr(0, 50));
                 gcodeLinesSent.push(command);
             }
@@ -73,32 +75,38 @@ export class GcodeSenderComponent extends React.PureComponent<
     }
 
     render() {
-        const queuedCommands = this.state.gcodeLinesQueue.map(el => (
-            <div>{el}</div>
-        ));
+        const { gcodeLinesQueue, gcodeLinesSent } = this.state;
 
-        const executedCommands = this.state.gcodeLinesSent.map(el => (
-            <div>{el}</div>
-        ));
+        const queuedCommandsList = gcodeLinesQueue.map(el => <div>{el}</div>);
+
+        const executedCommandsList = gcodeLinesSent.map(el => <div>{el}</div>);
 
         return (
-            <div>
-                {this.state.executing ? (
-                    <div>
-                        <div style={{ color: "green" }}>{executedCommands}</div>
-                        <div>{queuedCommands}</div>
-                    </div>
-                ) : (
-                    <div>
-                        <textarea
-                            name="gcodeInput"
-                            value={this.state.gcodeInput}
-                            onChange={this.handleInputChange}
-                        />
-                        <button onClick={this.handleSend}>send</button>
-                    </div>
-                )}
-            </div>
+            <>
+                <div>
+                    {this.state.executing ? (
+                        <div>
+                            <div style={{ color: "green" }}>
+                                {executedCommandsList}
+                            </div>
+                            <div>{queuedCommandsList}</div>
+                        </div>
+                    ) : (
+                        <div>
+                            <textarea
+                                name="gcodeInput"
+                                value={this.state.gcodeInput}
+                                onChange={this.handleInputChange}
+                            />
+                            <button onClick={this.handleSend}>send</button>
+                        </div>
+                    )}
+                </div>
+                <GcodeVisualiser
+                    gcodeLinesQueue={gcodeLinesQueue}
+                    gcodeLinesSent={gcodeLinesSent}
+                />
+            </>
         );
     }
 }
