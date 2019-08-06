@@ -8,16 +8,22 @@ Pen::Pen(int pin, int posEngaged, int posDisengaged)
 
 void Pen::engage() {
     if (!engaged) {
-        servo.write(posEngaged);
+        servo.attach(pin);
         delay(5);
+        servo.write(posEngaged);
+        delay(200);
+        servo.detach();
     }
     engaged = true;
 }
 
 void Pen::disengage() {
     if (engaged) {
-        servo.write(posDisengaged);
+        servo.attach(pin);
         delay(5);
+        servo.write(posDisengaged);
+        delay(200);
+        servo.detach();
     }
     engaged = false;
 }
@@ -25,8 +31,9 @@ void Pen::disengage() {
 void Pen::init() {
     servo.attach(pin);
     servo.write(posDisengaged);
-    delay(5);
+    delay(200);
     engaged = false;
+    servo.detach();
 }
 
 bool Pen::getEngaged() { return engaged; }
