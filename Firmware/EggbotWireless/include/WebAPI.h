@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <ESP8266WebServer.h>
 #include <ArduinoJson.h>
+#include <FS.h>
 
 class WebAPI {
    private:
@@ -11,6 +12,8 @@ class WebAPI {
     void handlePutCommand();
     void handleGetStatus();
     void sendCORS();
+    bool getFile(String filename);
+    String getContentType(String filename);
 
     String getStatusJson();
    public:
