@@ -17,6 +17,7 @@ String WebAPI::getStatusJson() {
     doc["mmS"] = status.mmS;
     doc["pEng"] = status.pEng;
     doc["xLim"] = status.xLim;
+    doc["batt"] = analogRead(A0);
 
     String out;
     serializeJson(doc, out);

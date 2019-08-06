@@ -8,7 +8,6 @@
 #include "common/Status.h"
 
 int curRPM = defRPM;
-int adjustDelay = 100;
 bool needAdjust;
 
 int calculateDelay(float rpm, int stepsPerRevolution) {
@@ -23,20 +22,14 @@ void adjustRPM() {
         unsigned int stepsY = eggStepper.getRemainingSteps();
         if (stepsX != 0 && stepsY != 0) {
             if (stepsX > stepsY) {
-                float rpm = (float)curRPM * (float)stepsY / (float)stepsX;
-                eggStepperRPM = rpm;
+                eggStepperRPM = (float)curRPM * (float)stepsY / (float)stepsX;
             } else if (stepsY > stepsX) {
-                float rpm = (float)curRPM * (float)stepsX / (float)stepsY;
-                servoStepperRPM = rpm;
+                servoStepperRPM = (float)curRPM * (float)stepsX / (float)stepsY;
             }
         }
     }
-    int newEggStepperDelay =
-        calculateDelay(eggStepperRPM, STEPS_PER_REVOLUTION);
-    int newServoStepperDelay =
-        calculateDelay(servoStepperRPM, STEPS_PER_REVOLUTION);
-    eggStepperDelay = newEggStepperDelay;
-    servoStepperDelay = newServoStepperDelay;
+    eggStepperDelay = calculateDelay(eggStepperRPM, STEPS_PER_REVOLUTION);
+    servoStepperDelay = calculateDelay(servoStepperRPM, STEPS_PER_REVOLUTION);
 }
 
 Command command;
@@ -125,7 +118,7 @@ volatile bool armed = false;
 /*
 We use our own timer for more precise timings
 And it ticks only when armed, to ensure
-that updateExecution() doesn't skip a single tick
+that steppersRoutine() doesn't skip a single tick
  */
 ISR(TIMER2_COMPA_vect) {
     if (armed) {
