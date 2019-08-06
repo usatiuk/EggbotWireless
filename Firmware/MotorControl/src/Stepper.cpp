@@ -1,8 +1,9 @@
 #include "Stepper.h"
 #include <Arduino.h>
+#include <util/atomic.h>
 
-Stepper::Stepper(int stepPin, int dirPin,
-                 int stepsPerRevolution, int limit, float degreesPerMM)
+Stepper::Stepper(int stepPin, int dirPin, int stepsPerRevolution, int limit,
+                 float degreesPerMM)
     : dirPin(dirPin),
       stepPin(stepPin),
       stepsPerRevolution(stepsPerRevolution),
@@ -16,7 +17,7 @@ void Stepper::doStep() {
     if (remainingSteps > 0) {
         digitalWrite(dirPin, direction);
         digitalWrite(stepPin, 1);
-        delayMicroseconds(2);
+        delayMicroseconds(10);
         digitalWrite(stepPin, 0);
         remainingSteps--;
     }

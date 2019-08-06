@@ -49,7 +49,7 @@ export default class GcodeVisualiser extends React.PureComponent<
                                 : "blue"
                         }
                         strokeWidth={
-                            (command.Z ? command.Z : lastPos.eng) ? 2 : 1
+                            (command.Z ? command.Z : lastPos.eng) ? 1 : 0.5
                         }
                     />
                 );
@@ -92,7 +92,7 @@ export default class GcodeVisualiser extends React.PureComponent<
                                 : "blue"
                         }
                         strokeWidth={
-                            (command.Z ? command.Z : lastPos.eng) ? 2 : 1
+                            (command.Z ? command.Z : lastPos.eng) ? 1 : 0.5
                         }
                     />
                 );

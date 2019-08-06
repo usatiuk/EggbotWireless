@@ -31,4 +31,4 @@ void Pen::init() {
 
 bool Pen::getEngaged() { return engaged; }
 
-Pen pen(7, 100, 175);
+Pen pen(7, 100, 180);
