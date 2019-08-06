@@ -62,7 +62,7 @@ export class GcodeSenderComponent extends React.PureComponent<
         const gcodeLinesQueue = [...this.state.gcodeLinesQueue];
         const gcodeLinesSent = [...this.state.gcodeLinesSent];
         const { executing } = this.state;
-        if (executing && status.commandQueue < 1) {
+        if (executing && status.commandQueue < 10) {
             if (gcodeLinesQueue && gcodeLinesQueue.length > 0) {
                 const command = gcodeLinesQueue.shift();
                 console.log(parseCommand(command));

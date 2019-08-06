@@ -56,11 +56,26 @@ void receiveEvent(int howMany) {
 
 byte txBuffer[i2cStsBytes];
 Status sts;
-void requestEvent() { Wire.write(txBuffer, i2cStsBytes); }
+void requestEvent() {
+    if (executing || newCommand) {
+        sts.type = StatusType::WAIT;
+    } else {
+        sts.type = StatusType::NEXT;
+    }
+
+    sts.mmS = servoStepper.getPosMm();
+    sts.mmE = eggStepper.getPosMm();
+
+    sts.feedrate = curRPM;
+
+    sts.pEng = (float)pen.getEngaged();
+
+    sts.toBytes(txBuffer);
+    Wire.write(txBuffer, i2cStsBytes);
+}
 
 void execCommand(Command cmd) {
     executing = true;
-    newCommand = false;
 
     if (cmd.type == CommandType::G01 || cmd.type == CommandType::G00) {
         if (cmd.type == CommandType::G01) {
@@ -80,8 +95,7 @@ void execCommand(Command cmd) {
         if (!isnan(cmd.arg3)) {
             if (cmd.arg3 < 0) {
                 pen.engage();
-            }
-            if (cmd.arg3 >= 0) {
+            } else {
                 pen.disengage();
             }
         }
@@ -93,6 +107,7 @@ void execCommand(Command cmd) {
         adjustRPM();
     }
 
+    newCommand = false;
     return;
 }
 
@@ -137,22 +152,6 @@ void steppersRoutine() {
         }
         if (tick % servoStepperDelay == 0) {
             servoStepper.doStep();
-        }
-        if (tick % stsUpdDelay == 0) {
-            if (executing || newCommand) {
-                sts.type = StatusType::WAIT;
-            } else {
-                sts.type = StatusType::NEXT;
-            }
-
-            sts.mmS = servoStepper.getPosMm();
-            sts.mmE = eggStepper.getPosMm();
-
-            sts.feedrate = curRPM;
-
-            sts.pEng = (float)pen.getEngaged();
-
-            ATOMIC_BLOCK(ATOMIC_RESTORESTATE) { sts.toBytes(txBuffer); }
         }
         armed = true;
     }
