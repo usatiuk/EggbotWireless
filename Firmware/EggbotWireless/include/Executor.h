@@ -10,8 +10,6 @@
 class Executor
 {
 private:
-    unsigned long lastStsTime;
-    Status lastSts;
 public:
     Executor(/* args */);
     void execCommand(Command command);

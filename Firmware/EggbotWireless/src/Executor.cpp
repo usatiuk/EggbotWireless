@@ -24,12 +24,6 @@ void Executor::execCommand(Command command) {
 }
 
 Status Executor::status() {
-    unsigned long reqTime = millis();
-
-    if (reqTime - lastStsTime < lastStsTTL) {
-        return lastSts;
-    }
-
     Status status;
     unsigned int curByte;
     byte rxBuffer[i2cStsBytes];
@@ -44,9 +38,6 @@ Status Executor::status() {
             status.fromBytes(rxBuffer);
         }
     }
-
-    lastStsTime = millis();
-    lastSts = status;
 
     return status;
 }

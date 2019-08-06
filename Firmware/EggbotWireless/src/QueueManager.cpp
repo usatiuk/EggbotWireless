@@ -38,6 +38,7 @@ void QueueManager::loopRoutine() {
 
 void QueueManager::putCommand(std::string cmd) {
     if (!std::isalnum(cmd[0])) {
+        Serial.println("OK");
         return;
     }
 
