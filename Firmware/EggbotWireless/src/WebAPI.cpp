@@ -1,9 +1,12 @@
 #include "WebAPI.h"
+#include "Config.h"
 #include "QueueManager.h"
 
 ESP8266WebServer server(80);
 
 WebAPI::WebAPI() {}
+
+float getVin(float r1, float r2, float vout) { return ((r1 + r2) * vout) / r2; }
 
 String WebAPI::getStatusJson() {
     StaticJsonDocument<256> doc;
@@ -17,7 +20,7 @@ String WebAPI::getStatusJson() {
     doc["mmS"] = status.mmS;
     doc["pEng"] = status.pEng;
     doc["xLim"] = status.xLim;
-    doc["batt"] = analogRead(A0);
+    doc["batt"] = getVin(battR1, battR2, analogRead(A0) / 1000.0);
 
     String out;
     serializeJson(doc, out);
