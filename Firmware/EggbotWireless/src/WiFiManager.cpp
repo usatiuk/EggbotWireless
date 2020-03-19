@@ -6,6 +6,7 @@ WiFiManager::WiFiManager(){};
 
 void WiFiManager::init() {
     if (configManager.get("wifiMode") == "client") {
+        WiFi.reconnect();
         WiFi.begin(configManager.get("wifiSSID").c_str(),
                    configManager.get("wifiPass").c_str());
         int status = WiFi.status();
