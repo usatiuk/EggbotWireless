@@ -8,7 +8,8 @@ const std::unordered_map<std::string, std::string> defaults{
      {"wifiMode", "ap"},
      {"wifiSSID", defSSID},
      {"wifiPass", defPass},
-     {"defRpm", "2"}}};
+     {"defRpm", "2"},
+     {"ignoreRpm", "yes"}}};
 
 /*
     Max string length is 25
