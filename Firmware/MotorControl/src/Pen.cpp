@@ -11,7 +11,6 @@ void Pen::engage() {
         servo.attach(pin);
         servo.write(posEngaged);
         delay(200);
-        servo.detach();
     }
     engaged = true;
 }
@@ -21,7 +20,6 @@ void Pen::disengage() {
         servo.attach(pin);
         servo.write(posDisengaged);
         delay(200);
-        servo.detach();
     }
     engaged = false;
 }
@@ -29,9 +27,8 @@ void Pen::disengage() {
 void Pen::init() {
     servo.attach(pin);
     servo.write(posDisengaged);
-    delay(200);
+    delay(1000);
     engaged = false;
-    servo.detach();
 }
 
 bool Pen::getEngaged() { return engaged; }
