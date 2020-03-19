@@ -1,4 +1,4 @@
-const root = "http://eggbot.local";
+const root = window.location.protocol + "//" + window.location.hostname;
 
 export async function fetchJSON(
     path: string,
