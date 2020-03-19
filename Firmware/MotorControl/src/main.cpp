@@ -112,10 +112,11 @@ void execCommand(Command cmd) {
 }
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin(9600);
     Wire.begin(8);
     Wire.onReceive(receiveEvent);
     Wire.onRequest(requestEvent);
+    Wire.setClock(10000);
     Serial.println("Hello!");
     eggStepperRPM = servoStepperRPM = curRPM;
     pinMode(A0, OUTPUT);
