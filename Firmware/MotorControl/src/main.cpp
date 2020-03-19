@@ -113,6 +113,8 @@ void execCommand(Command cmd) {
 
 void setup() {
     Serial.begin(9600);
+    servoStepper.setPos(xLimit);
+    pen.init();
     Wire.begin(8);
     Wire.onReceive(receiveEvent);
     Wire.onRequest(requestEvent);
@@ -124,8 +126,6 @@ void setup() {
     OCR2A = 250;
     TCCR2A |= (1 << WGM20) | (1 << CS22);
     TIMSK2 |= (1 << OCIE2A);
-    servoStepper.setPos(xLimit);
-    pen.init();
 }
 
 volatile unsigned int tick = 0;
