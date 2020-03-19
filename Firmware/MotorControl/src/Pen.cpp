@@ -18,7 +18,7 @@ void Pen::engage() {
 
 void Pen::disengage() {
     if (engaged) {
-        for (int i = posEngaged; i > posDisengaged; i++) {
+        for (int i = posEngaged; i < posDisengaged; i++) {
             servo.write(i);
             delay(5);
         }
