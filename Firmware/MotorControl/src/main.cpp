@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <Servo.h>
 #include <Wire.h>
+#include <avr/wdt.h>
 #include <util/atomic.h>
 #include "Config.h"
 #include "Globals.h"
@@ -72,6 +73,8 @@ void requestEvent() {
 
     sts.toBytes(txBuffer);
     Wire.write(txBuffer, i2cStsBytes);
+
+    wdt_reset();
 }
 
 void execCommand(Command cmd) {
@@ -126,7 +129,7 @@ void setup() {
     OCR2A = 250;
     TCCR2A |= (1 << WGM20) | (1 << CS22);
     TIMSK2 |= (1 << OCIE2A);
-}
+    wdt_enable(WDTO_8S);}
 
 volatile unsigned int tick = 0;
 volatile bool armed = false;
