@@ -68,7 +68,7 @@ Command parseGCode(std::string gcode) {
         if (zIter != endIter) {
             bufcmd.arg3 = zIter->second;
         }
-        if (fIter != endIter) {
+        if (fIter != endIter && configManager.get("ignoreRpm") != "yes") {
             bufcmd.arg4 = fIter->second;
         } else {
             bufcmd.arg4 = atof(configManager.get("defRpm").c_str());
