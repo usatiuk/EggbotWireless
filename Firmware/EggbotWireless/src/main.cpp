@@ -21,6 +21,7 @@
 void setup() {
     Serial.begin(115200);
     Wire.begin(12, 13);
+    Wire.setClock(10000);
     power.enable12v();
     configManager.load();
     wifiManager.init();
