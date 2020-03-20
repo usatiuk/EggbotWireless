@@ -7,7 +7,7 @@ constexpr int lastStsTTL{10};
 
 constexpr float battR1{12}, battR2{2.2};
 
-constexpr unsigned long powerTimeout{20000}, powerStartupDelay{100};
+constexpr unsigned long powerTimeout{60000}, powerStartupDelay{100};
 
 constexpr const char *defSSID{"eggbot"}, *defPass{"eggbotwi"},
     *defName{"eggbot"};
