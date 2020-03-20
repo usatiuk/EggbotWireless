@@ -12,7 +12,9 @@ int curRPM = defRPM;
 bool needAdjust;
 
 int calculateDelay(float rpm, int stepsPerRevolution) {
-    return ((float)1000 * (float)60) / (rpm * (float)stepsPerRevolution);
+    //Delay between steps in a timer routine
+    // Delay = (ticks/sec)/(rpm/60 * steps/rev)
+    return ((float)ticksPerSecond * (float)60) / (rpm * (float)stepsPerRevolution);
 }
 
 void adjustRPM() {
@@ -116,7 +118,7 @@ void execCommand(Command cmd) {
 
 void setup() {
     Serial.begin(9600);
-    servoStepper.setPos(xLimit);
+    servoStepper.setPos(xLimit);    
     pen.init();
     Wire.begin(8);
     Wire.onReceive(receiveEvent);
@@ -127,37 +129,18 @@ void setup() {
     pinMode(A0, OUTPUT);
     digitalWrite(A0, true);
     OCR2A = 250;
-    TCCR2A |= (1 << WGM20) | (1 << CS22);
+    TCCR2A |= (1 << WGM20) | (1 << CS21);
     TIMSK2 |= (1 << OCIE2A);
-    wdt_enable(WDTO_8S);}
-
-volatile unsigned int tick = 0;
-volatile bool armed = false;
-
-/*
-We use our own timer for more precise timings
-And it ticks only when armed, to ensure
-that steppersRoutine() doesn't skip a single tick
- */
-ISR(TIMER2_COMPA_vect) {
-    if (armed) {
-        tick++;
-        armed = false;
-    }
+    wdt_enable(WDTO_8S);
 }
 
+volatile unsigned int tick = 0;
 void steppersRoutine() {
-    if (!armed) {
-        if (tick % adjustDelay == 0) {
-            adjustRPM();
-        }
-        if (tick % eggStepperDelay == 0) {
-            eggStepper.doStep();
-        }
-        if (tick % servoStepperDelay == 0) {
-            servoStepper.doStep();
-        }
-        armed = true;
+    if (tick % eggStepperDelay == 0) {
+        eggStepper.doStep();
+    }
+    if (tick % servoStepperDelay == 0) {
+        servoStepper.doStep();
     }
     if (eggStepper.getRemainingSteps() == 0 &&
         servoStepper.getRemainingSteps() == 0) {
@@ -165,9 +148,18 @@ void steppersRoutine() {
     }
 }
 
+/*
+We use our own timer for more precise timings
+And it ticks only when armed, to ensure
+that steppersRoutine() doesn't skip a single tick
+ */
+ISR(TIMER2_COMPA_vect) {
+    tick++;
+    steppersRoutine();
+}
+
 void loop() {
     if (newCommand) {
         execCommand(command);
     }
-    steppersRoutine();
 }
