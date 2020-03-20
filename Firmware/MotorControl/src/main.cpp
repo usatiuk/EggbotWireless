@@ -150,8 +150,6 @@ void steppersRoutine() {
 
 /*
 We use our own timer for more precise timings
-And it ticks only when armed, to ensure
-that steppersRoutine() doesn't skip a single tick
  */
 ISR(TIMER2_COMPA_vect) {
     tick++;
