@@ -2015,12 +2015,6 @@ Connection ~ 4400 4350
 Wire Wire Line
 	4400 4350 4400 6100
 Connection ~ 4350 4550
-$Sheet
-S 5450 6600 1200 950 
-U 5E1045DA
-F0 "5v Boost" 50
-F1 "5vBoost.sch" 50
-$EndSheet
 Wire Wire Line
 	10450 1400 10550 1400
 Connection ~ 10450 1400
@@ -2151,4 +2145,10 @@ F 3 "~" H 2950 4350 50  0001 C CNN
 $EndComp
 Text GLabel 3250 4350 3    50   Input ~ 0
 SERVOPWR
+$Sheet
+S 5450 6600 1200 950 
+U 5E1045DA
+F0 "5v Boost" 50
+F1 "5vBoost.sch" 50
+$EndSheet
 $EndSCHEMATC
