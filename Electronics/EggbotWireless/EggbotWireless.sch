@@ -2127,4 +2127,28 @@ Wire Wire Line
 	10050 650  7650 650 
 Text GLabel 3200 3600 0    50   Input ~ 0
 SERVOPWR
+$Comp
+L EggbotWireless-rescue:+5V-power #PWR0163
+U 1 1 5F040FF3
+P 2650 4350
+F 0 "#PWR0163" H 2650 4200 50  0001 C CNN
+F 1 "+5V" H 2665 4523 50  0000 C CNN
+F 2 "" H 2650 4350 50  0001 C CNN
+F 3 "" H 2650 4350 50  0001 C CNN
+	1    2650 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Jumper JP4
+U 1 1 5F042E8B
+P 2950 4350
+F 0 "JP4" H 2950 4614 50  0000 C CNN
+F 1 "Jumper" H 2950 4523 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 2950 4350 50  0001 C CNN
+F 3 "~" H 2950 4350 50  0001 C CNN
+	1    2950 4350
+	1    0    0    -1  
+$EndComp
+Text GLabel 3250 4350 3    50   Input ~ 0
+SERVOPWR
 $EndSCHEMATC
