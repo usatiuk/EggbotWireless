@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 2
+Sheet 1 1
 Title ""
 Date ""
 Rev ""
@@ -2119,36 +2119,75 @@ VBUS
 Connection ~ 7650 650 
 Wire Wire Line
 	10050 650  7650 650 
-Text GLabel 3200 3600 0    50   Input ~ 0
-SERVOPWR
 $Comp
-L EggbotWireless-rescue:+5V-power #PWR0163
-U 1 1 5F040FF3
-P 2650 4350
-F 0 "#PWR0163" H 2650 4200 50  0001 C CNN
-F 1 "+5V" H 2665 4523 50  0000 C CNN
-F 2 "" H 2650 4350 50  0001 C CNN
-F 3 "" H 2650 4350 50  0001 C CNN
-	1    2650 4350
+L EggbotWireless-rescue:+5V-power #PWR0109
+U 1 1 5FB1D7BE
+P 2500 4000
+F 0 "#PWR0109" H 2500 3850 50  0001 C CNN
+F 1 "+5V" H 2515 4173 50  0000 C CNN
+F 2 "" H 2500 4000 50  0001 C CNN
+F 3 "" H 2500 4000 50  0001 C CNN
+	1    2500 4000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L EggbotWireless-rescue:CP-Device C18
+U 1 1 5FB522B1
+P 2700 4150
+AR Path="/5FB522B1" Ref="C18"  Part="1" 
+AR Path="/5E1045DA/5FB522B1" Ref="C?"  Part="1" 
+AR Path="/5FB4B9D9/5FB522B1" Ref="C?"  Part="1" 
+F 0 "C18" H 2818 4196 50  0000 L CNN
+F 1 "68uF" H 2818 4105 50  0000 L CNN
+F 2 "Capacitor_SMD:CP_Elec_4x5.8" H 2738 4000 50  0001 C CNN
+F 3 "~" H 2700 4150 50  0001 C CNN
+	1    2700 4150
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:Jumper JP4
-U 1 1 5F042E8B
-P 2950 4350
-F 0 "JP4" H 2950 4614 50  0000 C CNN
-F 1 "Jumper" H 2950 4523 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 2950 4350 50  0001 C CNN
-F 3 "~" H 2950 4350 50  0001 C CNN
-	1    2950 4350
+L EggbotWireless-rescue:C-Device C19
+U 1 1 5FB522B7
+P 3150 4150
+AR Path="/5FB522B7" Ref="C19"  Part="1" 
+AR Path="/5E1045DA/5FB522B7" Ref="C?"  Part="1" 
+AR Path="/5FB4B9D9/5FB522B7" Ref="C?"  Part="1" 
+F 0 "C19" H 3265 4196 50  0000 L CNN
+F 1 "10uF" H 3265 4105 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 3188 4000 50  0001 C CNN
+F 3 "~" H 3150 4150 50  0001 C CNN
+	1    3150 4150
 	1    0    0    -1  
 $EndComp
-Text GLabel 3250 4350 3    50   Input ~ 0
-SERVOPWR
-$Sheet
-S 5450 6600 1200 950 
-U 5E1045DA
-F0 "5v Boost" 50
-F1 "5vBoost.sch" 50
-$EndSheet
+Wire Wire Line
+	2500 4000 2700 4000
+Wire Wire Line
+	3150 4000 2850 4000
+Connection ~ 2700 4000
+Wire Wire Line
+	2850 4000 2850 3600
+Wire Wire Line
+	2850 3600 3200 3600
+Connection ~ 2850 4000
+Wire Wire Line
+	2850 4000 2700 4000
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0154
+U 1 1 5FB95FEE
+P 2900 4350
+F 0 "#PWR0154" H 2900 4100 50  0001 C CNN
+F 1 "GND" H 2905 4177 50  0000 C CNN
+F 2 "" H 2900 4350 50  0001 C CNN
+F 3 "" H 2900 4350 50  0001 C CNN
+	1    2900 4350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2900 4350 2700 4350
+Wire Wire Line
+	2700 4350 2700 4300
+Wire Wire Line
+	2900 4350 3150 4350
+Wire Wire Line
+	3150 4350 3150 4300
+Connection ~ 2900 4350
 $EndSCHEMATC
