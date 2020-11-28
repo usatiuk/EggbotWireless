@@ -3,6 +3,7 @@
 #include <Wire.h>
 #include <avr/wdt.h>
 #include <util/atomic.h>
+
 #include "Config.h"
 #include "Globals.h"
 #include "common/Commands.h"
@@ -12,9 +13,10 @@ int curRPM = defRPM;
 bool needAdjust;
 
 int calculateDelay(float rpm, int stepsPerRevolution) {
-    //Delay between steps in a timer routine
+    // Delay between steps in a timer routine
     // Delay = (ticks/sec)/(rpm/60 * steps/rev)
-    return ((float)ticksPerSecond * (float)60) / (rpm * (float)stepsPerRevolution);
+    return ((float)ticksPerSecond * (float)60) /
+           (rpm * (float)stepsPerRevolution);
 }
 
 void adjustRPM() {
@@ -118,7 +120,7 @@ void execCommand(Command cmd) {
 
 void setup() {
     Serial.begin(9600);
-    servoStepper.setPos(xLimit);    
+    servoStepper.setPos(xLimit);
     pen.init();
     Wire.begin(8);
     Wire.onReceive(receiveEvent);

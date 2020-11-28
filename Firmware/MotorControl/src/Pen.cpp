@@ -1,14 +1,14 @@
+#include "Pen.h"
+
 #include <Arduino.h>
 #include <Servo.h>
-
-#include "Pen.h"
 
 Pen::Pen(int pin, int posEngaged, int posDisengaged)
     : posEngaged(posEngaged), posDisengaged(posDisengaged), pin(pin) {}
 
 void Pen::engage() {
     if (!engaged) {
-        for(int i = posDisengaged; i > posEngaged; i--) {
+        for (int i = posDisengaged; i > posEngaged; i--) {
             servo.write(i);
             delay(5);
         }
