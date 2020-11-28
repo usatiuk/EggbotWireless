@@ -3733,7 +3733,7 @@
   (gr_line (start 137.364 77.528) (end 19.364 77.528) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 137.364 37.528) (end 137.364 77.528) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 19.364 37.528) (end 137.364 37.528) (layer Edge.Cuts) (width 0.05))
-  (gr_text "Eggbot Wireless v1.5" (at 29.764 75.128) (layer F.SilkS) (tstamp 5F034B25)
+  (gr_text "Eggbot Wireless v2.0\n" (at 29.764 75.128) (layer F.SilkS) (tstamp 5F034B25)
     (effects (font (size 1.5 1.5) (thickness 0.3)) (justify left))
   )
 
