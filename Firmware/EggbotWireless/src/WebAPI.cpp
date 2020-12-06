@@ -1,4 +1,5 @@
 #include "WebAPI.h"
+
 #include "Config.h"
 #include "QueueManager.h"
 
@@ -7,6 +8,24 @@ ESP8266WebServer server(80);
 WebAPI::WebAPI() {}
 
 float getVin(float r1, float r2, float vout) { return ((r1 + r2) * vout) / r2; }
+
+#include <umm_malloc/umm_malloc.h>
+
+const size_t block_size = 8;
+
+size_t getTotalAvailableMemory() {
+    umm_info(0, 0);
+    return ummHeapInfo.freeBlocks * block_size;
+}
+
+size_t getLargestAvailableBlock() {
+    umm_info(0, 0);
+    return ummHeapInfo.maxFreeContiguousBlocks * block_size;
+}
+
+float getFragmentation() {
+    return 100 - getLargestAvailableBlock() * 100.0 / getTotalAvailableMemory();
+}
 
 String WebAPI::getStatusJson() {
     StaticJsonDocument<256> doc;
@@ -20,6 +39,7 @@ String WebAPI::getStatusJson() {
     doc["mmS"] = status.mmS;
     doc["pEng"] = status.pEng;
     doc["xLim"] = status.xLim;
+    doc["frag"] = getFragmentation();
     doc["batt"] = getVin(battR1, battR2, analogRead(A0) / 1000.0);
 
     String out;
@@ -58,11 +78,11 @@ bool WebAPI::getFile(String filename) {
     }
     String contentType = getContentType(filename);
     String pathWithGz = filename + ".gz";
-    if (SPIFFS.exists(pathWithGz) || SPIFFS.exists(filename)) {
-        if (SPIFFS.exists(pathWithGz)) {
+    if (LittleFS.exists(pathWithGz) || LittleFS.exists(filename)) {
+        if (LittleFS.exists(pathWithGz)) {
             filename += ".gz";
         }
-        File file = SPIFFS.open(filename, "r");
+        File file = LittleFS.open(filename, "r");
         server.streamFile(file, contentType);
         file.close();
         return true;
@@ -110,7 +130,7 @@ void WebAPI::init() {
 
     server.onNotFound(std::bind(&WebAPI::handleNotFound, this));
 
-    SPIFFS.begin();
+    LittleFS.begin();
     server.begin();
 }
 
