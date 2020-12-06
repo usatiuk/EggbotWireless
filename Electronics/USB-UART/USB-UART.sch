@@ -1,0 +1,138 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR?
+U 1 1 5FEEC8A2
+P 4850 2950
+F 0 "#PWR?" H 4850 2700 50  0001 C CNN
+F 1 "GND" H 4855 2777 50  0000 C CNN
+F 2 "" H 4850 2950 50  0001 C CNN
+F 3 "" H 4850 2950 50  0001 C CNN
+	1    4850 2950
+	0    1    1    0   
+$EndComp
+$Comp
+L EggbotWireless-rescue:C-Device-Catfi-rescue C?
+U 1 1 5FEEC8A8
+P 5000 2950
+F 0 "C?" H 5200 2900 50  0000 R CNN
+F 1 "100nf" H 5350 3000 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5038 2800 50  0001 C CNN
+F 3 "~" H 5000 2950 50  0001 C CNN
+	1    5000 2950
+	0    -1   -1   0   
+$EndComp
+Text GLabel 5150 3250 0    50   Input ~ 0
+USBD+
+Text GLabel 5150 3350 0    50   Input ~ 0
+USBD-
+$Comp
+L EggbotWireless-rescue:C-Device-Catfi-rescue C?
+U 1 1 5FEEC8B0
+P 6050 2500
+F 0 "C?" H 6300 2450 50  0000 R CNN
+F 1 "100nf" H 6400 2550 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6088 2350 50  0001 C CNN
+F 3 "~" H 6050 2500 50  0001 C CNN
+	1    6050 2500
+	1    0    0    -1  
+$EndComp
+Text GLabel 6750 3150 2    50   Input ~ 0
+RTS_USB
+Text GLabel 6750 3050 2    50   Input ~ 0
+RXD_USB
+Text GLabel 6750 2950 2    50   Input ~ 0
+TXD_USB
+Text GLabel 6750 3350 2    50   Input ~ 0
+DTR_USB
+$Comp
+L EggbotWireless-rescue:+3.3V-power #PWR?
+U 1 1 5FEEC8BA
+P 5850 2650
+F 0 "#PWR?" H 5850 2500 50  0001 C CNN
+F 1 "+3.3V" H 5800 2800 50  0000 C CNN
+F 2 "" H 5850 2650 50  0001 C CNN
+F 3 "" H 5850 2650 50  0001 C CNN
+	1    5850 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L EggbotWireless-rescue:+5V-power #PWR?
+U 1 1 5FEEC8C0
+P 6050 2650
+F 0 "#PWR?" H 6050 2500 50  0001 C CNN
+F 1 "+5V" H 6065 2823 50  0000 C CNN
+F 2 "" H 6050 2650 50  0001 C CNN
+F 3 "" H 6050 2650 50  0001 C CNN
+	1    6050 2650
+	0    1    1    0   
+$EndComp
+Text GLabel 6750 4350 2    50   Input ~ 0
+SLEEP
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR?
+U 1 1 5FEEC8C7
+P 5150 4350
+F 0 "#PWR?" H 5150 4100 50  0001 C CNN
+F 1 "GND" H 5155 4177 50  0000 C CNN
+F 2 "" H 5150 4350 50  0001 C CNN
+F 3 "" H 5150 4350 50  0001 C CNN
+	1    5150 4350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5950 4650 6050 4650
+Connection ~ 5950 4650
+Wire Wire Line
+	5750 4650 5950 4650
+Connection ~ 6050 4650
+Wire Wire Line
+	6150 4650 6050 4650
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR?
+U 1 1 5FEEC8D2
+P 6050 4650
+F 0 "#PWR?" H 6050 4400 50  0001 C CNN
+F 1 "GND" H 6055 4477 50  0000 C CNN
+F 2 "" H 6050 4650 50  0001 C CNN
+F 3 "" H 6050 4650 50  0001 C CNN
+	1    6050 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L EggbotWireless-rescue:FT232RL-Interface_USB U?
+U 1 1 5FEEC8D8
+P 5950 3650
+F 0 "U?" H 6500 4650 50  0000 C CNN
+F 1 "FT232RL" H 6450 4550 50  0000 C CNN
+F 2 "Package_SO:SSOP-28_5.3x10.2mm_P0.65mm" H 5950 3650 50  0001 C CNN
+F 3 "http://www.ftdichip.com/Products/ICs/FT232RL.htm" H 5950 3650 50  0001 C CNN
+	1    5950 3650
+	1    0    0    -1  
+$EndComp
+Connection ~ 6050 2650
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR?
+U 1 1 5FCD2F91
+P 6050 2350
+F 0 "#PWR?" H 6050 2100 50  0001 C CNN
+F 1 "GND" H 6055 2177 50  0000 C CNN
+F 2 "" H 6050 2350 50  0001 C CNN
+F 3 "" H 6050 2350 50  0001 C CNN
+	1    6050 2350
+	-1   0    0    1   
+$EndComp
+$EndSCHEMATC
