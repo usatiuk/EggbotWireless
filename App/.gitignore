@@ -10,3 +10,4 @@ ormconfig.test.json
 .cache
 .directory
 .history
+prodbuild/
