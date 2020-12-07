@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 3
+Sheet 1 1
 Title ""
 Date ""
 Rev ""
@@ -533,4 +533,81 @@ F 3 "~" H 3250 6600 50  0001 C CNN
 $EndComp
 Text GLabel 3550 6600 3    50   Input ~ 0
 SERVOPWR
+$Comp
+L Device:CP C1
+U 1 1 5FCE453A
+P 9450 4450
+F 0 "C1" H 9568 4496 50  0000 L CNN
+F 1 "220uF" H 9568 4405 50  0000 L CNN
+F 2 "Capacitor_SMD:CP_Elec_8x10.5" H 9488 4300 50  0001 C CNN
+F 3 "~" H 9450 4450 50  0001 C CNN
+	1    9450 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L EggbotWireless-rescue:+3.3V-power #PWR0102
+U 1 1 5FCE514A
+P 9450 4300
+F 0 "#PWR0102" H 9450 4150 50  0001 C CNN
+F 1 "+3.3V" H 9465 4473 50  0000 C CNN
+F 2 "" H 9450 4300 50  0001 C CNN
+F 3 "" H 9450 4300 50  0001 C CNN
+	1    9450 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0103
+U 1 1 5FCE5DFF
+P 9450 4600
+F 0 "#PWR0103" H 9450 4350 50  0001 C CNN
+F 1 "GND" H 9455 4427 50  0000 C CNN
+F 2 "" H 9450 4600 50  0001 C CNN
+F 3 "" H 9450 4600 50  0001 C CNN
+	1    9450 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L 3v3StepDown:3v3StepDownModule U1
+U 1 1 5FCE6F98
+P 8750 4400
+F 0 "U1" H 8750 4665 50  0000 C CNN
+F 1 "3v3StepDownModule" H 8750 4574 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical" H 8750 4400 50  0001 C CNN
+F 3 "" H 8750 4400 50  0001 C CNN
+	1    8750 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L EggbotWireless-rescue:+3.3V-power #PWR0104
+U 1 1 5FCE7CE9
+P 9100 4400
+F 0 "#PWR0104" H 9100 4250 50  0001 C CNN
+F 1 "+3.3V" H 9115 4573 50  0000 C CNN
+F 2 "" H 9100 4400 50  0001 C CNN
+F 3 "" H 9100 4400 50  0001 C CNN
+	1    9100 4400
+	0    1    1    0   
+$EndComp
+$Comp
+L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR0105
+U 1 1 5FCE86A4
+P 8750 4750
+F 0 "#PWR0105" H 8750 4500 50  0001 C CNN
+F 1 "GND" H 8755 4577 50  0000 C CNN
+F 2 "" H 8750 4750 50  0001 C CNN
+F 3 "" H 8750 4750 50  0001 C CNN
+	1    8750 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L EggbotWireless-rescue:+5V-power #PWR0106
+U 1 1 5FCE9732
+P 8400 4400
+F 0 "#PWR0106" H 8400 4250 50  0001 C CNN
+F 1 "+5V" H 8415 4573 50  0000 C CNN
+F 2 "" H 8400 4400 50  0001 C CNN
+F 3 "" H 8400 4400 50  0001 C CNN
+	1    8400 4400
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC
