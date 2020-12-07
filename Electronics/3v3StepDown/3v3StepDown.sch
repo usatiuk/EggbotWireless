@@ -134,7 +134,7 @@ U 1 1 5FCE3678
 P 7050 3050
 F 0 "U2" H 7050 3315 50  0000 C CNN
 F 1 "3v3StepDownModule" H 7050 3224 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Horizontal" H 7050 3050 50  0001 C CNN
+F 2 "Package_DIP:DIP-4_W10.16mm" H 7050 3050 50  0001 C CNN
 F 3 "" H 7050 3050 50  0001 C CNN
 	1    7050 3050
 	1    0    0    -1  

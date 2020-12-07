@@ -136,28 +136,6 @@ Wire Wire Line
 	5900 3550 5800 3550
 Connection ~ 5900 3550
 $Comp
-L EggbotWireless-rescue:CP-Device C?
-U 1 1 5FE802A1
-P 7000 3050
-F 0 "C?" H 7118 3096 50  0000 L CNN
-F 1 "220uF" H 7118 3005 50  0000 L CNN
-F 2 "Capacitor_SMD:CP_Elec_8x10.5" H 7038 2900 50  0001 C CNN
-F 3 "~" H 7000 3050 50  0001 C CNN
-	1    7000 3050
-	1    0    0    -1  
-$EndComp
-$Comp
-L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR?
-U 1 1 5FE802A7
-P 7000 3200
-F 0 "#PWR?" H 7000 2950 50  0001 C CNN
-F 1 "GND" H 7005 3027 50  0000 C CNN
-F 2 "" H 7000 3200 50  0001 C CNN
-F 3 "" H 7000 3200 50  0001 C CNN
-	1    7000 3200
-	1    0    0    -1  
-$EndComp
-$Comp
 L EggbotWireless-rescue:GND-power-Catfi-rescue #PWR?
 U 1 1 5FE802AD
 P 5200 3500
@@ -200,8 +178,6 @@ Wire Wire Line
 Wire Wire Line
 	6800 2900 6800 3700
 Connection ~ 6800 2900
-Wire Wire Line
-	6800 2900 7000 2900
 Wire Wire Line
 	6800 4000 6800 4750
 Wire Wire Line
@@ -389,9 +365,6 @@ Wire Wire Line
 Wire Wire Line
 	4900 4650 5300 4650
 Connection ~ 5300 4650
-Connection ~ 7000 2900
-Wire Wire Line
-	7000 2900 7150 2900
 $Comp
 L EggbotWireless-rescue:+12V-power #PWR?
 U 1 1 5FE8032E
@@ -453,4 +426,6 @@ F 3 "" H 5900 2250 50  0001 C CNN
 	1    5900 2250
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	6800 2900 7150 2900
 $EndSCHEMATC
