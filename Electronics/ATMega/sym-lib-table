@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name EggbotWireless-rescue)(type Legacy)(uri C:/Users/stepu/projects/EggbotWireless/Electronics/EggbotWireless/EggbotWireless-rescue.lib)(options "")(descr ""))
+  (lib (name ATMegaModule)(type Legacy)(uri ${KIPRJMOD}/ATMegaModule.lib)(options "")(descr ""))
 )

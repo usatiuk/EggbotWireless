@@ -1,4 +1,5 @@
 (sym_lib_table
   (lib (name EggbotWireless-rescue)(type Legacy)(uri ${KIPRJMOD}/EggbotWireless-rescue.lib)(options "")(descr ""))
   (lib (name 3v3StepDown)(type Legacy)(uri C:/Users/stepu/projects/EggbotWireless/Electronics/3v3StepDown/3v3StepDown.lib)(options "")(descr ""))
+  (lib (name 12vBoost)(type Legacy)(uri C:/Users/stepu/projects/EggbotWireless/Electronics/12vBoost/12vBoost.lib)(options "")(descr ""))
 )

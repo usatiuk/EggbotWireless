@@ -474,4 +474,15 @@ F 3 "" H 8500 3650 50  0001 C CNN
 $EndComp
 Text GLabel 8500 3800 0    50   Input ~ 0
 PWR_SWITCH
+$Comp
+L EggbotWireless-rescue:+3.3V-power #PWR?
+U 1 1 5FD847E1
+P 8500 3900
+F 0 "#PWR?" H 8500 3750 50  0001 C CNN
+F 1 "+3.3V" H 8515 4073 50  0000 C CNN
+F 2 "" H 8500 3900 50  0001 C CNN
+F 3 "" H 8500 3900 50  0001 C CNN
+	1    8500 3900
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC
