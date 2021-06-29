@@ -37,7 +37,7 @@ export class GcodeSenderComponent extends React.PureComponent<
         this.handleSend = this.handleSend.bind(this);
         this.update = this.update.bind(this);
 
-        setInterval(this.update, 100);
+        setInterval(this.update, 500);
     }
 
     public handleInputChange(
