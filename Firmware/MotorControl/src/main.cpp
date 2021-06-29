@@ -133,7 +133,7 @@ void setup() {
     OCR2A = 250;
     TCCR2A |= (1 << WGM20) | (1 << CS21);
     TIMSK2 |= (1 << OCIE2A);
-    wdt_enable(WDTO_8S);
+    wdt_enable(WDTO_500MS);
 }
 
 volatile unsigned int tick = 0;
