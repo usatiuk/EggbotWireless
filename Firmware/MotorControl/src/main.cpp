@@ -20,21 +20,21 @@ int calculateDelay(float rpm, int stepsPerRevolution) {
 }
 
 void adjustRPM() {
-    eggStepperRPM = curRPM;
-    servoStepperRPM = curRPM;
+    eggStepperDelay = calculateDelay(curRPM, STEPS_PER_REVOLUTION);
+    servoStepperDelay = calculateDelay(curRPM, STEPS_PER_REVOLUTION);
     if (needAdjust) {
         unsigned int stepsX = servoStepper.getRemainingSteps();
         unsigned int stepsY = eggStepper.getRemainingSteps();
         if (stepsX != 0 && stepsY != 0) {
             if (stepsX > stepsY) {
-                eggStepperRPM = (float)curRPM * (float)stepsY / (float)stepsX;
-            } else if (stepsY > stepsX) {
-                servoStepperRPM = (float)curRPM * (float)stepsX / (float)stepsY;
+                eggStepperDelay =
+                    (float)servoStepperDelay * (float)stepsY / (float)stepsX;
+            } else {
+                servoStepperDelay =
+                    (float)eggStepperDelay * (float)stepsX / (float)stepsY;
             }
         }
     }
-    eggStepperDelay = calculateDelay(eggStepperRPM, STEPS_PER_REVOLUTION);
-    servoStepperDelay = calculateDelay(servoStepperRPM, STEPS_PER_REVOLUTION);
 }
 
 Command command;
@@ -77,8 +77,6 @@ void requestEvent() {
 
     sts.toBytes(txBuffer);
     Wire.write(txBuffer, i2cStsBytes);
-
-    wdt_reset();
 }
 
 void execCommand(Command cmd) {
@@ -137,6 +135,7 @@ void setup() {
 }
 
 volatile unsigned int tick = 0;
+volatile bool newTick = false;
 void steppersRoutine() {
     if (tick % eggStepperDelay == 0) {
         eggStepper.doStep();
@@ -155,11 +154,16 @@ We use our own timer for more precise timings
  */
 ISR(TIMER2_COMPA_vect) {
     tick++;
-    steppersRoutine();
+    newTick = true;
 }
 
 void loop() {
     if (newCommand) {
         execCommand(command);
     }
+    if (newTick) {
+        steppersRoutine();
+        newTick = false;
+    }
+    wdt_reset();
 }
