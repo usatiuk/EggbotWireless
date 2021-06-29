@@ -28,10 +28,10 @@ void adjustRPM() {
         if (stepsX != 0 && stepsY != 0) {
             if (stepsX > stepsY) {
                 eggStepperDelay =
-                    (float)servoStepperDelay * (float)stepsY / (float)stepsX;
+                    (float)servoStepperDelay * (float)stepsX / (float)stepsY;
             } else {
                 servoStepperDelay =
-                    (float)eggStepperDelay * (float)stepsX / (float)stepsY;
+                    (float)eggStepperDelay * (float)stepsY / (float)stepsX;
             }
         }
     }
@@ -157,13 +157,28 @@ ISR(TIMER2_COMPA_vect) {
     newTick = true;
 }
 
+volatile unsigned int tps = 0;
+volatile unsigned long long oldmillis = 0;
 void loop() {
     if (newCommand) {
         execCommand(command);
     }
     if (newTick) {
         steppersRoutine();
+        tps++;
         newTick = false;
+    }
+    if (millis() - oldmillis > 1000) {
+        oldmillis = millis();
+        Serial.println(tps);
+        Serial.print(eggStepper.getRemainingSteps());
+        Serial.print(" ");
+        Serial.println(servoStepper.getRemainingSteps());
+        Serial.print(eggStepperDelay);
+        Serial.print(" ");
+        Serial.println(servoStepperDelay);
+
+        tps = 0;
     }
     wdt_reset();
 }
