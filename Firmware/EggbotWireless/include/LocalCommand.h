@@ -3,6 +3,8 @@
 
 #include <Arduino.h>
 
+#include <string>
+
 enum class LCommandType {
     unk = 0,
     ConfGet,    // LCG
