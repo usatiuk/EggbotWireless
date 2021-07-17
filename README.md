@@ -3,7 +3,7 @@ My attempt at making the ordinary egg-drawing robot a bit special, by ~adding a 
 
 <img src="docs/assembled1.jpg" width="30%">
 <img src="docs/assembled2.jpg" width="30%">
-<img src="docs/disassembled.jpg" width="30%">
+<img src="docs/board2.jpg" width="30%">
 
 ## Known issues
 
